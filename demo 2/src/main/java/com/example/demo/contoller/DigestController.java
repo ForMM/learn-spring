@@ -18,7 +18,7 @@ public class DigestController {
 		System.out.println("hello world,"+name);
 	};
 	
-	@RequestMapping(value = "/htmlToPdf",method = RequestMethod.POST)
+	@RequestMapping(value = "/sha256",method = RequestMethod.POST)
 	public void sha256(String name,String idcard) {
 		System.out.println("hello world:"+name+",idcard:"+idcard);
 		

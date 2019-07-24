@@ -40,7 +40,7 @@ public class DemoApplicationTests {
     
     @Test
     public void htmlToPdf() throws Exception{
-        mockMvc.perform(MockMvcRequestBuilders.post("/doc/htmlToPdf")
+        mockMvc.perform(MockMvcRequestBuilders.post("/digest/sha256")
          		.param("name", "tingting1")
          		.param("idcard", "430223199307071")
                 .contentType(MediaType.APPLICATION_JSON_UTF8))
