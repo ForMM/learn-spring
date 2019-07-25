@@ -1,0 +1,7 @@
+2019-07-25 15:39:25,111 INFO (ExecutorConfigurationSupport.java:171)- Initializing ExecutorService 'applicationTaskExecutor'
+2019-07-25 15:39:26,360 INFO (StartupInfoLogger.java:59)- Started DemoApplicationTests in 5.433 seconds (JVM running for 7.842)
+2019-07-25 15:39:26,845 INFO (MockServletContext.java:444)- Initializing Spring TestDispatcherServlet ''
+2019-07-25 15:39:26,845 INFO (FrameworkServlet.java:524)- Initializing Servlet ''
+2019-07-25 15:39:26,921 INFO (FrameworkServlet.java:546)- Completed initialization in 75 ms
+2019-07-25 15:39:27,023 INFO (DigestController.java:25)- hello world!
+2019-07-25 15:39:27,058 INFO (ExecutorConfigurationSupport.java:208)- Shutting down ExecutorService 'applicationTaskExecutor'
