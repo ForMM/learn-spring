@@ -1,7 +1,27 @@
-2019-07-25 15:39:25,111 INFO (ExecutorConfigurationSupport.java:171)- Initializing ExecutorService 'applicationTaskExecutor'
-2019-07-25 15:39:26,360 INFO (StartupInfoLogger.java:59)- Started DemoApplicationTests in 5.433 seconds (JVM running for 7.842)
-2019-07-25 15:39:26,845 INFO (MockServletContext.java:444)- Initializing Spring TestDispatcherServlet ''
-2019-07-25 15:39:26,845 INFO (FrameworkServlet.java:524)- Initializing Servlet ''
-2019-07-25 15:39:26,921 INFO (FrameworkServlet.java:546)- Completed initialization in 75 ms
-2019-07-25 15:39:27,023 INFO (DigestController.java:25)- hello world!
-2019-07-25 15:39:27,058 INFO (ExecutorConfigurationSupport.java:208)- Shutting down ExecutorService 'applicationTaskExecutor'
+2019-07-26 21:12:07,305 INFO (StartupInfoLogger.java:50)- Starting DemoApplication on DESKTOP-HK7L85A with PID 27820 (started by PF0W8JF8 in D:\proj\learn-spring\demo 2)
+2019-07-26 21:12:07,334 INFO (SpringApplication.java:646)- No active profile set, falling back to default profiles: default
+2019-07-26 21:12:09,671 INFO (TomcatWebServer.java:90)- Tomcat initialized with port(s): 8080 (http)
+2019-07-26 21:12:09,692 INFO (DirectJDKLog.java:173)- Initializing ProtocolHandler ["http-nio-8080"]
+2019-07-26 21:12:09,709 INFO (DirectJDKLog.java:173)- Starting service [Tomcat]
+2019-07-26 21:12:09,709 INFO (DirectJDKLog.java:173)- Starting Servlet engine: [Apache Tomcat/9.0.21]
+2019-07-26 21:12:09,911 INFO (DirectJDKLog.java:173)- Initializing Spring embedded WebApplicationContext
+2019-07-26 21:12:09,912 INFO (ServletWebServerApplicationContext.java:283)- Root WebApplicationContext: initialization completed in 2450 ms
+2019-07-26 21:12:10,392 INFO (ExecutorConfigurationSupport.java:171)- Initializing ExecutorService 'applicationTaskExecutor'
+2019-07-26 21:12:10,742 INFO (DirectJDKLog.java:173)- Starting ProtocolHandler ["http-nio-8080"]
+2019-07-26 21:12:10,769 INFO (TomcatWebServer.java:202)- Tomcat started on port(s): 8080 (http) with context path ''
+2019-07-26 21:12:10,773 INFO (StartupInfoLogger.java:59)- Started DemoApplication in 3.912 seconds (JVM running for 4.636)
+2019-07-26 21:12:39,327 INFO (AbstractTestContextBootstrapper.java:308)- Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.example.demo.DemoApplicationTests], using SpringBootContextLoader
+2019-07-26 21:12:39,338 INFO (AbstractContextLoader.java:264)- Could not detect default resource locations for test class [com.example.demo.DemoApplicationTests]: no resource found for suffixes {-context.xml, Context.groovy}.
+2019-07-26 21:12:39,339 INFO (AnnotationConfigContextLoaderUtils.java:83)- Could not detect default configuration classes for test class [com.example.demo.DemoApplicationTests]: DemoApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2019-07-26 21:12:39,534 INFO (SpringBootTestContextBootstrapper.java:235)- Found @SpringBootConfiguration com.example.demo.DemoApplication for test class com.example.demo.DemoApplicationTests
+2019-07-26 21:12:39,677 INFO (AbstractTestContextBootstrapper.java:248)- Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
+2019-07-26 21:12:39,693 INFO (AbstractTestContextBootstrapper.java:177)- Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@4c402120, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@327514f, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@5b12b668, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@1165b38, org.springframework.test.context.support.DirtiesContextTestExecutionListener@4c12331b, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@7586beff, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@3b69e7d1, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@815b41f, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@5542c4ed, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@1573f9fc]
+2019-07-26 21:12:40,218 INFO (StartupInfoLogger.java:50)- Starting DemoApplicationTests on DESKTOP-HK7L85A with PID 26620 (started by PF0W8JF8 in D:\proj\learn-spring\demo 2)
+2019-07-26 21:12:40,219 INFO (SpringApplication.java:646)- No active profile set, falling back to default profiles: default
+2019-07-26 21:12:42,843 INFO (ExecutorConfigurationSupport.java:171)- Initializing ExecutorService 'applicationTaskExecutor'
+2019-07-26 21:12:43,434 INFO (StartupInfoLogger.java:59)- Started DemoApplicationTests in 3.62 seconds (JVM running for 5.21)
+2019-07-26 21:12:43,901 INFO (MockServletContext.java:444)- Initializing Spring TestDispatcherServlet ''
+2019-07-26 21:12:43,901 INFO (FrameworkServlet.java:524)- Initializing Servlet ''
+2019-07-26 21:12:43,927 INFO (FrameworkServlet.java:546)- Completed initialization in 25 ms
+2019-07-26 21:12:44,004 INFO (DigestController.java:25)- hello world!
+2019-07-26 21:12:44,050 INFO (ExecutorConfigurationSupport.java:208)- Shutting down ExecutorService 'applicationTaskExecutor'
