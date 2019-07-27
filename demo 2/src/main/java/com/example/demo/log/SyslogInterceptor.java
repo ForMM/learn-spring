@@ -7,16 +7,18 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.MDC;
 import org.springframework.lang.Nullable;
+import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
-public class LoginInterceptor extends HandlerInterceptorAdapter{
+@Component
+public class SyslogInterceptor extends HandlerInterceptorAdapter{
 	   private static String MDC_KEY_USER_NAME = "userName";
 	   private static String MDC_KEY_REQ_ID = "reqId";
 	   
 	   @Override
 	    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-	        MDC.put(MDC_KEY_USER_NAME,"zhaozhou");
+	        MDC.put(MDC_KEY_USER_NAME,"demo");
 	        MDC.put(MDC_KEY_REQ_ID, UUID.randomUUID().toString());
 	        return super.preHandle(request, response, handler);
 	    }

@@ -15,6 +15,8 @@ import java.util.UUID;
 
 import javax.servlet.http.HttpServletResponse;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
@@ -25,6 +27,8 @@ import freemarker.template.Template;
 @Service
 public class DocDealServiceImpl implements DocDealService {
 
+	private final static Logger logger = LoggerFactory.getLogger(DocDealServiceImpl.class);
+	
 	@Autowired
 	private FreeMarkerConfigurer freeMarkerConfigurer;
 	@Autowired
@@ -49,10 +53,16 @@ public class DocDealServiceImpl implements DocDealService {
 			map.put("param7", "人生");
 			map.put("param8", "人生");
 			map.put("param9", "人生");
+			
+			logger.info("map====>"+map.toString());
+			
 			Template tpl = this.freeMarkerConfigurer.getConfiguration().getTemplate("testdoc.ftl");
 			String sysTemp = System.getProperty("java.io.tmpdir") + System.getProperty("file.separator"); // 临时文件路径
 			String uuid = UUID.randomUUID().toString().replaceAll("-", "");
 			String tempfileName = sysTemp + uuid + ".doc";
+			
+			logger.info("tempfileName====>"+tempfileName);
+			
 			outFile = new File(tempfileName);
 			Writer w = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(outFile), "UTF-8"));
 			tpl.process(map, w);
@@ -148,7 +158,7 @@ public class DocDealServiceImpl implements DocDealService {
 				}
 			}
 			if (null != outFile) {
-//				outFile.delete();
+				outFile.delete();
 			}
 		}
 

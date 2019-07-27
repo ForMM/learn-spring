@@ -30,13 +30,13 @@ public class DemoApplicationTests {
         mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).build();//建议使用这种
     }
     
-//    @Test
-//    public void whenQuerySuccess() throws Exception{
-//        mockMvc.perform(MockMvcRequestBuilders.post("/doc/generatePdf")
-//        		.param("name", "tingting1")
-//                .contentType(MediaType.APPLICATION_JSON_UTF8))
-//                .andExpect(MockMvcResultMatchers.status().isOk());
-//    }
+    @Test
+    public void whenQuerySuccess() throws Exception{
+        mockMvc.perform(MockMvcRequestBuilders.post("/doc/generatePdf")
+        		.param("name", "tingting1")
+                .contentType(MediaType.APPLICATION_JSON_UTF8))
+                .andExpect(MockMvcResultMatchers.status().isOk());
+    }
     
     @Test
     public void htmlToPdf() throws Exception{

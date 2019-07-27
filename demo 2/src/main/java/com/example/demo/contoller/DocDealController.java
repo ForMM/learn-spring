@@ -1,5 +1,7 @@
 package com.example.demo.contoller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,6 +12,8 @@ import com.example.demo.service.DocDealService;
 @Controller
 @RequestMapping("/doc")
 public class DocDealController {
+	
+	private final static Logger logger = LoggerFactory.getLogger(DocDealController.class);
 
 	@Autowired
 	private DocDealService docDealService;
@@ -17,7 +21,7 @@ public class DocDealController {
 	
 	@RequestMapping(value = "/generatePdf",method = RequestMethod.POST)
 	public void generatePdf(String name) {
-		System.out.println("hello world,"+name);
+		logger.info("hello world,"+name);
 		docDealService.generatePdf();
 	};
 	
