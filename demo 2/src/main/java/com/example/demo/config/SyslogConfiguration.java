@@ -8,7 +8,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import com.example.demo.log.SyslogInterceptor;
 
-@Configuration
+//@Configuration
 public class SyslogConfiguration implements WebMvcConfigurer{
 
 	@Autowired
