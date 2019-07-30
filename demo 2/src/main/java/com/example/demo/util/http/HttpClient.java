@@ -35,7 +35,7 @@ public class HttpClient {
 			
 			if(connection.getResponseCode() == 200) {
 				inputStream = connection.getInputStream();
-				new BufferedReader(new InputStreamReader(inputStream,"utf-8"));
+				BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream,"utf-8"));
 			}
 			
 			
