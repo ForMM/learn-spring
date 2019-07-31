@@ -4,28 +4,26 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.zip.InflaterInputStream;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.example.demo.controller.DigestController;
-
 public class HttpClient {
-	private final static Logger logger = LoggerFactory.getLogger(HttpClient.class);
-	HttpURLConnection httpClient = null;
-	InputStream inputStream = null;
-	BufferedReader br =null;
-	String result=null;
+	private static Logger logger = LoggerFactory.getLogger(HttpClient.class);
+	
 	
 	
 	public String doGet(String httpurl) {
+		HttpURLConnection connection = null;
+		InputStream is = null;
+		BufferedReader br =null;
+		String result=null;
 		try {
 			URL url = new URL(httpurl);
-			HttpURLConnection connection = (HttpURLConnection)url.openConnection();
+			connection = (HttpURLConnection)url.openConnection();
 			connection.setRequestMethod("GET");
 			//连接服务器超时时间
 			connection.setConnectTimeout(15000);
@@ -34,23 +32,86 @@ public class HttpClient {
 			connection.connect();
 			
 			if(connection.getResponseCode() == 200) {
-				inputStream = connection.getInputStream();
-				BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream,"utf-8"));
+				is = connection.getInputStream();
+				br = new BufferedReader(new InputStreamReader(is,"utf-8"));
+				StringBuilder bf = new StringBuilder();
+				String temp=null;
+				while((temp=br.readLine())!=null){
+					bf.append(temp);
+					bf.append("\r\n");
+				}
+				result=bf.toString();
 			}
-			
-			
 			
 		} catch (MalformedURLException e) {
 			logger.error("doGet have MalformedURLException problem!",e);
 		} catch (IOException e) {
 			logger.error("doGet have IOException problem!",e);
+		}finally{
+			if(is!=null) {
+				try {
+					is.close();
+				} catch (IOException e) {
+					logger.error("inputStream close",e);
+				}
+			}
+			if(br!=null) {
+				try {
+					br.close();
+				} catch (IOException e) {
+					logger.error("br close",e);
+				}
+			}
+			connection.disconnect();
 		}
-		
-		
-		
-		
-		return "";
+		return result;
 	}
+	
+	public String doPost(String httpurl) {
+		HttpURLConnection connection = null;
+		InputStream is = null;
+		OutputStream os = null;
+		BufferedReader br =null;
+		String result=null;
+		try {
+			URL url = new URL(httpurl);
+			connection = (HttpURLConnection)url.openConnection();
+			connection.setRequestMethod("POST");
+			//连接服务器超时时间
+			connection.setConnectTimeout(15000);
+			//读取远程地址数据返回时间
+			connection.setReadTimeout(60000);
+			connection.connect();
+			
+			// 默认值为：false，当向远程服务器传送数据/写数据时，需要设置为true
+            connection.setDoOutput(true);
+            // 默认值为：true，当前向远程服务读取数据时，设置为true，该参数可有可无
+            connection.setDoInput(true);
+            // 设置传入参数的格式:请求参数应该是 name1=value1&name2=value2 的形式。
+            connection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+            // 设置鉴权信息：Authorization: Bearer da3efcbf-0845-4fe3-8aba-ee040be542c0
+            connection.setRequestProperty("Authorization", "Bearer da3efcbf-0845-4fe3-8aba-ee040be542c0");
+            
+            if(connection.getResponseCode() == 200) {
+				is = connection.getInputStream();
+				br = new BufferedReader(new InputStreamReader(is,"utf-8"));
+				StringBuilder bf = new StringBuilder();
+				String temp=null;
+				while((temp=br.readLine())!=null){
+					bf.append(temp);
+					bf.append("\r\n");
+				}
+				result=bf.toString();
+			}
+			
+		}catch (Exception e) {
+			logger.error("doPost have Exception problem!",e);
+		}finally {
+			
+		}
+		return result;
+	}
+	
 	
 	
 }
