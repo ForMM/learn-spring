@@ -14,8 +14,6 @@ import org.slf4j.LoggerFactory;
 public class HttpClient {
 	private static Logger logger = LoggerFactory.getLogger(HttpClient.class);
 	
-	
-	
 	public String doGet(String httpurl) {
 		HttpURLConnection connection = null;
 		InputStream is = null;
@@ -62,12 +60,14 @@ public class HttpClient {
 					logger.error("br close",e);
 				}
 			}
-			connection.disconnect();
+			if(connection!=null) {
+				connection.disconnect();
+			}
 		}
 		return result;
 	}
 	
-	public String doPost(String httpurl) {
+	public String doPost(String httpurl,String param) {
 		HttpURLConnection connection = null;
 		InputStream is = null;
 		OutputStream os = null;
@@ -92,6 +92,9 @@ public class HttpClient {
             // 设置鉴权信息：Authorization: Bearer da3efcbf-0845-4fe3-8aba-ee040be542c0
             connection.setRequestProperty("Authorization", "Bearer da3efcbf-0845-4fe3-8aba-ee040be542c0");
             
+            // 通过连接对象获取一个输出流
+            os = connection.getOutputStream();
+            os.write(param.getBytes());
             if(connection.getResponseCode() == 200) {
 				is = connection.getInputStream();
 				br = new BufferedReader(new InputStreamReader(is,"utf-8"));
@@ -107,7 +110,30 @@ public class HttpClient {
 		}catch (Exception e) {
 			logger.error("doPost have Exception problem!",e);
 		}finally {
-			
+			if(is!=null) {
+				try {
+					is.close();
+				} catch (IOException e) {
+					logger.error("inputStream close",e);
+				}
+			}
+			if(br!=null) {
+				try {
+					br.close();
+				} catch (IOException e) {
+					logger.error("br close",e);
+				}
+			}
+			if(os!=null) {
+				try {
+					os.close();
+				} catch (IOException e) {
+					logger.error("os close",e);
+				}
+			}
+			if(connection!=null) {
+				connection.disconnect();
+			}
 		}
 		return result;
 	}
