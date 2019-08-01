@@ -11,8 +11,8 @@ import java.net.URL;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class HttpClient {
-	private static Logger logger = LoggerFactory.getLogger(HttpClient.class);
+public class HttpUrlConnectionClient {
+	private static Logger logger = LoggerFactory.getLogger(HttpUrlConnectionClient.class);
 	
 	public String doGet(String httpurl) {
 		HttpURLConnection connection = null;
@@ -72,7 +72,7 @@ public class HttpClient {
 		InputStream is = null;
 		OutputStream os = null;
 		BufferedReader br =null;
-		String result=null;
+		String result="";
 		try {
 			URL url = new URL(httpurl);
 			connection = (HttpURLConnection)url.openConnection();
