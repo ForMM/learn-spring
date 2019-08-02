@@ -1,4 +1,4 @@
-package com.example.demo.log;
+package com.example.demo.log.interceptor;
 
 import java.util.UUID;
 
@@ -13,13 +13,13 @@ import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 @Component
 public class SyslogInterceptor extends HandlerInterceptorAdapter{
-	   private static String MDC_KEY_USER_NAME = "userName";
-	   private static String MDC_KEY_REQ_ID = "reqId";
+	   private static String mdcKeyProName = "userName";
+	   private static String mdcKeyReqId = "reqId";
 	   
 	   @Override
 	    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-	        MDC.put(MDC_KEY_USER_NAME,"demo");
-	        MDC.put(MDC_KEY_REQ_ID, UUID.randomUUID().toString());
+	        MDC.put(mdcKeyProName,"demo");
+	        MDC.put(mdcKeyReqId, UUID.randomUUID().toString());
 	        return super.preHandle(request, response, handler);
 	    }
 
@@ -31,8 +31,8 @@ public class SyslogInterceptor extends HandlerInterceptorAdapter{
 
 	    @Override
 	    public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, @Nullable Exception ex) throws Exception {
-	        MDC.remove(MDC_KEY_USER_NAME);
-	        MDC.remove(MDC_KEY_REQ_ID);
+	        MDC.remove(mdcKeyProName);
+	        MDC.remove(mdcKeyReqId);
 	        super.afterCompletion(request, response, handler, ex);
 	    }
 

@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
-import com.example.demo.log.SyslogInterceptor;
+import com.example.demo.log.interceptor.SyslogInterceptor;
 
 //@Configuration
 public class SyslogConfiguration implements WebMvcConfigurer{
