@@ -1,4 +1,1 @@
-[2019-08-05 21:26:45.401][INFO][http-nio-8080-exec-1] [demo]-[f17f1b0e-0872-4ffb-bfc8-b762a3c4a737] (DocDealServiceImpl.java:66)- tempfileName====>C:\Users\PF0W8JF8\AppData\Local\Temp\\47c786e872f64b6cb6273d469ce6f901.doc
-[2019-08-05 21:26:45.401][INFO][http-nio-8080-exec-1] [demo]-[f17f1b0e-0872-4ffb-bfc8-b762a3c4a737] (DocDealServiceImpl.java:66)- tempfileName====>C:\Users\PF0W8JF8\AppData\Local\Temp\\47c786e872f64b6cb6273d469ce6f901.doc
-[2019-08-05 21:26:45.491][INFO][http-nio-8080-exec-1] [demo]-[f17f1b0e-0872-4ffb-bfc8-b762a3c4a737] (SyslogAop.java:37)- afterMethod
-[2019-08-05 21:26:45.495][INFO][http-nio-8080-exec-1] [demo]-[f17f1b0e-0872-4ffb-bfc8-b762a3c4a737] (SyslogAop.java:42)- afterReturning:Result [status=1, msg=请求成功, data=null]
+[2019-08-05 23:10:01.775][INFO][Thread-2] []-[] (ExecutorConfigurationSupport.java:208)- Shutting down ExecutorService 'applicationTaskExecutor'

@@ -36,9 +36,7 @@ public class DocDealServiceImpl implements DocDealService {
 	private HttpServletResponse response;
 
 	@Override
-	public Result<Object> generatePdf() {
-		Result<Object> result = new Result<>();
-		
+	public String generatePdf() {
 		String fileRealName = "hello";
 
 		InputStream inStream = null;
@@ -102,70 +100,19 @@ public class DocDealServiceImpl implements DocDealService {
 			}
 		}
 
-		
-		result.setStatus(1);
-		result.setMsg("请求成功");
-		return result;
+		return null;
 	}
 
 	@Override
-	public String htmlToPdf(String name, String idcard) {
-
-		String fileRealName = "hello";
-
-		InputStream inStream = null;
-		OutputStream out = null;
-		File outFile = null;
-		try {
-			Map<String, String> map = new HashMap<>();
-			map.put("param1", name);
-			map.put("param2", idcard);
-			map.put("param3", "人生");
-			map.put("param4", "人生");
-			Template tpl = this.freeMarkerConfigurer.getConfiguration().getTemplate("testhtml.ftl");
-			String sysTemp = System.getProperty("java.io.tmpdir") + System.getProperty("file.separator"); // 临时文件路径
-			String uuid = UUID.randomUUID().toString().replaceAll("-", "");
-			String tempfileName = sysTemp + uuid + ".html";
-			outFile = new File(tempfileName);
-			Writer w = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(outFile), "UTF-8"));
-			tpl.process(map, w);
-			w.close();
-			inStream = new FileInputStream(outFile);
-			response.setHeader("Content-Disposition", "attachment;filename=" + fileRealName + ".pdf");
-			response.setCharacterEncoding("utf-8");
-			response.setContentType("application/msword");
-			out = response.getOutputStream();
-			byte[] buffer = new byte[1024]; // 缓冲区
-			int bytesToRead = -1;
-			// 通过循环将读入的Word文件的内容输出到浏览器中
-			while ((bytesToRead = inStream.read(buffer)) != -1) {
-				out.write(buffer, 0, bytesToRead);
-			}
-		} catch (Exception e1) {
-			e1.printStackTrace();
-		} finally {
-			if (null != inStream) {
-				try {
-					inStream.close();
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
-			if (null != out) {
-				try {
-					out.close();
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
-			if (null != outFile) {
-				outFile.delete();
-			}
-		}
-
-		return null;
+	public Result<Object> htmlToPdf(String name, String idcard) {
+		Result<Object> result = new Result<Object>();
+		
+		result.setStatus(1);
+		result.setMsg("aaaa");
+		
+		return result;
+		
+		
 	}
 
 }

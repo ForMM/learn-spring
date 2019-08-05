@@ -4,8 +4,8 @@ import com.example.demo.common.Result;
 
 public interface DocDealService {
 	
-	public Result<Object> generatePdf();
+	public String generatePdf();
 	
-	public String htmlToPdf(String name,String idcard);
+	public Result<Object> htmlToPdf(String name,String idcard);
 	
 }

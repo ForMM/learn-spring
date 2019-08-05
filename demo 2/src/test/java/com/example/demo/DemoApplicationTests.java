@@ -28,26 +28,35 @@ public class DemoApplicationTests {
         mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).build();//建议使用这种
     }
     
-    @Test()
-    public void whenQuerySuccess() throws Exception{
-    	
-    	
-    	JSONObject obj = new JSONObject();
-    	obj.put("name", "bingting");
-    	
-        mockMvc.perform(MockMvcRequestBuilders.post("/doc/generatePdf")
-                .contentType(MediaType.APPLICATION_JSON_VALUE).content(obj.toString()))
-                .andExpect(MockMvcResultMatchers.status().isOk());
-    }
+//    @Test()
+//    public void whenQuerySuccess() throws Exception{
+//    	JSONObject obj = new JSONObject();
+//    	obj.put("name", "bingting");
+//        mockMvc.perform(MockMvcRequestBuilders.post("/doc/generatePdf")
+//                .contentType(MediaType.APPLICATION_JSON_VALUE).content(obj.toString()))
+//                .andExpect(MockMvcResultMatchers.status().isOk());
+//    }
     
     @Test()
     public void htmlToPdf() throws Exception{
-        mockMvc.perform(MockMvcRequestBuilders.post("/digest/sha256")
+    	JSONObject obj = new JSONObject();
+    	obj.put("name", "bingting");
+    	obj.put("idcard", "43022319891210151X");
+        mockMvc.perform(MockMvcRequestBuilders.post("/doc/htmlToPdf")
          		.param("name", "tingting1")
          		.param("idcard", "430223199307071")
                 .contentType(MediaType.APPLICATION_JSON_UTF8))
                 .andExpect(MockMvcResultMatchers.status().isOk());
     }
+    
+//    @Test()
+//    public void sha256() throws Exception{
+//        mockMvc.perform(MockMvcRequestBuilders.post("/digest/sha256")
+//         		.param("name", "tingting1")
+//         		.param("idcard", "430223199307071")
+//                .contentType(MediaType.APPLICATION_JSON_UTF8))
+//                .andExpect(MockMvcResultMatchers.status().isOk());
+//    }
 
 
 }

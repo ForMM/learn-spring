@@ -23,15 +23,17 @@ public class DocDealController {
 	
 	@LogAnnotation
 	@RequestMapping(value = "/generatePdf",method = RequestMethod.POST)
-	public Result<Object> generatePdf(String name) {
+	public void generatePdf(String name) {
 		logger.info("generatePdf hello world{}"+name);
-		Result<Object> generatePdf = docDealService.generatePdf();
-		return generatePdf;
+		docDealService.generatePdf();
 	}
 	
+	@LogAnnotation
+	@ResponseBody
 	@RequestMapping(value = "/htmlToPdf",method = RequestMethod.POST)
-	public void htmlToPdf(String name,String idcard) {
-		System.out.println("hello world:"+name+",idcard:"+idcard);
-		docDealService.htmlToPdf(name,idcard);
+	public Result<Object> htmlToPdf(String name,String idcard) {
+		logger.info("hello world:"+name+",idcard:"+idcard);
+		Result<Object> htmlToPdf = docDealService.htmlToPdf(name,idcard);
+		return htmlToPdf;
 	}
 }
