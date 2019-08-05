@@ -22,6 +22,24 @@ public class Result<T> {
 	public void setData(T data) {
 		this.data = data;
 	}
+	
+	public Result() {
+		super();
+	}
+	
+	public Result(Integer status, String msg) {
+		super();
+		this.status = status;
+		this.msg = msg;
+	}
+	
+	public Result(Integer status, String msg, T data) {
+		super();
+		this.status = status;
+		this.msg = msg;
+		this.data = data;
+	}
+	
 	@Override
 	public String toString() {
 		return "Result [status=" + status + ", msg=" + msg + ", data=" + data + "]";

@@ -21,13 +21,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
 
+import com.example.demo.common.Result;
 import com.example.demo.service.DocDealService;
 import freemarker.template.Template;
 
 @Service
 public class DocDealServiceImpl implements DocDealService {
 
-	private final static Logger logger = LoggerFactory.getLogger(DocDealServiceImpl.class);
+	private static Logger logger = LoggerFactory.getLogger(DocDealServiceImpl.class);
 	
 	@Autowired
 	private FreeMarkerConfigurer freeMarkerConfigurer;
@@ -35,8 +36,9 @@ public class DocDealServiceImpl implements DocDealService {
 	private HttpServletResponse response;
 
 	@Override
-	public String generatePdf() {
-
+	public Result<Object> generatePdf() {
+		Result<Object> result = new Result<>();
+		
 		String fileRealName = "hello";
 
 		InputStream inStream = null;
@@ -85,7 +87,6 @@ public class DocDealServiceImpl implements DocDealService {
 				try {
 					inStream.close();
 				} catch (IOException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}
@@ -93,7 +94,6 @@ public class DocDealServiceImpl implements DocDealService {
 				try {
 					out.close();
 				} catch (IOException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}
@@ -102,7 +102,10 @@ public class DocDealServiceImpl implements DocDealService {
 			}
 		}
 
-		return null;
+		
+		result.setStatus(1);
+		result.setMsg("请求成功");
+		return result;
 	}
 
 	@Override

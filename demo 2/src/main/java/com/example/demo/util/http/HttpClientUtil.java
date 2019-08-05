@@ -8,6 +8,7 @@ import java.util.Map;
 
 import org.apache.http.Header;
 import org.apache.http.HttpResponse;
+import org.apache.http.HttpStatus;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.config.RequestConfig;
@@ -49,8 +50,15 @@ public class HttpClientUtil {
 		RequestConfig requestConfig = getRequestConfig();
 		client = HttpClientBuilder.create().setDefaultRequestConfig(requestConfig).build();
 		HttpPost httpPost = new HttpPost(httpUrl);
+		httpPost.setHeader("Content-Type", "application/json;charset=utf8");
 		try {
 			httpResponse = client.execute(httpPost);
+			logger.info(String.format("响应状态:%s","aa"));
+			if(httpResponse.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
+				
+			}
+			
+			
 			result = EntityUtils.toString(httpResponse.getEntity());
 		} catch (ClientProtocolException e) {
 			logger.error("HttpClientUtil doGet exception", e);
@@ -59,15 +67,11 @@ public class HttpClientUtil {
 		}finally {
 			httpPost.releaseConnection();
 		}
-		
-		
-		
 		return result;
 	}
 	
 	private static RequestConfig getRequestConfig() {
-		RequestConfig requestConfig = RequestConfig.custom().setConnectionRequestTimeout(1000).setConnectTimeout(1000)
+		return RequestConfig.custom().setConnectionRequestTimeout(1000).setConnectTimeout(1000)
 				.setSocketTimeout(1000).build();
-		return requestConfig;
 	}
 }

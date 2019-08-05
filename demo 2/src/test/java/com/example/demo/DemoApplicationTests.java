@@ -12,6 +12,8 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
+import com.alibaba.fastjson.JSONObject;
+
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class DemoApplicationTests {
@@ -20,25 +22,25 @@ public class DemoApplicationTests {
     private WebApplicationContext webApplicationContext;
     private MockMvc mockMvc;
     
-	
-	
-	
- 
     @Before
     public void setUp() throws Exception{
         //MockMvcBuilders.webAppContextSetup(WebApplicationContext context)：指定WebApplicationContext，将会从该上下文获取相应的控制器并得到相应的MockMvc；
         mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).build();//建议使用这种
     }
     
-    @Test
+    @Test()
     public void whenQuerySuccess() throws Exception{
+    	
+    	
+    	JSONObject obj = new JSONObject();
+    	obj.put("name", "bingting");
+    	
         mockMvc.perform(MockMvcRequestBuilders.post("/doc/generatePdf")
-        		.param("name", "tingting1")
-                .contentType(MediaType.APPLICATION_JSON_UTF8))
+                .contentType(MediaType.APPLICATION_JSON_VALUE).content(obj.toString()))
                 .andExpect(MockMvcResultMatchers.status().isOk());
     }
     
-    @Test
+    @Test()
     public void htmlToPdf() throws Exception{
         mockMvc.perform(MockMvcRequestBuilders.post("/digest/sha256")
          		.param("name", "tingting1")
