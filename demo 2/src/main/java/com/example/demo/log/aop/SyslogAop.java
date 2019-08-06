@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.AfterReturning;
+import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
@@ -62,6 +63,15 @@ public class SyslogAop {
         logger.info("请求参数:{}",params);
         
     }
+    
+    @Around("webLog()")
+    public void around(Object result){
+    	String jsonString = JSON.toJSONString(result);
+    	logger.info("afterReturning: {}", jsonString);
+        MDC.remove(mdcKeyProName);
+        MDC.remove(mdcKeyReqId);
+    }
+    
     
    /* @After("webLog()")
     public void after(JoinPoint joinPoint){
