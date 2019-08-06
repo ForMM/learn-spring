@@ -1,1 +1,6 @@
-[2019-08-05 23:10:01.775][INFO][Thread-2] []-[] (ExecutorConfigurationSupport.java:208)- Shutting down ExecutorService 'applicationTaskExecutor'
+[2019-08-06 20:02:59.551][INFO][http-nio-8080-exec-10] [demo]-[cfcb2533-8927-4e09-a1d1-10c3033a6730] (SyslogAop.java:39)- beforeMethod
+[2019-08-06 20:02:59.714][INFO][http-nio-8080-exec-10] [demo]-[cfcb2533-8927-4e09-a1d1-10c3033a6730] (SyslogAop.java:60)- 请求地址:http://localhost:8080//digest/md5
+[2019-08-06 20:02:59.718][INFO][http-nio-8080-exec-10] [demo]-[cfcb2533-8927-4e09-a1d1-10c3033a6730] (SyslogAop.java:61)- 请求类型:POST
+[2019-08-06 20:02:59.719][INFO][http-nio-8080-exec-10] [demo]-[cfcb2533-8927-4e09-a1d1-10c3033a6730] (SyslogAop.java:62)- 请求参数:"1231231"
+[2019-08-06 20:02:59.735][INFO][http-nio-8080-exec-10] [demo]-[cfcb2533-8927-4e09-a1d1-10c3033a6730] (DigestController.java:29)- 入参：1231231
+[2019-08-06 20:02:59.914][INFO][http-nio-8080-exec-10] [demo]-[cfcb2533-8927-4e09-a1d1-10c3033a6730] (SyslogAop.java:74)- afterReturning: {"data":{"encryptStr":"8d4646eb2d7067126eb08adb0672f7bb"},"msg":"md5加密","status":1}

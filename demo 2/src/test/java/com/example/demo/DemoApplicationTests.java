@@ -49,14 +49,22 @@ public class DemoApplicationTests {
                 .andExpect(MockMvcResultMatchers.status().isOk());
     }
     
-//    @Test()
-//    public void sha256() throws Exception{
-//        mockMvc.perform(MockMvcRequestBuilders.post("/digest/sha256")
-//         		.param("name", "tingting1")
-//         		.param("idcard", "430223199307071")
-//                .contentType(MediaType.APPLICATION_JSON_UTF8))
-//                .andExpect(MockMvcResultMatchers.status().isOk());
-//    }
+    @Test()
+    public void md5() throws Exception{
+        mockMvc.perform(MockMvcRequestBuilders.post("/digest/md5")
+         		.param("name", "tingting1")
+                .contentType(MediaType.APPLICATION_JSON_UTF8))
+                .andExpect(MockMvcResultMatchers.status().isOk());
+    }
+    
+    @Test()
+    public void sha256() throws Exception{
+        mockMvc.perform(MockMvcRequestBuilders.post("/digest/sha256")
+         		.param("name", "tingting1")
+         		.param("idcard", "430223199307071")
+                .contentType(MediaType.APPLICATION_JSON_UTF8))
+                .andExpect(MockMvcResultMatchers.status().isOk());
+    }
 
 
 }
