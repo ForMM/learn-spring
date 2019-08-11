@@ -60,4 +60,15 @@ public class MD5Util {
 		}
 		return s;
 	}
+	
+	
+	public static void main(String[] args) {
+		String hh="uuuuuuuu";
+		String a = getMd5Simple(hh);
+		System.out.println(a);
+		
+		String md5 = getMD5(hh);
+		System.out.println(md5);
+		
+	}
 }
