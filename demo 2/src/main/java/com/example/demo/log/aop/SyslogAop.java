@@ -1,13 +1,11 @@
 package com.example.demo.log.aop;
 
-import java.util.Map;
 import java.util.UUID;
-
 import javax.servlet.http.HttpServletRequest;
-
 import org.aspectj.lang.JoinPoint;
-import org.aspectj.lang.annotation.After;
+import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.AfterReturning;
+import org.aspectj.lang.annotation.AfterThrowing;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
@@ -36,7 +34,7 @@ public class SyslogAop {
     @Before("webLog()")
     public void before(JoinPoint joinPoint){
         MDC.put(mdcKeyProName,"demo");
-        MDC.put(mdcKeyReqId, UUID.randomUUID().toString());
+        MDC.put(mdcKeyReqId, UUID.randomUUID().toString().replace("-", ""));
         logger.info("beforeMethod");
         
         RequestAttributes ra = RequestContextHolder.getRequestAttributes();
@@ -65,11 +63,16 @@ public class SyslogAop {
     }
     
     @Around("webLog()")
-    public void around(Object result){
-    	String jsonString = JSON.toJSONString(result);
-    	logger.info("afterReturning: {}", jsonString);
-        MDC.remove(mdcKeyProName);
-        MDC.remove(mdcKeyReqId);
+    public void around(ProceedingJoinPoint joinPoint) throws Throwable{
+    	logger.info("around method!");
+    	long startTime = System.currentTimeMillis();
+    	Object proceed = joinPoint.proceed();
+    	long endTime = System.currentTimeMillis();
+    	
+    	logger.info("方法执行时间："+(endTime-startTime)+"");
+    	
+    	String jsonString = JSON.toJSONString(proceed);
+    	logger.info(jsonString);
     }
     
     
@@ -85,5 +88,14 @@ public class SyslogAop {
         MDC.remove(mdcKeyProName);
         MDC.remove(mdcKeyReqId);
     }
+    
+    @AfterThrowing(pointcut = "webLog()")
+    public void afterThrowing(){
+    	 MDC.remove(mdcKeyProName);
+         MDC.remove(mdcKeyReqId);
+    	logger.info("afterThrowing");
+    }
+    
+    
 
 }

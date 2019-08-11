@@ -19,7 +19,7 @@ public class SyslogInterceptor extends HandlerInterceptorAdapter{
 	   @Override
 	    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 	        MDC.put(mdcKeyProName,"demo");
-	        MDC.put(mdcKeyReqId, UUID.randomUUID().toString());
+	        MDC.put(mdcKeyReqId, UUID.randomUUID().toString().replace("-", ""));
 	        return super.preHandle(request, response, handler);
 	    }
 

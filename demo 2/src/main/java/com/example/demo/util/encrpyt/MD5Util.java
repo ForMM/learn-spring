@@ -42,16 +42,12 @@ public class MD5Util {
 			java.security.MessageDigest md = java.security.MessageDigest
 					.getInstance("MD5");
 			md.update(param.getBytes());
-			byte tmp[] = md.digest();// MD5 的计算结果是一个 128 位的长整数，
-			// 用字节表示就是 16 个字节
-			char str[] = new char[16 * 2];// 每个字节用 16 进制表示的话，使用两个字符， 所以表示成 16
-			// 进制需要 32 个字符
+			byte tmp[] = md.digest();// MD5的计算结果是一个128位的长整数，用字节表示就是16个字节
+			char str[] = new char[16 * 2];// 每个字节用16进制表示的话，使用两个字符，所以表示成16进制需要32个字符
 			int k = 0;// 表示转换结果中对应的字符位置
-			for (int i = 0; i < 16; i++) {// 从第一个字节开始，对 MD5 的每一个字节// 转换成 16
-				// 进制字符的转换
+			for (int i = 0; i < 16; i++) {// 从第一个字节开始，对MD5的每一个字节转换成16进制字符的转换
 				byte byte0 = tmp[i];// 取第 i 个字节
-				str[k++] = hexDigits[byte0 >>> 4 & 0xf];// 取字节中高 4 位的数字转换,// >>>
-				// 为逻辑右移，将符号位一起右移
+				str[k++] = hexDigits[byte0 >>> 4 & 0xf];// 取字节中高 4 位的数字转换,为逻辑右移，将符号位一起右移
 				str[k++] = hexDigits[byte0 & 0xf];// 取字节中低 4 位的数字转换
 			}
 			s = new String(str);// 换后的结果转换为字符串 
@@ -65,7 +61,7 @@ public class MD5Util {
 	public static void main(String[] args) {
 		String hh="uuuuuuuu";
 		String a = getMd5Simple(hh);
-		System.out.println(a);
+		System.out.println(a+",length:"+a.length());
 		
 		String md5 = getMD5(hh);
 		System.out.println(md5);
