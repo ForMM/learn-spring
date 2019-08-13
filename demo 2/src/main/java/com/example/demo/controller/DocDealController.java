@@ -24,15 +24,13 @@ public class DocDealController {
 	@LogAnnotation
 	@RequestMapping(value = "/generatePdf",method = RequestMethod.POST)
 	public void generatePdf(String name) {
-		logger.info("generatePdf hello world{}"+name);
 		docDealService.generatePdf();
 	}
 	
 	@LogAnnotation
 	@ResponseBody
-	@RequestMapping(value = "/htmlToPdf",method = RequestMethod.POST)
+	@RequestMapping(value = "/htmlToPdf",method = RequestMethod.GET)
 	public Result<Object> htmlToPdf(String name,String idcard) {
-		logger.info("hello world:"+name+",idcard:"+idcard);
 		Result<Object> htmlToPdf = docDealService.htmlToPdf(name,idcard);
 		return htmlToPdf;
 	}

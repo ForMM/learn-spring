@@ -12,7 +12,6 @@ import com.example.demo.common.Result;
 import com.example.demo.controller.vo.EncryptVo;
 import com.example.demo.log.annotation.LogAnnotation;
 import com.example.demo.service.DigestService;
-import com.example.demo.service.DocDealService;
 
 @Controller
 @RequestMapping("/digest")
@@ -26,7 +25,6 @@ public class DigestController {
 	@LogAnnotation
 	@RequestMapping(value = "/md5",method = RequestMethod.POST)
 	public Result<EncryptVo> md5(String name) {
-		logger.info("入参："+name);
 		return digestService.Md5Encypt(name);
 	}
 	

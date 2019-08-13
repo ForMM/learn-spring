@@ -42,7 +42,7 @@ public class DemoApplicationTests {
     	JSONObject obj = new JSONObject();
     	obj.put("name", "bingting");
     	obj.put("idcard", "43022319891210151X");
-        mockMvc.perform(MockMvcRequestBuilders.post("/doc/htmlToPdf")
+        mockMvc.perform(MockMvcRequestBuilders.get("/doc/htmlToPdf")
          		.param("name", "tingting1")
          		.param("idcard", "430223199307071")
                 .contentType(MediaType.APPLICATION_JSON_UTF8))

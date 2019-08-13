@@ -54,14 +54,12 @@ public class DocDealServiceImpl implements DocDealService {
 			map.put("param8", "人生");
 			map.put("param9", "人生");
 			
-			logger.info("map====>"+map.toString());
 			
 			Template tpl = this.freeMarkerConfigurer.getConfiguration().getTemplate("testdoc.ftl");
 			String sysTemp = System.getProperty("java.io.tmpdir") + System.getProperty("file.separator"); // 临时文件路径
 			String uuid = UUID.randomUUID().toString().replaceAll("-", "");
 			String tempfileName = sysTemp + uuid + ".doc";
 			
-			logger.info("tempfileName====>"+tempfileName);
 			
 			outFile = new File(tempfileName);
 			Writer w = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(outFile), "UTF-8"));

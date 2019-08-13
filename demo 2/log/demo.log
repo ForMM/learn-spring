@@ -1,18 +1,1 @@
-[2019-08-12 07:42:03.625][INFO][main] [demo]-[442db425cffa466e99c1b70d2ad6b105] (SyslogAop.java:61)- 请求参数:"tingting1"
-[2019-08-12 07:42:03.636][INFO][main] [demo]-[442db425cffa466e99c1b70d2ad6b105] (DigestController.java:36)- sha256 hello world!
-[2019-08-12 07:42:03.637][INFO][main] [demo]-[442db425cffa466e99c1b70d2ad6b105] (SyslogAop.java:72)- 方法执行时间：29
-[2019-08-12 07:42:03.638][INFO][main] [demo]-[442db425cffa466e99c1b70d2ad6b105] (SyslogAop.java:75)- null
-[2019-08-12 07:42:03.639][INFO][main] [demo]-[442db425cffa466e99c1b70d2ad6b105] (SyslogAop.java:87)- afterReturning: null
-[2019-08-12 07:42:03.666][INFO][main] []-[] (MockServletContext.java:444)- Initializing Spring TestDispatcherServlet ''
-[2019-08-12 07:42:03.666][INFO][main] []-[] (FrameworkServlet.java:524)- Initializing Servlet ''
-[2019-08-12 07:42:03.668][INFO][main] []-[] (FrameworkServlet.java:546)- Completed initialization in 2 ms
-[2019-08-12 07:42:03.670][INFO][main] []-[] (SyslogAop.java:67)- around method!
-[2019-08-12 07:42:03.670][INFO][main] [demo]-[74c565f904db4d70953b3fcd28c40dff] (SyslogAop.java:38)- beforeMethod
-[2019-08-12 07:42:03.671][INFO][main] [demo]-[74c565f904db4d70953b3fcd28c40dff] (SyslogAop.java:59)- 请求地址:http://localhost/digest/md5
-[2019-08-12 07:42:03.671][INFO][main] [demo]-[74c565f904db4d70953b3fcd28c40dff] (SyslogAop.java:60)- 请求类型:POST
-[2019-08-12 07:42:03.671][INFO][main] [demo]-[74c565f904db4d70953b3fcd28c40dff] (SyslogAop.java:61)- 请求参数:"tingting1"
-[2019-08-12 07:42:03.672][INFO][main] [demo]-[74c565f904db4d70953b3fcd28c40dff] (DigestController.java:29)- 入参：tingting1
-[2019-08-12 07:42:03.674][INFO][main] [demo]-[74c565f904db4d70953b3fcd28c40dff] (SyslogAop.java:72)- 方法执行时间：4
-[2019-08-12 07:42:03.677][INFO][main] [demo]-[74c565f904db4d70953b3fcd28c40dff] (SyslogAop.java:75)- {"data":{"encryptStr":"3bad33cf1e5aac7210c5d367952ea634"},"msg":"md5加密","status":1}
-[2019-08-12 07:42:03.678][INFO][main] [demo]-[74c565f904db4d70953b3fcd28c40dff] (SyslogAop.java:87)- afterReturning: null
-[2019-08-12 07:42:03.687][INFO][Thread-2] []-[] (ExecutorConfigurationSupport.java:208)- Shutting down ExecutorService 'applicationTaskExecutor'
+[2019-08-13 21:49:51.617][INFO][Thread-2] []-[] (ExecutorConfigurationSupport.java:208)- Shutting down ExecutorService 'applicationTaskExecutor'
