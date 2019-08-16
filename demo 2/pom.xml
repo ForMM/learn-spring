@@ -25,7 +25,6 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
@@ -39,7 +38,6 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-aop</artifactId>
 		</dependency>
-
 		<dependency>
 			<groupId>org.apache.httpcomponents</groupId>
 			<artifactId>httpclient</artifactId>
@@ -56,9 +54,6 @@
 			<version>1.18.8</version>
 			<scope>provided</scope>
 		</dependency>
-
-
-
 	</dependencies>
 
 	<build>
@@ -76,8 +71,6 @@
 					<encoding>UTF-8</encoding>
 				</configuration>
 			</plugin>
-
-
 		</plugins>
 	</build>
 

@@ -18,7 +18,7 @@ public class MD5Util {
 	}
 	
 	/**
-	 * 自定义加密规则
+	 * 自定义加密规则(加盐)
 	 * 原字符串加密后8位+加密字符，再加密
 	 * @param param
 	 * @return
@@ -57,14 +57,13 @@ public class MD5Util {
 		return s;
 	}
 	
-	
 	public static void main(String[] args) {
 		String hh="uuuuuuuu";
 		String a = getMd5Simple(hh);
-		System.out.println(a+",length:"+a.length());
+		logger.info("value:{},lenth:{}",a,a.length());
 		
 		String md5 = getMD5(hh);
-		System.out.println(md5);
+		logger.info("value:{}",md5);
 		
 	}
 }

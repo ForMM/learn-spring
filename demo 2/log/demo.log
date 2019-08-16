@@ -1,1 +1,16 @@
-[2019-08-14 23:15:13.873][INFO][Thread-2] []-[] (ExecutorConfigurationSupport.java:208)- Shutting down ExecutorService 'applicationTaskExecutor'
+[2019-08-16 14:16:17.942][INFO][main] []-[] (MD5Util.java:64)- d86344a7eae5ebfa67f5b76517cf7a2d,length:32
+[2019-08-16 14:16:17.962][INFO][main] []-[] (MD5Util.java:67)- d86344a7eae5ebfa67f5b76517cf7a2d
+[2019-08-16 14:17:43.182][INFO][main] []-[] (MD5Util.java:64)- value:d86344a7eae5ebfa67f5b76517cf7a2d,lenth:32
+[2019-08-16 14:17:43.189][INFO][main] []-[] (MD5Util.java:67)- value:d86344a7eae5ebfa67f5b76517cf7a2d
+[2019-08-16 16:11:43.859][INFO][main] []-[] (ShaUtil.java:24)- value:e0d67638ecbfe5c2ea75a65e194418340abfd1a9,lenth:40
+[2019-08-16 17:15:30.735][ERROR][main] []-[] (ShaUtil.java:35)- getSha1 have a error!
+java.security.NoSuchAlgorithmException: SHA256 MessageDigest not available
+	at sun.security.jca.GetInstance.getInstance(GetInstance.java:159)
+	at java.security.Security.getImpl(Security.java:695)
+	at java.security.MessageDigest.getInstance(MessageDigest.java:167)
+	at com.example.demo.util.encrpyt.ShaUtil.getSha256(ShaUtil.java:20)
+	at com.example.demo.util.encrpyt.ShaUtil.main(ShaUtil.java:31)
+[2019-08-16 17:16:28.129][INFO][main] []-[] (ShaUtil.java:32)- a value:e0d67638ecbfe5c2ea75a65e194418340abfd1a9,lenth:40
+[2019-08-16 17:16:28.135][INFO][main] []-[] (ShaUtil.java:33)- b value:998a364b79915f8c78d2646f885217ef1b0e30994d2e376439ec0741b366e331,lenth:64
+[2019-08-16 17:16:52.786][INFO][main] []-[] (ShaUtil.java:32)- a value:e0d67638ecbfe5c2ea75a65e194418340abfd1a9,lenth:40
+[2019-08-16 17:16:52.793][INFO][main] []-[] (ShaUtil.java:33)- b value:998a364b79915f8c78d2646f885217ef1b0e30994d2e376439ec0741b366e331,lenth:64
