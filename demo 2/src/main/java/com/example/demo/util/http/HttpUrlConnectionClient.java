@@ -14,7 +14,14 @@ import org.slf4j.LoggerFactory;
 public class HttpUrlConnectionClient {
 	private static Logger logger = LoggerFactory.getLogger(HttpUrlConnectionClient.class);
 	
-	public String doGet(String httpurl) {
+	private HttpUrlConnectionClient() {};
+	
+	/**
+	 * get请求
+	 * @param httpurl
+	 * @return
+	 */
+	public static String doGet(String httpurl) {
 		HttpURLConnection connection = null;
 		InputStream is = null;
 		BufferedReader br =null;
@@ -67,7 +74,13 @@ public class HttpUrlConnectionClient {
 		return result;
 	}
 	
-	public String doPost(String httpurl,String param) {
+	/**
+	 * 
+	 * @param httpurl
+	 * @param param
+	 * @return
+	 */
+	public static String doPost(String httpurl,String param) {
 		HttpURLConnection connection = null;
 		InputStream is = null;
 		OutputStream os = null;
@@ -81,8 +94,6 @@ public class HttpUrlConnectionClient {
 			connection.setConnectTimeout(15000);
 			//读取远程地址数据返回时间
 			connection.setReadTimeout(60000);
-			connection.connect();
-			
 			// 默认值为：false，当向远程服务器传送数据/写数据时，需要设置为true
             connection.setDoOutput(true);
             // 默认值为：true，当前向远程服务读取数据时，设置为true，该参数可有可无
@@ -91,7 +102,8 @@ public class HttpUrlConnectionClient {
             connection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
             // 设置鉴权信息：Authorization: Bearer da3efcbf-0845-4fe3-8aba-ee040be542c0
             connection.setRequestProperty("Authorization", "Bearer da3efcbf-0845-4fe3-8aba-ee040be542c0");
-            
+			connection.connect();
+			
             // 通过连接对象获取一个输出流
             os = connection.getOutputStream();
             os.write(param.getBytes());
@@ -138,6 +150,11 @@ public class HttpUrlConnectionClient {
 		return result;
 	}
 	
-	
+	public static void main(String[] args) {
+		String doPost = HttpUrlConnectionClient.doPost("https://testapi.fadada.com:8443/api/syncPerson_auto.api", "");
+		logger.info("result:{}",doPost);
+		String doGet = HttpUrlConnectionClient.doGet("https://testapi.fadada.com:8443/api/syncPerson_auto.api");
+		logger.info("result:{}",doGet);
+	}
 	
 }
