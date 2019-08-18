@@ -63,8 +63,6 @@ public class MACUtil {
 			logger.info("value:{},length:{}",encodeHmacSHA1,encodeHmacSHA1.length());
 			String encodeHmacSHA256 = encodeHmac(hh,initHmacKey("HmacSHA256"),"HmacSHA256");
 			logger.info("value:{},length:{}",encodeHmacSHA256,encodeHmacSHA256.length());
-			String encodeHmacSHA2356 = encodeHmac(hh,initHmacKey("HmacSHA2356"),"HmacSHA2356");
-			logger.info("value:{},length:{}",encodeHmacSHA2356,encodeHmacSHA2356.length());
 		} catch (InvalidKeyException e) {
 			logger.error("encodeHmacMD5 InvalidKeyException",e);
 		} catch (NoSuchAlgorithmException e) {
