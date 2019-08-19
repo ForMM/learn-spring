@@ -17,7 +17,7 @@ public class MACUtil {
 	private static Logger logger = LoggerFactory.getLogger(MACUtil.class);
 
 	private MACUtil() {
-	};
+	}
 
 	/**
 	 * HmacMD5、HmacSHA1、HmacSHA256等类型的密钥

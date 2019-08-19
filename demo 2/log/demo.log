@@ -1,61 +1,5 @@
-[2019-08-18 09:16:25.288][INFO][main] []-[] (HttpUrlConnectionClient.java:157)- result:null
-[2019-08-18 10:21:36.305][INFO][main] []-[] (HttpClientUtil.java:168)- doGet result:{"code":"2001","customer_id":null,"msg":"app_id不存在或未启动","result":"error"}
-[2019-08-18 10:21:36.807][INFO][main] []-[] (HttpClientUtil.java:135)- 响应状态:HttpResponseProxy{HTTP/1.1 200 OK [Date: Sun, 18 Aug 2019 02:21:36 GMT, Content-Type: application/json;charset=utf-8, Content-Length: 85, Connection: keep-alive, Expires: Thu, 01 Jan 1970 00:00:00 GMT, Cache-Control: no-cache, Pragma: no-cache, X-Via-JSL: 1d2d85a,-, Set-Cookie: __jsluid_s=2eba346fc66db18c4dc42d6047a99847; max-age=31536000; path=/; HttpOnly; secure, X-Cache: bypass] ResponseEntityProxy{[Content-Type: application/json;charset=utf-8,Content-Length: 85,Chunked: false]}}
-[2019-08-18 10:21:36.808][INFO][main] []-[] (HttpClientUtil.java:177)- doPost result:%s{"code":"2001","customer_id":null,"msg":"消息摘要验证失败.","result":"error"}
-[2019-08-18 10:21:51.834][INFO][main] []-[] (HttpClientUtil.java:168)- doGet result:{"code":"2001","customer_id":null,"msg":"app_id不存在或未启动","result":"error"}
-[2019-08-18 10:21:52.251][INFO][main] []-[] (HttpClientUtil.java:135)- 响应状态:HttpResponseProxy{HTTP/1.1 200 OK [Date: Sun, 18 Aug 2019 02:21:52 GMT, Content-Type: application/json;charset=utf-8, Content-Length: 85, Connection: keep-alive, Expires: Thu, 01 Jan 1970 00:00:00 GMT, Cache-Control: no-cache, Pragma: no-cache, X-Via-JSL: bc41b3d,-, Set-Cookie: __jsluid_s=f925933fcc20ba2cfd2f7614b83d1357; max-age=31536000; path=/; HttpOnly; secure, X-Cache: bypass] ResponseEntityProxy{[Content-Type: application/json;charset=utf-8,Content-Length: 85,Chunked: false]}}
-[2019-08-18 10:21:52.252][INFO][main] []-[] (HttpClientUtil.java:177)- doPost result:{"code":"2001","customer_id":null,"msg":"消息摘要验证失败.","result":"error"}
-[2019-08-18 17:55:47.982][INFO][main] []-[] (DESUtil.java:38)- key:b06764c22fdcd6da
-[2019-08-18 17:55:47.999][INFO][main] []-[] (DESUtil.java:82)- value:5243f8885e29ed57fc9de61ff6983754,length:32
-[2019-08-18 17:57:21.113][INFO][main] []-[] (DESUtil.java:38)- key:19b6267afbf46825
-[2019-08-18 17:57:21.117][INFO][main] []-[] (DESUtil.java:81)- key size:8
-[2019-08-18 17:57:21.135][INFO][main] []-[] (DESUtil.java:83)- value:7ebe22cf2ec96cffb560f5be04bd723b,length:32
-[2019-08-18 18:03:08.527][INFO][main] []-[] (DESUtil.java:38)- key:58927ae5da2029fd
-[2019-08-18 18:03:08.534][INFO][main] []-[] (DESUtil.java:81)- key size:8
-[2019-08-18 18:03:08.545][INFO][main] []-[] (DESUtil.java:83)- value:4499b0162f1790d0628547219266c5bb,length:32
-[2019-08-18 18:03:08.545][INFO][main] []-[] (DESUtil.java:87)- value:7575757575757575,length:16
-[2019-08-18 18:13:57.572][INFO][main] []-[] (DESUtil.java:38)- key:768397d34c576b26
-[2019-08-18 18:13:57.578][INFO][main] []-[] (DESUtil.java:79)- key size:8
-[2019-08-18 18:13:57.591][INFO][main] []-[] (DESUtil.java:81)- value:[-62, 107, 14, 61, -21, 58, 115, -26, -34, -44, 17, 97, -35, -69, -94, -95],length:16
-[2019-08-18 18:13:57.591][INFO][main] []-[] (DESUtil.java:84)- value:uuuuuuuu,length:8
-[2019-08-18 18:15:20.456][INFO][main] []-[] (DESUtil.java:38)- key:e53dc87a83dc10c1
-[2019-08-18 18:15:20.462][INFO][main] []-[] (DESUtil.java:79)- key size:8
-[2019-08-18 18:15:20.473][INFO][main] []-[] (DESUtil.java:81)- value:[-59, -99, -55, 85, 59, 37, -7, -53, -82, 50, 95, 41, -92, 127, 16, -28],length:16
-[2019-08-18 18:15:20.474][INFO][main] []-[] (DESUtil.java:85)- value:uuuuuuuu,length:8
-[2019-08-18 18:16:55.516][INFO][main] []-[] (DESUtil.java:38)- key:15ecad83042c2945
-[2019-08-18 18:16:55.524][INFO][main] []-[] (DESUtil.java:79)- key size:8
-[2019-08-18 18:16:55.533][INFO][main] []-[] (DESUtil.java:81)- value:[-99, -8, -122, 3, -42, -2, -60, 60, -44, 30, 41, 113, 12, 101, 11, 13],length:16
-[2019-08-18 18:16:55.534][INFO][main] []-[] (DESUtil.java:85)- value:uuuuuuuu,length:8
-[2019-08-18 18:16:55.542][ERROR][main] []-[] (DESUtil.java:99)- encryptDES Exception
-java.security.NoSuchAlgorithmException: 3DES KeyGenerator not available
-	at javax.crypto.KeyGenerator.<init>(KeyGenerator.java:169)
-	at javax.crypto.KeyGenerator.getInstance(KeyGenerator.java:223)
-	at com.example.demo.util.encrpyt.DESUtil.initKey(DESUtil.java:34)
-	at com.example.demo.util.encrpyt.DESUtil.main(DESUtil.java:89)
-[2019-08-18 18:18:32.427][INFO][main] []-[] (DESUtil.java:38)- key:d0e0a4fe6d68bccb
-[2019-08-18 18:18:32.431][INFO][main] []-[] (DESUtil.java:79)- key size:8
-[2019-08-18 18:18:32.443][INFO][main] []-[] (DESUtil.java:81)- value:[-53, -94, 17, -22, -22, -101, -126, -4, 83, 70, -93, 62, 51, 27, -92, -115],length:16
-[2019-08-18 18:18:32.444][INFO][main] []-[] (DESUtil.java:85)- value:uuuuuuuu,length:8
-[2019-08-18 18:18:32.446][INFO][main] []-[] (DESUtil.java:38)- key:970b6d644645ef38e91ad6f1d3b60716ce9e7f61bf45f820
-[2019-08-18 18:18:32.447][INFO][main] []-[] (DESUtil.java:90)- key size:24
-[2019-08-18 18:18:32.453][ERROR][main] []-[] (DESUtil.java:99)- encryptDES Exception
-java.security.InvalidKeyException: Wrong key size
-	at com.sun.crypto.provider.DESedeCrypt.init(DESedeCrypt.java:69)
-	at com.sun.crypto.provider.ElectronicCodeBook.init(ElectronicCodeBook.java:94)
-	at com.sun.crypto.provider.CipherCore.init(CipherCore.java:591)
-	at com.sun.crypto.provider.CipherCore.init(CipherCore.java:467)
-	at com.sun.crypto.provider.DESedeCipher.engineInit(DESedeCipher.java:166)
-	at javax.crypto.Cipher.implInit(Cipher.java:801)
-	at javax.crypto.Cipher.chooseProvider(Cipher.java:863)
-	at javax.crypto.Cipher.init(Cipher.java:1248)
-	at javax.crypto.Cipher.init(Cipher.java:1185)
-	at com.example.demo.util.encrpyt.DESUtil.encryptDES(DESUtil.java:53)
-	at com.example.demo.util.encrpyt.DESUtil.main(DESUtil.java:91)
-[2019-08-18 18:22:26.378][INFO][main] []-[] (DESUtil.java:38)- key:52dae9c452c22061
-[2019-08-18 18:22:26.384][INFO][main] []-[] (DESUtil.java:79)- key size:8
-[2019-08-18 18:22:26.396][INFO][main] []-[] (DESUtil.java:81)- value:[-29, -61, -71, -114, -3, 81, 68, 85, 55, 107, 45, 60, 115, 4, 57, 13],length:16
-[2019-08-18 18:22:26.397][INFO][main] []-[] (DESUtil.java:85)- value:uuuuuuuu,length:8
-[2019-08-18 18:22:26.399][INFO][main] []-[] (DESUtil.java:38)- key:754cc4b97cc897231c40f48a85f1eff41613e6bcf785dad6
-[2019-08-18 18:22:26.399][INFO][main] []-[] (DESUtil.java:90)- key size:24
-[2019-08-18 18:22:26.401][INFO][main] []-[] (DESUtil.java:92)- value:[-71, 111, 8, -110, -62, -37, -14, -128, -128, 81, 70, 41, 75, 80, 85, -75],length:16
-[2019-08-18 18:22:26.401][INFO][main] []-[] (DESUtil.java:96)- value:uuuuuuuu,length:8
+[2019-08-19 20:33:32.040][INFO][main] []-[] (AESCBCUtil.java:77)- value:�b['�v�:~�Y8<�:��D�X���Ϩ��++,length:30
+[2019-08-19 20:33:47.994][INFO][main] []-[] (AESCBCUtil.java:29)- random:sha1prng
+[2019-08-19 20:33:48.268][INFO][main] []-[] (AESCBCUtil.java:32)- key:802f2dae75628625ab233b348f385652,length:32
+[2019-08-19 20:33:48.284][INFO][main] []-[] (AESCBCUtil.java:73)- value:096b5eaf8529984f7f53029e51612ae1,length:32
+[2019-08-19 20:33:48.284][INFO][main] []-[] (AESCBCUtil.java:77)- value:�����Z቞��ԣg�ҧ��I��u����,length:27

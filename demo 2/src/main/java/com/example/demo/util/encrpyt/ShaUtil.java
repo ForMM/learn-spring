@@ -12,7 +12,7 @@ public class ShaUtil {
 
 	// 实私有例化，不允许创建对象
 	private ShaUtil() {
-	};
+	}
 
 	/**
 	 * 获取sha-1计算值

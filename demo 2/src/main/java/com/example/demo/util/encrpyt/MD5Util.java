@@ -10,7 +10,7 @@ public class MD5Util {
 	private static Logger logger = LoggerFactory.getLogger(MD5Util.class);
 
 	private MD5Util() {
-	};
+	}
 
 	/**
 	 * 使用spring的MD5加密
