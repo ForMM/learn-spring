@@ -1,5 +1,6 @@
-[2019-08-19 20:33:32.040][INFO][main] []-[] (AESCBCUtil.java:77)- value:�b['�v�:~�Y8<�:��D�X���Ϩ��++,length:30
-[2019-08-19 20:33:47.994][INFO][main] []-[] (AESCBCUtil.java:29)- random:sha1prng
-[2019-08-19 20:33:48.268][INFO][main] []-[] (AESCBCUtil.java:32)- key:802f2dae75628625ab233b348f385652,length:32
-[2019-08-19 20:33:48.284][INFO][main] []-[] (AESCBCUtil.java:73)- value:096b5eaf8529984f7f53029e51612ae1,length:32
-[2019-08-19 20:33:48.284][INFO][main] []-[] (AESCBCUtil.java:77)- value:�����Z቞��ԣg�ҧ��I��u����,length:27
+[2019-08-20 21:28:47.908][INFO][main] []-[] (AESCBCUtil.java:31)- key:37aeb4bec40d33ed7019bd89c50e9e54,length:32
+[2019-08-20 21:28:47.969][INFO][main] []-[] (AESCBCUtil.java:72)- value:7de7c5e11803631f0cb1fe27c11037fd,length:32
+[2019-08-20 21:28:47.969][INFO][main] []-[] (AESCBCUtil.java:76)- value:uuuuuuuu,length:8
+[2019-08-20 21:29:19.972][INFO][main] []-[] (AESCBCUtil.java:31)- key:3b5ae4490ecda71306f8b63134e87420,length:32
+[2019-08-20 21:29:20.002][INFO][main] []-[] (AESCBCUtil.java:72)- value:a111487f1acf34532d814d4ac8f067ab,length:32
+[2019-08-20 21:29:20.003][INFO][main] []-[] (AESCBCUtil.java:76)- value:uuuuuuuu爱情,length:10

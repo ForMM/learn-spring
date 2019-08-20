@@ -58,12 +58,12 @@ public class AESCBCUtil {
 		SecretKeySpec secretKey = new SecretKeySpec(key, "AES");
 		Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");// 创建密码器
 		IvParameterSpec iv = new IvParameterSpec(key);// 使用CBC模式，需要一个向量iv，可增加加密算法的强度
-		cipher.init(Cipher.ENCRYPT_MODE, secretKey, iv);// 初始化
+		cipher.init(Cipher.DECRYPT_MODE, secretKey, iv);// 初始化
 		return cipher.doFinal(data);
 	}
 
 	public static void main(String[] args) throws DecoderException {
-		String hh = "uuuuuuuu";
+		String hh = "uuuuuuuu爱情";
 		try {
 
 			byte[] enkey = initKey();
