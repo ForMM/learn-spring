@@ -19,7 +19,7 @@ public class DigestServiceImpl implements DigestService {
 		result.setMsg("md5加密");
 		
 		EncryptVo vo = new EncryptVo();
-		vo.setEncryptStr(MD5Util.getMd5Simple(param));
+		vo.setEncryptStr(MD5Util.getMd5Simple(param.getBytes()));
 		
 		
 		

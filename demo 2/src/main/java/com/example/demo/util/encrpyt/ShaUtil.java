@@ -1,5 +1,6 @@
 package com.example.demo.util.encrpyt;
 
+import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
@@ -21,9 +22,9 @@ public class ShaUtil {
 	 * @return
 	 * @throws NoSuchAlgorithmException
 	 */
-	public static String getSha1(String param) throws NoSuchAlgorithmException {
+	public static String getSha1(byte[] param) throws NoSuchAlgorithmException {
 		MessageDigest messageDigest = MessageDigest.getInstance("SHA-1");
-		byte[] cipherBytes = messageDigest.digest(param.getBytes());
+		byte[] cipherBytes = messageDigest.digest(param);
 		return Hex.encodeHexString(cipherBytes);
 	}
 
@@ -34,19 +35,19 @@ public class ShaUtil {
 	 * @return
 	 * @throws NoSuchAlgorithmException
 	 */
-	public static String getSha256(String param) throws NoSuchAlgorithmException {
+	public static String getSha256(byte[] param) throws NoSuchAlgorithmException {
 		MessageDigest messageDigest = MessageDigest.getInstance("SHA-256");
-		byte[] cipherBytes = messageDigest.digest(param.getBytes());
+		byte[] cipherBytes = messageDigest.digest(param);
 		return Hex.encodeHexString(cipherBytes);
 	}
 
-	public static void main(String[] args) {
-		String hh = "uuuuuuuu";
+	public static void main(String[] args) throws UnsupportedEncodingException {
+		String hh = "uuuuuuuu爱情";
 		String a;
 		String b;
 		try {
-			a = getSha1(hh);
-			b = getSha256(hh);
+			a = getSha1(hh.getBytes("utf-8"));
+			b = getSha256(hh.getBytes("utf-8"));
 			logger.info("a value:{},lenth:{}", a, a.length());
 			logger.info("b value:{},lenth:{}", b, b.length());
 		} catch (NoSuchAlgorithmException e) {

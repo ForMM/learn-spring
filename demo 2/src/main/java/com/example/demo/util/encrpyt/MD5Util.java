@@ -18,8 +18,8 @@ public class MD5Util {
 	 * @param param
 	 * @return
 	 */
-	public static String getMd5Simple(String param) {
-		return DigestUtils.md5DigestAsHex(param.getBytes());
+	public static String getMd5Simple(byte[] param) {
+		return DigestUtils.md5DigestAsHex(param);
 	}
 
 	/**
@@ -28,8 +28,8 @@ public class MD5Util {
 	 * @param param
 	 * @return
 	 */
-	public static String getMd5(String param) {
-		String md5DigestAsHex = DigestUtils.md5DigestAsHex(param.getBytes());
+	public static String getMd5(byte[] param) {
+		String md5DigestAsHex = DigestUtils.md5DigestAsHex(param);
 		String temp = md5DigestAsHex.substring(0, 8);
 		return DigestUtils.md5DigestAsHex((md5DigestAsHex + temp).getBytes());
 	}
@@ -40,12 +40,12 @@ public class MD5Util {
 	 * @param source
 	 * @return
 	 */
-	public static String getMD5(String param) {
+	public static String getMD5(byte[] param) {
 		String s = null;
 		char hexDigits[] = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f' };// 用来将字节转换成16进制表示的字符
 		try {
 			java.security.MessageDigest md = java.security.MessageDigest.getInstance("MD5");
-			md.update(param.getBytes());
+			md.update(param);
 			byte tmp[] = md.digest();// MD5的计算结果是一个128位的长整数，用字节表示就是16个字节
 			char str[] = new char[16 * 2];// 每个字节用16进制表示的话，使用两个字符，所以表示成16进制需要32个字符
 			int k = 0;// 表示转换结果中对应的字符位置
@@ -62,11 +62,11 @@ public class MD5Util {
 	}
 
 	public static void main(String[] args) {
-		String hh = "uuuuuuuu";
-		String a = getMd5Simple(hh);
+		String hh = "uuuuuuuu爱情";
+		String a = getMd5Simple(hh.getBytes());
 		logger.info("value:{},lenth:{}", a, a.length());
 
-		String md5 = getMD5(hh);
+		String md5 = getMD5(hh.getBytes());
 		logger.info("value:{}", md5);
 
 	}
