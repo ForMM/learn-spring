@@ -164,16 +164,16 @@ public class HttpClientUtil {
 	
 	
 	public static void main(String[] args) {
-		String doGet = HttpClientUtil.doGet("https://testapi.fadada.com:8443/api/syncPerson_auto.api");
+		String doGet = HttpClientUtil.doGet("");
 		logger.info("doGet result:"+doGet);
 		
-		Map<String,String> param = new HashMap<String, String>();
+		Map<String,String> param = new HashMap<>();
 		param.put("app_id", "988888");
 		param.put("timestamp", "199999900");
 		param.put("v", "2.0");
 		param.put("msg_digest", "1231231232");
 		param.put("customer_name", "1231231232");
-		String doPost = HttpClientUtil.sendHttpPost("https://testapi.fadada.com:8443/api/syncPerson_auto.api",param);
+		String doPost = HttpClientUtil.sendHttpPost("",param);
 		logger.info("doPost result:"+doPost);
 	}
 	

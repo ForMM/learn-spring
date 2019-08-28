@@ -151,9 +151,9 @@ public class HttpUrlConnectionClient {
 	}
 	
 	public static void main(String[] args) {
-		String doPost = HttpUrlConnectionClient.doPost("https://testapi.fadada.com:8443/api/syncPerson_auto.api", "");
+		String doPost = HttpUrlConnectionClient.doPost("", "");
 		logger.info("result:{}",doPost);
-		String doGet = HttpUrlConnectionClient.doGet("https://testapi.fadada.com:8443/api/syncPerson_auto.api");
+		String doGet = HttpUrlConnectionClient.doGet("");
 		logger.info("result:{}",doGet);
 	}
 	
