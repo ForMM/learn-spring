@@ -33,7 +33,7 @@ import org.slf4j.LoggerFactory;
 public class HttpClientUtil {
 	private static Logger logger = LoggerFactory.getLogger(HttpClientUtil.class);
 
-	private HttpClientUtil() {};
+	private HttpClientUtil() {}
 	
 	public static String doGet(String httpUrl) {
 		String result = "";
@@ -89,7 +89,7 @@ public class HttpClientUtil {
 	public static String sendHttpPost(String httpUrl,Map<String,String> params) {
 		HttpPost httpPost = new HttpPost(httpUrl);// 创建httpPost
 		//创建参数队列
-		List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();  
+		List<NameValuePair> nameValuePairs = new ArrayList<>();  
 		for(String key: params.keySet()) {
 			nameValuePairs.add(new BasicNameValuePair(key, params.get(key)));
 		}
@@ -164,7 +164,7 @@ public class HttpClientUtil {
 	
 	
 	public static void main(String[] args) {
-		String doGet = HttpClientUtil.doGet("");
+		String doGet = HttpClientUtil.doGet("https://www.baidu.com/");
 		logger.info("doGet result:"+doGet);
 		
 		Map<String,String> param = new HashMap<>();
@@ -173,7 +173,7 @@ public class HttpClientUtil {
 		param.put("v", "2.0");
 		param.put("msg_digest", "1231231232");
 		param.put("customer_name", "1231231232");
-		String doPost = HttpClientUtil.sendHttpPost("",param);
+		String doPost = HttpClientUtil.sendHttpPost("http://www.baidu.com/",param);
 		logger.info("doPost result:"+doPost);
 	}
 	

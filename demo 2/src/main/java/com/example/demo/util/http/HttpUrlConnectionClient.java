@@ -14,7 +14,7 @@ import org.slf4j.LoggerFactory;
 public class HttpUrlConnectionClient {
 	private static Logger logger = LoggerFactory.getLogger(HttpUrlConnectionClient.class);
 	
-	private HttpUrlConnectionClient() {};
+	private HttpUrlConnectionClient() {}
 	
 	/**
 	 * get请求

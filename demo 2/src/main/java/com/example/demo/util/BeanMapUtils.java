@@ -10,7 +10,7 @@ import com.example.demo.controller.dto.EncryptDto;
 
 public class BeanMapUtils extends  org.springframework.beans.BeanUtils{
 
-	public BeanMapUtils() {}
+	private BeanMapUtils() {}
 	
 	/**
      * 实例化对象：传入类对类进行实例化对象
@@ -82,7 +82,7 @@ public class BeanMapUtils extends  org.springframework.beans.BeanUtils{
     
     public static void main(String[] args) {
         // Map To Bean
-        Map<String, Object> map = new HashMap<String, Object>(16);
+        Map<String, Object> map = new HashMap<>(16);
         map.put("name", "lijkkkk");
         EncryptDto user = toBean(map, EncryptDto.class);
         System.out.println(user.getName());
