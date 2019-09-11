@@ -19,5 +19,56 @@ public class DStringUtils {
 		return pattern.matcher(str).matches();
 	}
 	
+	/**
+	 * 判断字符全部是中文
+	 * @param str
+	 * @return
+	 */
+	public static boolean isChineseAll(String str) {
+		if (null == str || "".equals(str)) {
+			return false;
+		}
+		Pattern p = Pattern.compile("[\u4e00-\u9fa5]+");
+		return p.matcher(str).matches();
+	}
+	
+	/**
+	 * 判断字符是否包含中文
+	 * @param str
+	 * @return
+	 */
+	public static boolean isContainsChinese(String str) {
+		if (null == str || "".equals(str)) {
+			return false;
+		}
+		Pattern p = Pattern.compile("[\u4e00-\u9fa5]");
+		return p.matcher(str).find();
+	}
+	
+	/**
+	 * 判断字符全部是英文
+	 * @param str
+	 * @return
+	 */
+	public static boolean isEnglishAll(String str) {
+		if (null == str || "".equals(str)) {
+			return false;
+		}
+		Pattern p = Pattern.compile("[a-zA-z]+");
+		return p.matcher(str).matches();
+	}
+	
+	/**
+	 * 判断字符是否包含英文
+	 * @param str
+	 * @return
+	 */
+	public static boolean isContainsEnglish(String str) {
+		if (null == str || "".equals(str)) {
+			return false;
+		}
+		Pattern p = Pattern.compile("[a-zA-z]");
+		return p.matcher(str).find();
+	}
 	
 }
