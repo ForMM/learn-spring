@@ -71,4 +71,13 @@ public class DStringUtils {
 		return p.matcher(str).find();
 	}
 	
+	/**
+	 * 校验手机号
+	 * @param value
+	 * @return
+	 */
+	public static boolean checkMobile(String value) {
+		return value.matches("^[1][3,4,5,7,8,9,6][0-9]{9}$");
+	}
+	
 }
