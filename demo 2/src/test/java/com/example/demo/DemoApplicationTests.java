@@ -37,7 +37,7 @@ public class DemoApplicationTests {
 //                .andExpect(MockMvcResultMatchers.status().isOk());
 //    }
     
-    @Test()
+//    @Test()
     public void htmlToPdf() throws Exception{
     	JSONObject obj = new JSONObject();
     	obj.put("name", "bingting");
@@ -49,7 +49,7 @@ public class DemoApplicationTests {
                 .andExpect(MockMvcResultMatchers.status().isOk());
     }
     
-    @Test()
+//    @Test()
     public void md5() throws Exception{
         mockMvc.perform(MockMvcRequestBuilders.post("/digest/md5")
          		.param("name", "tingting1")
@@ -57,7 +57,7 @@ public class DemoApplicationTests {
                 .andExpect(MockMvcResultMatchers.status().isOk());
     }
     
-    @Test()
+//    @Test()
     public void sha256() throws Exception{
         mockMvc.perform(MockMvcRequestBuilders.post("/digest/sha256")
          		.param("name", "tingting1")
@@ -65,6 +65,14 @@ public class DemoApplicationTests {
                 .contentType(MediaType.APPLICATION_JSON_UTF8))
                 .andExpect(MockMvcResultMatchers.status().isOk());
     }
-
+    
+    @Test()
+    public void addAccount() throws Exception{
+        mockMvc.perform(MockMvcRequestBuilders.post("/account/add")
+         		.param("account", "18664556413")
+         		.param("password", "bt520lkk")
+                .contentType(MediaType.APPLICATION_JSON_UTF8))
+                .andExpect(MockMvcResultMatchers.status().isOk());
+    }
 
 }
