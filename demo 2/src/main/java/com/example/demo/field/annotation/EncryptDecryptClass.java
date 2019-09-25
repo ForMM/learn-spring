@@ -8,9 +8,9 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 @Documented
-@Target(ElementType.FIELD)
+@Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
 @Inherited
-public @interface EncryptAnnotation {
-	String value() default "123456";
+public @interface EncryptDecryptClass {
+
 }
