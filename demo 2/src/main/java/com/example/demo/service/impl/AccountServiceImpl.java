@@ -27,8 +27,15 @@ public class AccountServiceImpl implements AccountService {
 		
 		Account adAccount = new Account();
 		adAccount.setAccount(account);
-		adAccount.setPassword(MD5Util.getMd5(password.getBytes()));
-		accountMapper.insert(adAccount);
+		adAccount.setPassword(password);
+		
+		try {
+			accountMapper.insert(adAccount);
+		}catch (Exception e) {
+			logger.error("addAccount error",e);
+		}
+		
+		
 		logger.info("addAccount success:account={}",account);
 		return result;
 	}
