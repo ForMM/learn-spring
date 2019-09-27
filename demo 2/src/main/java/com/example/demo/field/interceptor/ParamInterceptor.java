@@ -20,7 +20,7 @@ import com.example.demo.field.EncryptDecryptUtils;
 import com.example.demo.field.annotation.EncryptDecryptClass;
 
 @Intercepts({
-	@Signature(type = ParameterHandler.class, method = "setParameters", args = PreparedStatement.class),
+	@Signature(type = ParameterHandler.class, method = "setParameters", args = PreparedStatement.class)
 })
 @ConditionalOnProperty(value = "domain.encrypt", havingValue = "true")
 @Component
