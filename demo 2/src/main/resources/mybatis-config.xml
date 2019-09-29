@@ -8,6 +8,6 @@
     </typeAliases>
     <plugins>
         <plugin interceptor="com.example.demo.field.interceptor.ParamInterceptor"/>
-  		<!-- <plugin interceptor="com.example.demo.field.interceptor.ResultInterceptor"/> -->
+  		<plugin interceptor="com.example.demo.field.interceptor.ResultInterceptor"/>
     </plugins>
 </configuration>

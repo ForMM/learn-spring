@@ -28,4 +28,18 @@ public class AccountController {
 		return accountService.addAccount(account, password);
 	}
 	
+	@LogAnnotation
+	@ResponseBody
+	@RequestMapping(value = "/queryOne",method = RequestMethod.POST)
+	public Result queryOne(String account) {
+		return accountService.queryOne(account);
+	}
+	
+	@LogAnnotation
+	@ResponseBody
+	@RequestMapping(value = "/queryList",method = RequestMethod.POST)
+	public Result queryAccountList(String account,String password) {
+		return accountService.addAccount(account, password);
+	}
+	
 }

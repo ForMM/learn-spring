@@ -66,11 +66,20 @@ public class DemoApplicationTests {
                 .andExpect(MockMvcResultMatchers.status().isOk());
     }
     
-    @Test()
+//    @Test()
     public void addAccount() throws Exception{
         mockMvc.perform(MockMvcRequestBuilders.post("/account/add")
          		.param("account", "18664556413")
          		.param("password", "bt520lkk")
+                .contentType(MediaType.APPLICATION_JSON_UTF8))
+                .andExpect(MockMvcResultMatchers.status().isOk());
+    }
+    
+    
+    @Test()
+    public void queryOne() throws Exception{
+        mockMvc.perform(MockMvcRequestBuilders.post("/account/queryOne")
+         		.param("account", "18664556413")
                 .contentType(MediaType.APPLICATION_JSON_UTF8))
                 .andExpect(MockMvcResultMatchers.status().isOk());
     }

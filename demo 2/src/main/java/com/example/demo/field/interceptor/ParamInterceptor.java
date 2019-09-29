@@ -5,7 +5,10 @@ import java.sql.PreparedStatement;
 import java.util.Objects;
 import java.util.Properties;
 
+import org.apache.ibatis.executor.Executor;
 import org.apache.ibatis.executor.parameter.ParameterHandler;
+import org.apache.ibatis.mapping.BoundSql;
+import org.apache.ibatis.mapping.MappedStatement;
 import org.apache.ibatis.plugin.Interceptor;
 import org.apache.ibatis.plugin.Intercepts;
 import org.apache.ibatis.plugin.Invocation;
@@ -20,7 +23,7 @@ import com.example.demo.field.EncryptDecryptUtils;
 import com.example.demo.field.annotation.EncryptDecryptClass;
 
 @Intercepts({
-	@Signature(type = ParameterHandler.class, method = "setParameters", args = PreparedStatement.class)
+	@Signature(type = Executor.class, method = "update", args = {MappedStatement.class, Object.class})
 })
 @ConditionalOnProperty(value = "domain.encrypt", havingValue = "true")
 @Component
@@ -31,13 +34,12 @@ public class ParamInterceptor implements Interceptor {
 	@Override
 	public Object intercept(Invocation invocation) throws Throwable {
 		logger.info("ParamInterceptor enter");
-		if(invocation.getTarget() instanceof ParameterHandler) {
-			ParameterHandler parameterHandler = (ParameterHandler) invocation.getTarget();
-			// 反射获取 参数对像
-			Field parameterField =
-					parameterHandler.getClass().getDeclaredField("parameterObject");
-			parameterField.setAccessible(true);
-			Object parameterObject = parameterField.get(parameterHandler);
+		if(invocation.getTarget() instanceof Executor) {
+//			Executor executor = (Executor) invocation.getTarget();
+//			MappedStatement statement = (MappedStatement)invocation.getArgs()[0];
+			Object parameterObject = invocation.getArgs()[1];
+//			BoundSql boundSql = statement.getBoundSql(parameterObject);
+//			logger.info("sql:{}",boundSql.getSql());
 			if (Objects.nonNull(parameterObject)){
 				Class<?> parameterObjectClass = parameterObject.getClass();
 				EncryptDecryptClass encryptDecryptClass = AnnotationUtils.findAnnotation(parameterObjectClass, EncryptDecryptClass.class);

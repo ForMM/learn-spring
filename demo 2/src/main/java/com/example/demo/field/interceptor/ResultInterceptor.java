@@ -29,7 +29,7 @@ public class ResultInterceptor implements Interceptor {
 	
 	@Override
 	public Object intercept(Invocation invocation) throws Throwable {
-		
+		logger.info("ResultInterceptor into");
 		Object result = invocation.proceed();
 		if (Objects.isNull(result)){
 			return null;
@@ -66,7 +66,6 @@ public class ResultInterceptor implements Interceptor {
 
 	@Override
 	public void setProperties(Properties properties) {
-		// TODO Auto-generated method stub
 		
 	}
 

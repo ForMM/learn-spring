@@ -40,5 +40,15 @@ public class AccountServiceImpl implements AccountService {
 		return result;
 	}
 
+	@Override
+	public Result queryOne(String account) {
+		Result result = new Result<>();
+		result.setStatus(1);
+		result.setMsg("queryOne");
+		Account selectByParam = accountMapper.selectByParam(account);
+		result.setData(selectByParam);
+		return result;
+	}
+
 
 }

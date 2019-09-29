@@ -6,5 +6,5 @@ public interface AccountService {
 	
 	public Result addAccount(String account,String password);
 	
-	
+	public Result queryOne(String account);
 }
