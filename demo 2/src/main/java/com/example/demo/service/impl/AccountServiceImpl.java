@@ -1,5 +1,7 @@
 package com.example.demo.service.impl;
 
+import java.util.Date;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +30,8 @@ public class AccountServiceImpl implements AccountService {
 		Account adAccount = new Account();
 		adAccount.setAccount(account);
 		adAccount.setPassword(password);
+		adAccount.setEmail(account);
+		adAccount.setCreateTime(new Date());
 		
 		try {
 			accountMapper.insert(adAccount);
@@ -45,7 +49,13 @@ public class AccountServiceImpl implements AccountService {
 		Result result = new Result<>();
 		result.setStatus(1);
 		result.setMsg("queryOne");
-		Account selectByParam = accountMapper.selectByParam(account);
+		Account selectByParam = null;
+		try {
+			selectByParam = accountMapper.selectByParam(account);
+		}catch (Exception e) {
+			logger.error("",e);
+		}
+		
 		result.setData(selectByParam);
 		return result;
 	}

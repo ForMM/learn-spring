@@ -26,6 +26,7 @@ import com.example.demo.field.annotation.EncryptDecryptClass;
 public class ResultInterceptor implements Interceptor {
 
 	private static Logger logger = LoggerFactory.getLogger(ResultInterceptor.class);
+	private static String key = "e98a5e920d92267a2f2929b3b979865e0d2ca829c107074a";
 	
 	@Override
 	public Object intercept(Invocation invocation) throws Throwable {

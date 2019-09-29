@@ -4,18 +4,23 @@ import java.lang.reflect.Field;
 import java.math.BigDecimal;
 import java.util.Objects;
 
+import org.bouncycastle.util.encoders.Hex;
+
+import com.example.demo.enums.DESType;
 import com.example.demo.field.annotation.EncryptDecryptField;
+import com.example.demo.util.encrpyt.DESUtil;
 
 public class EncryptDecryptUtils {
+	private static String key = "e98a5e920d92267a2f2929b3b979865e0d2ca829c107074a";
 	/**
 	 * 多field加密方法
 	 * @param declaredFields
 	 * @param parameterObject
 	 * @param <T>
 	 * @return
-	 * @throws IllegalAccessException
+	 * @throws Exception 
 	 */
-	public static <T> T encrypt(Field[] declaredFields, T parameterObject ) throws IllegalAccessException {
+	public static <T> T encrypt(Field[] declaredFields, T parameterObject ) throws Exception {
 		for (Field field : declaredFields){
 			EncryptDecryptField annotation = field.getAnnotation(EncryptDecryptField.class);
 			if (Objects.isNull(annotation)){
@@ -33,9 +38,9 @@ public class EncryptDecryptUtils {
 	 * @param parameterObject
 	 * @param <T>
 	 * @return
-	 * @throws IllegalAccessException
+	 * @throws Exception 
 	 */
-	public static <T> T  encrypt(Field field, T parameterObject ) throws IllegalAccessException {
+	public static <T> T  encrypt(Field field, T parameterObject ) throws Exception {
 		field.setAccessible(true);
 		Object object = field.get(parameterObject);
 		if (object instanceof BigDecimal){
@@ -48,7 +53,9 @@ public class EncryptDecryptUtils {
 			//TODO 定制Long类型的加密算法
 		}else if (object instanceof String){
 			String value = (String)object;
-			field.set(parameterObject, value + "000");
+			byte[] decode = Hex.decode(key);
+			byte[] encryptDES3 = DESUtil.encryptDES(value.getBytes(),decode,DESType.DES3.getValue());
+			field.set(parameterObject, Hex.toHexString(encryptDES3));
 			//TODO 定制String类型的加密算法
 
 		}
@@ -60,9 +67,9 @@ public class EncryptDecryptUtils {
 	 * @param result
 	 * @param <T>
 	 * @return
-	 * @throws IllegalAccessException
+	 * @throws Exception 
 	 */
-	public static <T> T decrypt(T result) throws IllegalAccessException {
+	public static <T> T decrypt(T result) throws Exception {
 		Class<?> parameterObjectClass = result.getClass();
 		Field[] declaredFields = parameterObjectClass.getDeclaredFields();
 		decrypt(declaredFields, result);
@@ -73,9 +80,9 @@ public class EncryptDecryptUtils {
 	 * 多个field解密方法
 	 * @param declaredFields
 	 * @param result
-	 * @throws IllegalAccessException
+	 * @throws Exception 
 	 */
-	public static void decrypt(Field[] declaredFields, Object result) throws IllegalAccessException {
+	public static void decrypt(Field[] declaredFields, Object result) throws Exception {
 		for (Field field : declaredFields){
 			EncryptDecryptField annotation = field.getAnnotation(EncryptDecryptField.class);
 			if (Objects.isNull(annotation)){
@@ -89,9 +96,9 @@ public class EncryptDecryptUtils {
 	 * 单个field解密方法
 	 * @param field
 	 * @param result
-	 * @throws IllegalAccessException
+	 * @throws Exception 
 	 */
-	public static void decrypt(Field field, Object result) throws IllegalAccessException {
+	public static void decrypt(Field field, Object result) throws Exception {
 			field.setAccessible(true);
 			Object object = field.get(result);
 			if (object instanceof BigDecimal){
@@ -105,7 +112,10 @@ public class EncryptDecryptUtils {
 			}else if (object instanceof String){
 				//TODO 定制String类型的加密算法
 				String value = (String)object;
-				field.set(result, value.replace("000", ""));
+				byte[] decode = Hex.decode(key);
+				byte[] dvalue = Hex.decode(value);
+				byte[] decryptDES3 = DESUtil.decryptDES(value.getBytes(),decode,DESType.DES3.getValue());
+				field.set(result, new String(decryptDES3));
 
 			}
 	}

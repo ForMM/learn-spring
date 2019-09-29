@@ -41,7 +41,7 @@
     from d_account
   </select>
   
-  <select id="selectByParam" resultMap="BaseResultMap" parameterType="java.lang.String" >
+  <select id="selectByParam" resultType="com.example.demo.dao.entity.Account" parameterType="java.lang.String" >
     select id, account, email, `status`, create_time, `password`
     from d_account
     where account = #{account,jdbcType=VARCHAR}
