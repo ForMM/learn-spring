@@ -1,6 +1,7 @@
 package com.example.demo.service.impl;
 
 import java.util.Date;
+import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -33,14 +34,8 @@ public class AccountServiceImpl implements AccountService {
 		adAccount.setEmail(account);
 		adAccount.setCreateTime(new Date());
 		
-		try {
-			accountMapper.insert(adAccount);
-		}catch (Exception e) {
-			logger.error("addAccount error",e);
-		}
-		
-		
-		logger.info("addAccount success:account={}",account);
+		List<Account> selectAll = accountMapper.selectAll();
+		result.setData(selectAll);
 		return result;
 	}
 

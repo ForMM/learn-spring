@@ -33,7 +33,7 @@ public class ParamInterceptor implements Interceptor {
 	
 	@Override
 	public Object intercept(Invocation invocation) throws Throwable {
-		logger.info("ParamInterceptor enter");
+		logger.info("Executor update");
 		if(invocation.getTarget() instanceof Executor) {
 //			Executor executor = (Executor) invocation.getTarget();
 //			MappedStatement statement = (MappedStatement)invocation.getArgs()[0];

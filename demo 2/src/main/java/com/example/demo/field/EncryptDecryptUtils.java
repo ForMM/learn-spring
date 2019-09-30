@@ -114,7 +114,7 @@ public class EncryptDecryptUtils {
 				String value = (String)object;
 				byte[] decode = Hex.decode(key);
 				byte[] dvalue = Hex.decode(value);
-				byte[] decryptDES3 = DESUtil.decryptDES(value.getBytes(),decode,DESType.DES3.getValue());
+				byte[] decryptDES3 = DESUtil.decryptDES(dvalue,decode,DESType.DES3.getValue());
 				field.set(result, new String(decryptDES3));
 
 			}
