@@ -12,7 +12,6 @@ import com.example.demo.common.Result;
 import com.example.demo.dao.AccountMapper;
 import com.example.demo.dao.entity.Account;
 import com.example.demo.service.AccountService;
-import com.example.demo.util.encrpyt.MD5Util;
 
 @Service
 public class AccountServiceImpl implements AccountService {

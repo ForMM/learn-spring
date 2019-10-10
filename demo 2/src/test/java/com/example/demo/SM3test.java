@@ -25,6 +25,9 @@ public class SM3test {
 			Assert.fail("验签失败");
 		}
 		
+		String aadd =null;
+		aadd.toLowerCase();
+		
 	}
 
 }
