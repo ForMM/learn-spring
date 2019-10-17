@@ -3,10 +3,21 @@ package com.example.demo.util.http;
 import java.io.File;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.security.InvalidKeyException;
+import java.security.Key;
+import java.security.NoSuchAlgorithmException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
+import java.util.TimeZone;
+
+import javax.crypto.Mac;
+import javax.crypto.spec.SecretKeySpec;
 
 import org.apache.http.Header;
 import org.apache.http.HttpEntity;
@@ -29,7 +40,7 @@ import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
+import sun.misc.BASE64Encoder;
 public class HttpClientUtil {
 	private static Logger logger = LoggerFactory.getLogger(HttpClientUtil.class);
 
@@ -86,12 +97,15 @@ public class HttpClientUtil {
 	 * @param params
 	 * @return
 	 */
-	public static String sendHttpPost(String httpUrl,Map<String,String> params) {
+	public static String sendHttpPost(String httpUrl,Map<String,String> params,Map<String, String> headers) {
 		HttpPost httpPost = new HttpPost(httpUrl);// 创建httpPost
 		//创建参数队列
 		List<NameValuePair> nameValuePairs = new ArrayList<>();  
+//		for(String key: params.keySet()) {
+//			nameValuePairs.add(new BasicNameValuePair(key, params.get(key)));
+//		}
 		for(String key: params.keySet()) {
-			nameValuePairs.add(new BasicNameValuePair(key, params.get(key)));
+			httpPost.setHeader(key, params.get(key));
 		}
 		try {
 			httpPost.setEntity(new UrlEncodedFormEntity(nameValuePairs,"UTF-8"));
@@ -163,18 +177,10 @@ public class HttpClientUtil {
 	}
 	
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws InvalidKeyException, NoSuchAlgorithmException, UnsupportedEncodingException {
 		String doGet = HttpClientUtil.doGet("https://www.baidu.com/");
-		logger.info("doGet result:"+doGet);
-		
-		Map<String,String> param = new HashMap<>();
-		param.put("app_id", "988888");
-		param.put("timestamp", "199999900");
-		param.put("v", "2.0");
-		param.put("msg_digest", "1231231232");
-		param.put("customer_name", "1231231232");
-		String doPost = HttpClientUtil.sendHttpPost("http://www.baidu.com/",param);
-		logger.info("doPost result:"+doPost);
+		logger.info("doGet result:{}",doGet);
 	}
+	
 	
 }

@@ -5,11 +5,23 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
+import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.net.URLEncoder;
+import java.security.InvalidKeyException;
+import java.security.Key;
+import java.security.NoSuchAlgorithmException;
+import java.util.Map;
+
+import javax.crypto.Mac;
+import javax.crypto.spec.SecretKeySpec;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import sun.misc.BASE64Encoder;
 
 public class HttpUrlConnectionClient {
 	private static Logger logger = LoggerFactory.getLogger(HttpUrlConnectionClient.class);
@@ -151,10 +163,12 @@ public class HttpUrlConnectionClient {
 	}
 	
 	public static void main(String[] args) {
-		String doPost = HttpUrlConnectionClient.doPost("", "");
+		String url = "http://service-i7iwxtym-1255747603.gz.apigw.tencentcs.com/release/api/account_register.api";
+		String doPost = HttpUrlConnectionClient.doPost(url, "");
 		logger.info("result:{}",doPost);
 		String doGet = HttpUrlConnectionClient.doGet("");
 		logger.info("result:{}",doGet);
 	}
+	
 	
 }
