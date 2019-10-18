@@ -101,10 +101,10 @@ public class HttpClientUtil {
 		HttpPost httpPost = new HttpPost(httpUrl);// 创建httpPost
 		//创建参数队列
 		List<NameValuePair> nameValuePairs = new ArrayList<>();  
-//		for(String key: params.keySet()) {
-//			nameValuePairs.add(new BasicNameValuePair(key, params.get(key)));
-//		}
 		for(String key: params.keySet()) {
+			nameValuePairs.add(new BasicNameValuePair(key, params.get(key)));
+		}
+		for(String key: headers.keySet()) {
 			httpPost.setHeader(key, params.get(key));
 		}
 		try {
