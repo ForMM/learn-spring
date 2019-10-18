@@ -83,6 +83,7 @@ public class TestTengxun {
 		headers.put("X-Date", datetime);
 		headers.put("Authorization", auth);
 
+		
 		// body参数
 		Map<String, String> bodyParams = new HashMap<String, String>();
 		bodyParams.put("account_type", "2");
