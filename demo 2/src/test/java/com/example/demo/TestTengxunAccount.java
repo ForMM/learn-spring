@@ -84,12 +84,17 @@ public class TestTengxunAccount {
 
 	        // body参数
 	        Map<String, String> bodyParams = new HashMap<String, String>();
-	        bodyParams.put("account_type", "1");
+	        
+	        //法大大公共参数
 	        bodyParams.put("app_id", "988888");
-	        bodyParams.put("msg_digest", "122323423");
-	        bodyParams.put("open_id", "afdafafsa8888555555");
-	        bodyParams.put("timestamp", "123123");
+	        bodyParams.put("timestamp", "20191022160303");
 	        bodyParams.put("v", "2.0");
+	        bodyParams.put("msg_digest", "RkJBNjExREUwNUEwMUI4RDUwQUM4OURBM0EzQjY3ODIwQjhDOEYyMA==");
+	        
+	        //法大大业务参数
+	        bodyParams.put("account_type", "1");
+	        bodyParams.put("open_id", "afdafafsa8888555555");
+	        
 	        // url参数拼接
 	        String url = "http://service-i7iwxtym-1255747603.gz.apigw.tencentcs.com/release/api/account_register.api";
 	        if (!queryParams.isEmpty()) {
