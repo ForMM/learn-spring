@@ -3,6 +3,8 @@ package com.example.demo.util.encrpyt;
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.Base64;
+import java.util.Base64.Encoder;
 
 import org.apache.commons.codec.binary.Hex;
 import org.slf4j.Logger;
@@ -48,8 +50,23 @@ public class ShaUtil {
 		try {
 			a = getSha1(hh.getBytes("utf-8"));
 			b = getSha256(hh.getBytes("utf-8"));
+			StringBuilder sb = new StringBuilder();
+			for(;;) {
+				sb.append("u");
+				Encoder encoder = Base64.getEncoder();
+				String string = new String(encoder.encode(sb.toString().getBytes()), "utf-8");
+				if(string.length() == 128) {
+					logger.info("sb value:{},lenth:{}", sb, sb.length());
+					break;
+				}
+			}
+			
+			
+			Encoder encoder = Base64.getEncoder();
+			String string = new String(encoder.encode(b.getBytes()), "utf-8");
 			logger.info("a value:{},lenth:{}", a, a.length());
 			logger.info("b value:{},lenth:{}", b, b.length());
+			logger.info("string value:{},lenth:{}", string, string.length());
 		} catch (NoSuchAlgorithmException e) {
 			logger.error("getSha1 have a error!", e);
 		}

@@ -15,7 +15,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class TestHashMap {
+public class TestCsvToTxy {
     private static Logger logger = LoggerFactory.getLogger(DocDealController.class);
     @Test
     public void testHashMap(){

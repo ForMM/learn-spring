@@ -9,8 +9,8 @@
     <plugins>
         <plugin interceptor="com.example.demo.field.interceptor.ParamInterceptor"/>
   		<plugin interceptor="com.example.demo.field.interceptor.ResultInterceptor"/>
-  		<plugin interceptor="com.github.pagehelper.PageInterceptor">
-        	<property name="dialect" value="mysql"/>
-		</plugin>
+  		<!--<plugin interceptor="com.github.pagehelper.PageInterceptor">-->
+        	<!--<property name="dialect" value="mysql"/>-->
+		<!--</plugin>-->
     </plugins>
 </configuration>
