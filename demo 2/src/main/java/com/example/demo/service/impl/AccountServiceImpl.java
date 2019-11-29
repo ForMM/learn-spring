@@ -3,6 +3,7 @@ package com.example.demo.service.impl;
 import java.util.Date;
 import java.util.List;
 
+import com.example.demo.controller.dto.AccountDto;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,15 +23,15 @@ public class AccountServiceImpl implements AccountService {
 	private AccountMapper accountMapper;
 	
 	@Override
-	public Result addAccount(String account, String password) {
+	public Result addAccount(AccountDto accountDto) {
 		Result result = new Result<>();
 		result.setStatus(1);
 		result.setMsg("addAccount");
 		
 		Account adAccount = new Account();
-		adAccount.setAccount(account);
-		adAccount.setPassword(password);
-		adAccount.setEmail(account);
+		adAccount.setAccount(accountDto.getEmail());
+		adAccount.setPassword(accountDto.getMobile());
+		adAccount.setEmail(accountDto.getEmail());
 		adAccount.setCreateTime(new Date());
 		
 		List<Account> selectAll = accountMapper.selectAll();

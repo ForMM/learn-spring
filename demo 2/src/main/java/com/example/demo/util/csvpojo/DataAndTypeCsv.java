@@ -1,4 +1,4 @@
-package com.example.demo.util.CsvPojo;
+package com.example.demo.util.csvpojo;
 
 import com.opencsv.bean.CsvBindByName;
 

@@ -25,4 +25,20 @@ public class TestMap {
         }
 
     }
+
+    @Test
+    public void testSs(){
+        String account = "linder@qq.com";
+        String apiId = "900001";
+
+        setInfo(apiId,account);
+    }
+
+    public void setInfo(String apiId,String account){
+        setNameAge(apiId,account);
+    }
+
+    public void setNameAge(String account,String apiId){
+        System.out.println("account:"+account+",apiId:"+apiId);
+    }
 }
