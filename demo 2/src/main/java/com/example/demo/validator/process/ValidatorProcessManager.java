@@ -28,7 +28,6 @@ public class ValidatorProcessManager<T> {
             return;
         }
 
-        //逻辑感觉好别扭
         for (BaseValidatorProcess process : validatorProcessMap.values()){
             if(validatorProcess == null){
                 firstProcess = process;
@@ -40,7 +39,7 @@ public class ValidatorProcessManager<T> {
     }
 
     public void handler(Annotation annotation, T value, Map<String, Object> targetMap){
-        firstProcess.dosomething(annotation,value,targetMap);
+        firstProcess.handleValidator(annotation,value,targetMap);
     }
 
 

@@ -15,7 +15,7 @@ public class DigestServiceImpl implements DigestService {
 	@Override
 	public Result<EncryptVo> Md5Encypt(String param) {
 		Result<EncryptVo> result = new Result<>();
-		result.setStatus(1);
+		result.setCode(1);
 		result.setMsg("md5加密");
 		
 		EncryptVo vo = new EncryptVo();

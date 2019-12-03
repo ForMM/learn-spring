@@ -25,7 +25,7 @@ public class AccountServiceImpl implements AccountService {
 	@Override
 	public Result addAccount(AccountDto accountDto) {
 		Result result = new Result<>();
-		result.setStatus(1);
+		result.setCode(1);
 		result.setMsg("addAccount");
 		
 		Account adAccount = new Account();
@@ -42,7 +42,7 @@ public class AccountServiceImpl implements AccountService {
 	@Override
 	public Result queryOne(String account) {
 		Result result = new Result<>();
-		result.setStatus(1);
+		result.setCode(1);
 		result.setMsg("queryOne");
 		Account selectByParam = null;
 		try {

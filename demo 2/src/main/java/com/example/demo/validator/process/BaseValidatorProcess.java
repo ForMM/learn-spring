@@ -7,11 +7,10 @@ import java.util.Map;
  *责任链的抽象类
  */
 public abstract class BaseValidatorProcess<T> {
-    private boolean isMatch;
     private BaseValidatorProcess nextProcess;
 
     public void handleValidator(Annotation annotation, T value, Map<String, Object> targetMap){
-        if(isMatch){
+        if(isMatch(annotation)){
             //如果当前节点可以处理，直接处理
             dosomething(annotation,value,targetMap);
             return;
@@ -26,13 +25,7 @@ public abstract class BaseValidatorProcess<T> {
      */
     abstract void dosomething(Annotation annotation, T value, Map<String, Object> targetMap);
 
-    public boolean isMatch() {
-        return isMatch;
-    }
-
-    public void setMatch(boolean match) {
-        isMatch = match;
-    }
+    public abstract boolean isMatch(Annotation annotation);
 
     public BaseValidatorProcess getNextProcess() {
         return nextProcess;
