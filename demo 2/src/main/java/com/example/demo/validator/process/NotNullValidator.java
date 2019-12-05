@@ -18,12 +18,17 @@ public class NotNullValidator extends BaseValidatorProcess<Object> {
         boolean aNull = validatorAnn.isNull();
 
         if(aNull){
+            if (value == null) {
 
+            }
         }else{
             String[] relateFiled = validatorAnn.relateFiled();
             if (relateFiled!=null&relateFiled.length>0){
                 for (String filed:relateFiled){
-
+                    String filedValue = (String)targetMap.get(filed);
+                    if(StringUtils.isBlank(filedValue)){
+                        throw new ValidatorException(ResultCode.PARAM_IS_BLANK);
+                    }
                 }
             }
 

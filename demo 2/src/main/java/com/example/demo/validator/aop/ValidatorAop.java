@@ -41,6 +41,7 @@ public class ValidatorAop {
         Object result;
         Object[] args = jp.getArgs();
         try{
+            Map<String, Object> targetFieldValueMap = Maps.newHashMap();
             MethodSignature methodSignature = (MethodSignature)jp.getSignature();
             Method method = methodSignature.getMethod();
             String methodName = method.getName();
@@ -56,9 +57,17 @@ public class ValidatorAop {
                                 field.setAccessible(true);
                                 Object o = field.get(obj);
                                 field.setAccessible(false);
+                                targetFieldValueMap.put(field.getName(), o);
+                            }
+                        }
+                        if(declaredFields!=null && declaredFields.length>0){
+                            for (Field field:declaredFields){
+                                field.setAccessible(true);
+                                Object o = field.get(obj);
+                                field.setAccessible(false);
                                 Annotation[] declaredAnnotations = field.getDeclaredAnnotations();
                                 for (Annotation anno:declaredAnnotations){
-                                    validatorProcessManager.handler(anno,o,null);
+                                    validatorProcessManager.handler(anno,o,targetFieldValueMap);
                                 }
                             }
                         }
