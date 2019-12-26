@@ -1,17 +1,24 @@
 package com.example.demo.config;
 
+import com.fadada.servlet.*;
+import com.fadada.servlet.GetObjectServlet;
+import com.fadada.utils.storage.FOSClient;
+import com.fadada.utils.storage.meituan.StorageService;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import com.fadada.servlet.ExtSignLocationServlet;
-import com.fadada.servlet.ExtSignServlet;
-import com.fadada.servlet.GetObjectServlet;
-import com.fadada.servlet.PostSignServlet;
-import com.fadada.servlet.PreSignServlet;
+import javax.annotation.PostConstruct;
 
 @Configuration
 public class ServletConfiguration{
+
+//	@PostConstruct
+//	public void init(){
+//		System.out.println("FOSClient init");
+//		StorageService service=new StorageServiceImpl();
+//		FOSClient.setFosService(service);
+//	}
 
 	@Bean
 	public GetObjectServlet contractImgServlet() {
@@ -78,5 +85,17 @@ public class ServletConfiguration{
 		return registration;
 	}
 
+	@Bean
+	public PdfToImgServlet pdfToImgServlet() {
+		return new PdfToImgServlet();
+	}
+
+	@Bean
+	public ServletRegistrationBean pdfToImgServletRegistrationBean(PdfToImgServlet pdfToImgServlet) {
+		ServletRegistrationBean registration = new ServletRegistrationBean(pdfToImgServlet);
+		registration.setEnabled(true);
+		registration.addUrlMappings("/pdf_to_img");
+		return registration;
+	}
 
 }
