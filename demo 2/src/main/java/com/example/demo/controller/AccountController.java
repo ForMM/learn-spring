@@ -1,5 +1,9 @@
 package com.example.demo.controller;
 
+import com.example.demo.controller.dto.AccountDto;
+import com.example.demo.validator.annotation.ObjectValidatorAnn;
+import com.example.demo.validator.annotation.StringValidatorAnn;
+import com.example.demo.validator.annotation.ValidatorAnn;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,23 +27,25 @@ public class AccountController {
 	
 	@LogAnnotation
 	@ResponseBody
+	@ValidatorAnn
 	@RequestMapping(value = "/add",method = RequestMethod.POST)
-	public Result addAccount(String account,String password) {
-		return accountService.addAccount(account, password);
+	public Result addAccount(@ObjectValidatorAnn AccountDto accountDto) {
+		return accountService.addAccount(accountDto);
 	}
 	
 	@LogAnnotation
 	@ResponseBody
+	@ValidatorAnn
 	@RequestMapping(value = "/queryOne",method = RequestMethod.POST)
-	public Result queryOne(String account) {
+	public Result queryOne(@StringValidatorAnn(notEmpty=true,maxLength = 10) String account) {
 		return accountService.queryOne(account);
 	}
 	
 	@LogAnnotation
 	@ResponseBody
 	@RequestMapping(value = "/queryList",method = RequestMethod.POST)
-	public Result queryAccountList(String account,String password) {
-		return accountService.addAccount(account, password);
+	public Result queryAccountList(String account) {
+		return accountService.queryOne(account);
 	}
 	
 }

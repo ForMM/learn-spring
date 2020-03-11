@@ -14,6 +14,7 @@ import com.github.pagehelper.PageHelper;
 
 @SpringBootApplication
 @MapperScan("com.example.demo.dao")
+@ServletComponentScan
 public class DemoApplication {
 
 	public static void main(String[] args) {

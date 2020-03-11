@@ -30,9 +30,9 @@ public class TestTengxun {
 
 	private static Logger logger = LoggerFactory.getLogger(TestTengxun.class);
 	// 云市场分配的密钥Id
-	private static String secretId = "AKIDm6I1799TQKkzad53nBSP2v2r0aDxrXDqj5F";
+	private static String secretId = "";
 	// 云市场分配的密钥Key
-	private static String secretKey = "HhpJ8tP76khKMZOiGst55Xc0NSL1ME7B66Q6bA4F";
+	private static String secretKey = "";
 	private static String source = "market";
 
 	public static String calcAuthorization(String source, String secretId, String secretKey, String datetime)

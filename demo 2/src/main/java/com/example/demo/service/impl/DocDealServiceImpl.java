@@ -105,7 +105,7 @@ public class DocDealServiceImpl implements DocDealService {
 	public Result<Object> htmlToPdf(String name, String idcard) {
 		Result<Object> result = new Result<Object>();
 		
-		result.setStatus(1);
+		result.setCode(1);
 		result.setMsg("aaaa");
 		
 		return result;

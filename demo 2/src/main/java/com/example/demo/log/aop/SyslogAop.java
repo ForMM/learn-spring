@@ -66,7 +66,7 @@ public class SyslogAop {
 //    }
     
     @Around("webLog()")
-    public void around(ProceedingJoinPoint joinPoint) throws Throwable{
+    public Object around(ProceedingJoinPoint joinPoint) throws Throwable{
     	long startTime = System.currentTimeMillis();
     	MDC.put(mdcKeyProName,"demo");
         MDC.put(mdcKeyReqId, UUID.randomUUID().toString().replace("-", ""));
@@ -90,6 +90,7 @@ public class SyslogAop {
     	
     	String result = JSON.toJSONString(proceed, SerializerFeature.WriteMapNullValue);
     	logger.info("result:{}",result);
+    	return proceed;
     }
     
     
