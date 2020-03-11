@@ -3,17 +3,14 @@ package com.example.demo;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.example.demo.controller.DocDealController;
-import com.example.demo.util.CsvPojo.DataAndTypeCsv;
-import com.example.demo.util.CsvPojo.FileInfo;
+import com.example.demo.util.csvpojo.DataAndTypeCsv;
 import com.example.demo.util.CsvUtil;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.*;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class TestCsvToTxy {
     private static Logger logger = LoggerFactory.getLogger(DocDealController.class);
