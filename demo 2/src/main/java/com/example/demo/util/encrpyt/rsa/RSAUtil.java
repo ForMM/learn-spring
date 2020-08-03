@@ -18,6 +18,7 @@ import java.util.Base64;
 import java.util.Base64.Decoder;
 import java.util.Base64.Encoder;
 
+import com.google.gson.Gson;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -26,7 +27,7 @@ import java.util.Map;
 
 import javax.crypto.Cipher;
 
-import com.alibaba.fastjson.JSON;
+import static com.alibaba.druid.support.json.JSONUtils.toJSONString;
 
 public class RSAUtil {
 	private static Logger logger = LoggerFactory.getLogger(RSAUtil.class);
@@ -68,7 +69,7 @@ public class RSAUtil {
 		byte[] b = bint.toByteArray();
 		String retValue = new String(encoder.encode(b), "utf-8");
 		map.put("modulus", retValue);
-		String jsonString = JSON.toJSONString(map);
+		String jsonString = new Gson().toJson(map);
 		logger.info("key:{}", jsonString);
 		return map;
 	}

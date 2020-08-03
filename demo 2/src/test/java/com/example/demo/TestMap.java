@@ -416,18 +416,7 @@ public class TestMap {
         return numbers[i];
     }
 
-    public boolean exist(char[][] board, String word) {
-        for (int i=0;i<board.length;i++){
-            for (int j=0;j<board[i].length;j++){
-                for (int n=0;n<word.length();n++){
-                    if (board[i][j]==word.charAt(n)){
-                        n++;
-                    }
 
-                }
-            }
-        }
-    }
 
     
 }

@@ -4,15 +4,13 @@ import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
-import javax.servlet.http.HttpServletRequest;
-import org.aspectj.lang.JoinPoint;
+
+import com.google.gson.Gson;
 import org.aspectj.lang.ProceedingJoinPoint;
-import org.aspectj.lang.Signature;
 import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.AfterThrowing;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,8 +18,6 @@ import org.slf4j.MDC;
 import org.springframework.stereotype.Component;
 import org.aspectj.lang.reflect.MethodSignature;
 
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.serializer.SerializerFeature;
 
 @Aspect
 @Component
@@ -81,14 +77,14 @@ public class SyslogAop {
         for(int i=0;i<parameterNames.length;i++) {
         	param.put(parameterNames[i], parameterValues[i]);
         }
-        String params = JSON.toJSONString(param, SerializerFeature.WriteMapNullValue);
+        String params = new Gson().toJson(param);
         logger.info("method:{},params:{}",name,params);
         
     	Object proceed = joinPoint.proceed();
     	long endTime = System.currentTimeMillis();
     	logger.info("times:{}",(endTime-startTime));
     	
-    	String result = JSON.toJSONString(proceed, SerializerFeature.WriteMapNullValue);
+    	String result = new Gson().toJson(proceed);
     	logger.info("result:{}",result);
     	return proceed;
     }

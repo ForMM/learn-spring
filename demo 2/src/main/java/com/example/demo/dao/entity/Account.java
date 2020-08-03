@@ -3,10 +3,6 @@ package com.example.demo.dao.entity;
 import java.io.Serializable;
 import java.util.Date;
 
-import com.example.demo.field.annotation.EncryptDecryptClass;
-import com.example.demo.field.annotation.EncryptDecryptField;
-
-@EncryptDecryptClass
 public class Account implements Serializable {
     private String id;
 
@@ -18,7 +14,6 @@ public class Account implements Serializable {
 
     private Date createTime;
 
-    @EncryptDecryptField
     private String password;
 
     private static final long serialVersionUID = 1L;

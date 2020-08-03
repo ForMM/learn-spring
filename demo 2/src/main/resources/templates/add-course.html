@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
+    <link rel="stylesheet" href="../static/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="../static/css/course.css">
+    <title>发布课程</title>
+    <script type="text/javascript" src="../static/scripts/addArticle.js"></script>
+</head>
+<body>
+
+<div class="article-div">
+    <div>
+        <div class="type-name">课程标题</div>
+        <div>
+            <input type="text"  class="form-control" placeholder="标题">
+        </div>
+    </div>
+    <div>
+        <div class="type-name">课程子标题</div>
+        <div>
+            <input type="text"  class="form-control" placeholder="子标题">
+        </div>
+    </div>
+    <div class="article-content-div">
+        <div class="type-name">文章内容</div>
+        <div class="article-content">
+            <textarea class="layui-textarea" id="article-content" style="display: none"></textarea>
+        </div>
+    </div>
+
+
+
+
+
+    <div class="save-div">
+        <input type="button" value="保存" id="saveArticle" class="saveBtn">
+        <input type="button" value="发布" id="pubArticle" class="pubBtn">
+    </div>
+</div>
+</body>
+</html>

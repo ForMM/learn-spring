@@ -7,5 +7,5 @@ public interface AccountService {
 	
 	public Result addAccount(AccountDto accountDto);
 	
-	public Result queryOne(String account);
+//	public Result queryOne(String account);
 }

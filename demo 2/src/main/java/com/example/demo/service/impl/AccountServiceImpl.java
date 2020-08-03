@@ -39,21 +39,21 @@ public class AccountServiceImpl implements AccountService {
 		return result;
 	}
 
-	@Override
-	public Result queryOne(String account) {
-		Result result = new Result<>();
-		result.setCode(1);
-		result.setMsg("queryOne");
-		Account selectByParam = null;
-		try {
-			selectByParam = accountMapper.selectByParam(account);
-		}catch (Exception e) {
-			logger.error("",e);
-		}
-		
-		result.setData(selectByParam);
-		return result;
-	}
+//	@Override
+//	public Result queryOne(String account) {
+//		Result result = new Result<>();
+//		result.setCode(1);
+//		result.setMsg("queryOne");
+//		Account selectByParam = null;
+//		try {
+//			selectByParam = accountMapper.selectByParam(account);
+//		}catch (Exception e) {
+//			logger.error("",e);
+//		}
+//
+//		result.setData(selectByParam);
+//		return result;
+//	}
 
 
 }

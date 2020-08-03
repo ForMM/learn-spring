@@ -24,7 +24,7 @@ public class AccountController {
 
 	@Autowired
 	private AccountService accountService;
-	
+
 	@LogAnnotation
 	@ResponseBody
 	@ValidatorAnn
@@ -33,19 +33,19 @@ public class AccountController {
 		return accountService.addAccount(accountDto);
 	}
 	
-	@LogAnnotation
-	@ResponseBody
-	@ValidatorAnn
-	@RequestMapping(value = "/queryOne",method = RequestMethod.POST)
-	public Result queryOne(@StringValidatorAnn(notEmpty=true,maxLength = 10) String account) {
-		return accountService.queryOne(account);
-	}
-	
-	@LogAnnotation
-	@ResponseBody
-	@RequestMapping(value = "/queryList",method = RequestMethod.POST)
-	public Result queryAccountList(String account) {
-		return accountService.queryOne(account);
-	}
+//	@LogAnnotation
+//	@ResponseBody
+//	@ValidatorAnn
+//	@RequestMapping(value = "/queryOne",method = RequestMethod.POST)
+//	public Result queryOne(@StringValidatorAnn(notEmpty=true,maxLength = 10) String account) {
+//		return accountService.queryOne(account);
+//	}
+//
+//	@LogAnnotation
+//	@ResponseBody
+//	@RequestMapping(value = "/queryList",method = RequestMethod.POST)
+//	public Result queryAccountList(String account) {
+//		return accountService.queryOne(account);
+//	}
 	
 }

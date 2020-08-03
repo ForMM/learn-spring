@@ -1,4 +1,5 @@
 package com.example.demo;
+import com.google.gson.JsonObject;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -11,8 +12,6 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
-
-import com.alibaba.fastjson.JSONObject;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -39,9 +38,9 @@ public class DemoApplicationTests {
     
 //    @Test()
     public void htmlToPdf() throws Exception{
-    	JSONObject obj = new JSONObject();
-    	obj.put("name", "bingting");
-    	obj.put("idcard", "43022319891210151X");
+    	JsonObject obj = new JsonObject();
+    	obj.addProperty("name", "bingting");
+    	obj.addProperty("idcard", "43022319891210151X");
         mockMvc.perform(MockMvcRequestBuilders.get("/doc/htmlToPdf")
          		.param("name", "tingting1")
          		.param("idcard", "430223199307071")
