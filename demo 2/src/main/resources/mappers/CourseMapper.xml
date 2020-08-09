@@ -16,13 +16,13 @@
     where id = #{id,jdbcType=VARCHAR}
   </delete>
   <insert id="insert" parameterType="com.example.demo.dao.entity.Course" >
-    <selectKey resultType="java.lang.String" keyProperty="id" order="AFTER" >
-      SELECT LAST_INSERT_ID()
+    <selectKey keyProperty="id" resultType="String" order="BEFORE">
+      select replace(uuid(), '-', '') as id
     </selectKey>
-    insert into t_zq_course (title, sub_title, `status`, 
+    insert into t_zq_course (id,title, sub_title, `status`,
       price, `type`, img, create_time
       )
-    values (#{title,jdbcType=VARCHAR}, #{subTitle,jdbcType=VARCHAR}, #{status,jdbcType=BIT}, 
+    values (#{id,jdbcType=VARCHAR},#{title,jdbcType=VARCHAR}, #{subTitle,jdbcType=VARCHAR}, #{status,jdbcType=BIT},
       #{price,jdbcType=DOUBLE}, #{type,jdbcType=VARCHAR}, #{img,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}
       )
   </insert>
@@ -46,4 +46,32 @@
     select id, title, sub_title, `status`, price, `type`, img, create_time
     from t_zq_course
   </select>
+
+  <select id="findByParam" resultMap="BaseResultMap">
+    select * from t_zq_course
+    <where>
+      <if test="title!=null">
+        and title=#{title}
+      </if>
+      <if test="type!=null">
+        and type=#{type}
+      </if>
+    </where>
+    order by create_time desc
+    <if test="startRow!=null">
+      limit #{startRow},#{pageSize}
+    </if>
+  </select>
+  <select id="countByParam" resultType="java.lang.Integer">
+  select count(*) from t_zq_course
+  <where>
+    <if test="title!=null">
+      and title=#{title}
+    </if>
+    <if test="type!=null">
+      and type=#{type}
+    </if>
+  </where>
+  </select>
+
 </mapper>

@@ -1,10 +1,7 @@
 package com.example.demo.controller.dto.course;
 
-import com.example.demo.validator.annotation.NotNullValidatorAnn;
 import com.example.demo.validator.annotation.StringValidatorAnn;
 import lombok.Data;
-
-import java.io.File;
 
 @Data
 public class CourseDto {
@@ -14,8 +11,11 @@ public class CourseDto {
     @StringValidatorAnn(notEmpty=true,maxLength = 100)
     private String subTitle;
 
-    private String price;
+    private Double price;
+
+    @StringValidatorAnn(notEmpty=true,maxLength = 100)
     private String type;
 
-    private File img;
+    @StringValidatorAnn(notEmpty=true,maxLength = 100)
+    private String img;
 }

@@ -8,9 +8,10 @@
           content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
     <meta http-equiv="Cache-Control" content="no-siteapp"/>
     <link rel="stylesheet" href="../../static/layui/css/layui.css" media="all">
-    <link rel="stylesheet" href="http://localhost:8080/static/css/course.css">
+    <link rel="stylesheet" href="../../static/css/course.css">
     <title>发布课程</title>
     <script type="text/javascript" src="../../static/layui/layui.js"></script>
+    <script type="text/javascript" src="../../static/scripts/jquery-1.11.1.js"></script>
 </head>
 <body>
 
@@ -22,11 +23,11 @@
         <div class="layui-form-item">
             <label class="layui-form-label">课程类型</label>
             <div class="layui-input-block">
-                <select name="city" lay-verify="required">
+                <select name="type" lay-verify="required">
                     <option value=""></option>
-                    <option value="0">核心课程</option>
-                    <option value="1">精品课程</option>
-                    <option value="2">PLB课程</option>
+                    <option value="1">核心课程</option>
+                    <option value="2">PBL课程</option>
+                    <option value="3">精品课程</option>
                 </select>
             </div>
         </div>
@@ -39,13 +40,21 @@
         <div class="layui-form-item">
             <label class="layui-form-label">课程子标题</label>
             <div class="layui-input-block">
-                <input type="text" name="title" required  lay-verify="required" placeholder="请输入子标题" autocomplete="off" class="layui-input">
+                <input type="text" name="subTitle" required  lay-verify="required" placeholder="请输入子标题" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">课程价格</label>
+            <div class="layui-input-block">
+                <input type="number" name="price" required  lay-verify="required" placeholder="请输入价格" autocomplete="off" class="layui-input">
             </div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">课程图片</label>
             <div class="layui-input-block">
-                <button type="button" class="layui-btn" id="test1">
+                <img id="imgpath" width="200" >
+                <input hidden id="imguuid" name="img">
+                <button type="button" class="layui-btn" id="courseImg">
                     <i class="layui-icon">&#xe67c;</i>上传课程图片
                 </button>
             </div>
@@ -67,13 +76,19 @@
 
             //执行实例
             var uploadInst = upload.render({
-                elem: '#test1' //绑定元素
-                ,url: '/upload/' //上传接口
+                elem: '#courseImg' //绑定元素
+                ,url: 'uploadCourseImg' //上传接口
                 ,done: function(res){
                     //上传完毕回调
+                    console.log(res);
+                    console.log(res.code);
+                    console.log(res.data);
+                    $("#imgpath").attr("src","loadCourseImg?uuid="+res.data);
+                    $("#imguuid").val(res.data);
                 }
                 ,error: function(){
                     //请求异常回调
+                    layer.msg("上传课程图片失败！");
                 }
             });
         });
@@ -83,7 +98,26 @@
 
             //监听提交
             form.on('submit(formDemo)', function(data){
-                layer.msg(JSON.stringify(data.field));
+                // layer.msg(JSON.stringify(data.field));
+
+
+                $.ajax({
+                    type:"POST",
+                    url:"addCourse",
+                    data:data.field,
+                    dataType:"JSON",
+                    success:function (res) {
+                        console.log(res);
+                        if(res.code==1){
+                            var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
+                            parent.layer.close(index); //再执行关闭
+                            parent.location.reload();
+                        }
+                    }
+                });
+
+
+
                 return false;
             });
         });

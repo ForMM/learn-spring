@@ -16,11 +16,11 @@
     <link rel="preload" href="//asset.3jk.top/project/homepage/vendors.app.js?v=94b2c9d" as="script">
     <link rel="preload" href="//asset.3jk.top/project/homepage/app.css?v=a5b1cf5" as="style">
     <link rel="preload" href="//asset.3jk.top/project/homepage/app.js?v=4cf3ef6" as="script">
-    <link rel="preload" href="//asset.3jk.top/project/homepage/11.css?v=6321f60" as="style">
     <link rel="preload" href="//asset.3jk.top/project/homepage/11.js?v=e9609b3" as="script">
     <link rel="stylesheet" href="../static/css/vendors.app.css">
     <link rel="stylesheet" href="//asset.3jk.top/project/homepage/app.css?v=a5b1cf5">
-    <link rel="stylesheet" href="//asset.3jk.top/project/homepage/11.css?v=6321f60">
+    <link rel="stylesheet" href="../static/css/home.css">
+    <link rel="stylesheet" href="../static/layui/css/layui.css" media="all">
 </head>
 <body>
 <div data-server-rendered="true" id="__nuxt"><!---->
@@ -29,20 +29,20 @@
             <div id="top_banner" data-v-7e6e90a2><!----></div>
             <div id="header" class="header-module">
                 <div class="header-container header-container-normal">
-                    <div class="header-container-inner"><a href="http://localhost:8080/home" title="创造力星球首页" alt="创造力星球官网"
+                    <div class="header-container-inner"><a href="home" title="创造力星球首页" alt="创造力星球官网"
                                                            class="header-container_logo-index">
                         创造力星球首页</a>
-                        <div class="header-container_nav-container"><a href="http://localhost:8080/home"
+                        <div class="header-container_nav-container"><a href="home"
                                                                        class="header-container_nav-container_a header-container_nav-container_a__active">首页</a>
-                            <a href="http://localhost:8080/self-course" target="_blank"
+                            <a href="self-course?type=1" target="_blank"
                                class="header-container_nav-container_a">
-                                精品自学课
-                            </a><a href="http://localhost:8080/free-course" target="_blank"
+                                核心课程
+                            </a><a href="self-course?type=2" target="_blank"
                                    class="header-container_nav-container_a">
-                                限免课程
-                            </a><a href="https://www.sanjieke.cn/youzhao" target="_blank"
+                                精品课程
+                            </a><a href="self-course?type=3" target="_blank"
                                    class="header-container_nav-container_a">
-                                有招
+                                PBL课程
                             </a></div>
                 </div>
             </div>
@@ -60,22 +60,17 @@
                     <div class="cn_container">
                         <div class="cn_right_container">
                             <div class="cn_banner_container"><!---->
-                                <div class="banner_img_container"><a
-                                        href="https://www.sanjieke.cn/course/detail/sjk/8000074?spu_sn=16528332&amp;utm_source=sjk&amp;utm_medium=weixin&amp;utm_term=guanwang&amp;utm_content=banneryunying_0617&amp;utm_campaign=gzh"
-                                        target="_blank" name="运营小课" class="banner_list banner_list_active"><img
-                                        src="//cdn.sanjieke.cn/upload/image/200630/5efb3c1d49149.png" alt="运营小课"></a><a
-                                        href="https://www.sanjieke.cn/course/detail/sjk/8000377?spu_sn=23842323"
-                                        target="_blank" name="操盘手 Offer 班" class="banner_list"><img
-                                        src="//cdn.sanjieke.cn/upload/image/200720/5f1558f4030ac.png" alt="操盘手 Offer 班"></a>
-                                </div>
-                                <div class="banner_dot_container"><span
-                                        class="banner_dot banner_dot_active"></span><span class="banner_dot"></span>
+                                <div class="layui-carousel" id="test1">
+                                    <div carousel-item>
+                                        <img th:each="obj,iterStat:${imgpaths}"
+                                             th:src="${obj}=='' ? 'img/favicon.png' : 'home/loadCarouseImg?uuid='+${obj}"></img>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div> <!----></div> <!---->
                 <div class="index-title" data-v-efa69a38><span class="index-title_icon" data-v-efa69a38></span>
-                    <p class="index-title_p1" data-v-efa69a38>核心人才培养计划</p>
+                    <p class="index-title_p1" data-v-efa69a38>核心课程</p>
                     <p class="index-title_p2" data-v-efa69a38>更加科学、完善、有效的学习计划，培养互联网时代核心人才</p></div>
                 <div class="course-core-box" data-v-efa69a38>
                     <div class="course-core-list">
@@ -112,70 +107,29 @@
                             </div>
                         </div>
                     </div>
-                    <div class="courses-detail courses-detail-PC"><a
-                            href="https://www.sanjieke.cn/course/detail/sjk/8000253?spu_sn=17305124" target="_blank"
-                            class="detail-info detail-info0">
+                    <div class="courses-detail courses-detail-PC" >
+                        <a href="https://www.sanjieke.cn/course/detail/sjk/8000253?spu_sn=17305124" target="_blank"
+                            class="detail-info detail-info0"  th:each="obj,iterStat:${homeCourseVo.coreCourses}"
+                           th:style="'background:url(' + @{(${obj.img}=='' ? 'img/favicon.png' : 'course/loadCourseImg?uuid='+${obj.img})} + ') no-repeat 50%'"
+                        >
                         <div class="interaction-content">
-                            <div class="class-title">新人启航计划·运营增长方向</div>
+                            <div class="class-title" th:text="${obj.title}"></div>
                             <div class="bright-spot">
-                                <div class="about-spot">·0-2岁新人的更优选择，培养岗位胜任力</div>
-                                <div class="about-spot">·优秀学员直推知名互联网公司</div>
+                                <div class="about-spot" th:text="${obj.subTitle}"></div>
+<!--                                <div class="about-spot">·优秀学员直推知名互联网公司</div>-->
                             </div>
-                            <i class="interaction-more"></i></div> <!----></a><a
-                            href="https://www.sanjieke.cn/course/detail/sjk/8000264?spu_sn=18892371" target="_blank"
-                            class="detail-info detail-info1">
-                        <div class="interaction-content">
-                            <div class="class-title">新人启航计划·产品方向</div>
-                            <div class="bright-spot">
-                                <div class="about-spot">·0-2岁新人的更优选择，培养岗位胜任力</div>
-                                <div class="about-spot">·优秀学员直推知名互联网公司</div>
-                            </div>
-                            <i class="interaction-more"></i></div> <!----></a><a
-                            href="https://www.sanjieke.cn/course/detail/sjk/8000269?spu_sn=19217312" target="_blank"
-                            class="detail-info detail-info2">
-                        <div class="interaction-content">
-                            <div class="class-title">新人启航计划·数据分析方向</div>
-                            <div class="bright-spot">
-                                <div class="about-spot">·0-2岁新人的更优选择，培养岗位胜任力</div>
-                                <div class="about-spot">·优秀学员直推知名互联网公司</div>
-                            </div>
-                            <i class="interaction-more"></i></div>
-                        </a><a
-                            href="https://www.sanjieke.cn/course/detail/sjk/8000252?spu_sn=17300465" target="_blank"
-                            class="detail-info detail-info3">
-                        <div class="interaction-content">
-                            <div class="class-title">商业操盘手培养计划</div>
-                            <div class="bright-spot">
-                                <div class="about-spot">·3年+经验必备！打破发展瓶颈，开启晋升</div>
-                                <div class="about-spot">·含金量极高的全新课程，带你进阶职场新高度</div>
-                            </div>
-                            <i class="interaction-more"></i></div> <!----></a><a
-                            href="https://www.sanjieke.cn/course/detail/sjk/8000262?spu_sn=18744422" target="_blank"
-                            class="detail-info detail-info4">
-                        <div class="interaction-content">
-                            <div class="class-title">全栈用户增长专家培养计划</div>
-                            <div class="bright-spot">
-                                <div class="about-spot">·突破增长瓶颈、构建增长方法</div>
-                                <div class="about-spot">·未来3-5年少有值得投入的稀缺岗位！</div>
-                            </div>
-                            <i class="interaction-more"></i></div> <!----></a><a
-                            href="https://www.sanjieke.cn/course/detail/sjk/8000270?spu_sn=19619796" target="_blank"
-                            class="detail-info detail-info5">
-                        <div class="interaction-content">
-                            <div class="class-title">业务数据专家培养计划</div>
-                            <div class="bright-spot">
-                                <div class="about-spot">·职场人必须掌握的升值“硬技能”</div>
-                                <div class="about-spot">·无需编程，6周强化实践训练</div>
-                            </div>
-                            <i class="interaction-more"></i></div> <!----></a></div>
+                            <i class="interaction-more"></i>
+                        </div> <!---->
+                        </a>
+                      </div>
                 </div>
                 <div class="index-title" data-v-efa69a38><span class="index-title_icon" data-v-efa69a38></span>
-                    <p class="index-title_p1" data-v-efa69a38>精品自学课</p>
+                    <p class="index-title_p1" data-v-efa69a38>精品课程</p>
                     <p class="index-title_p2" data-v-efa69a38>解决你最想搞定的业务问题</p> <a href="/self_study_course"
                                                                                   name="index_pc2.0_xinyonghuxianmian_chakangengduo"
                                                                                   target="_blank" class="index-title_a"
                                                                                   data-v-efa69a38>
-                        更多自学课程
+                        更多精选课程
                         <i class="index-title_a_i" data-v-efa69a38></i></a></div>
                 <div class="self-study-home-list" data-v-bf90c2f4 data-v-efa69a38><!---->
                     <ul data-v-bf90c2f4>
@@ -185,200 +139,47 @@
                                         href="/self_study_course/2/0" class="self-study-introduce-more" data-v-bf90c2f4>查看更多<i
                                         class="more-icon" data-v-bf90c2f4></i></a></div>
                         </li>
-                        <li data-v-bf90c2f4><a
+                        <li data-v-bf90c2f4 th:each="obj,iterStat:${homeCourseVo.excellentCourses}">
+                            <a
                                 href="https://www.sanjieke.cn/course/detail/2/web/21514283?course_type=self_study"
-                                title="短视频运营与直播变现体系课" target="_blank" data-v-bf90c2f4>
-                            <div class="self-study-course-pic" data-v-bf90c2f4><img
-                                    src="https://cdn.sanjieke.cn/upload/image/158900871918.png" alt="从0到1打造具备复制力的变现账号"
+                                title="短视频运营与直播变现体系课" target="_blank" data-v-bf90c2f4></a>
+                            <div class="self-study-course-pic" data-v-bf90c2f4>
+                                <img th:src="${obj.img}=='' ? 'img/favicon.png' : 'course/loadCourseImg?uuid='+${obj.img}"
+                                     th:alt="${obj.title}"
                                     class="index-free-course_card_bg_img" data-v-bf90c2f4></div>
                             <div class="self-study-course-info" data-v-bf90c2f4>
-                                <div class="self-study-course-title" data-v-bf90c2f4>短视频运营与直播变现体系课</div>
-                                <div class="self-study-course-subtitle" data-v-bf90c2f4>从0到1打造具备复制力的变现账号</div>
+                                <div class="self-study-course-title" data-v-bf90c2f4 th:text="${obj.title}"></div>
+                                <div class="self-study-course-subtitle" data-v-bf90c2f4 th:text="${obj.subTitle}"></div>
                                 <div class="self-study-course-introduce" data-v-bf90c2f4><span
                                         class="self-study-course-price" data-v-bf90c2f4>¥<i
-                                        data-v-bf90c2f4>399</i></span> <span class="self-study-course-number"
+                                        data-v-bf90c2f4 th:text="${obj.price}"></i></span> <span class="self-study-course-number"
                                                                              data-v-bf90c2f4>1164人学过</span></div>
                             </div>
-                        <li data-v-bf90c2f4><a
-                                href="https://www.sanjieke.cn/course/detail/2/web/19978018?course_type=self_study"
-                                title="大企业营销管理体系搭建和运作" target="_blank" data-v-bf90c2f4>
-                            <div class="self-study-course-pic" data-v-bf90c2f4><img
-                                    src="https://cdn.sanjieke.cn/upload/image/1583149159198.png" alt="制定驱动增长的营销策略"
-                                    class="index-free-course_card_bg_img" data-v-bf90c2f4></div>
-                            <div class="self-study-course-info" data-v-bf90c2f4>
-                                <div class="self-study-course-title" data-v-bf90c2f4>大企业营销管理体系搭建和运作</div>
-                                <div class="self-study-course-subtitle" data-v-bf90c2f4>制定驱动增长的营销策略</div>
-                                <div class="self-study-course-introduce" data-v-bf90c2f4><span
-                                        class="self-study-course-price" data-v-bf90c2f4>¥<i
-                                        data-v-bf90c2f4>499</i></span> <span class="self-study-course-number"
-                                                                             data-v-bf90c2f4>282人学过</span></div>
-                            </div>
-                        <li data-v-bf90c2f4><a
-                                href="https://www.sanjieke.cn/course/detail/2/web/18598220?course_type=self_study"
-                                title="新媒体爆款写作指南" target="_blank" data-v-bf90c2f4>
-                            <div class="self-study-course-pic" data-v-bf90c2f4><img
-                                    src="https://cdn.sanjieke.cn/upload/image/158263597532.png" alt="「ONE·一个」总经理亲授方法"
-                                    class="index-free-course_card_bg_img" data-v-bf90c2f4></div>
-                            <div class="self-study-course-info" data-v-bf90c2f4>
-                                <div class="self-study-course-title" data-v-bf90c2f4>新媒体爆款写作指南</div>
-                                <div class="self-study-course-subtitle" data-v-bf90c2f4>「ONE·一个」总经理亲授方法</div>
-                                <div class="self-study-course-introduce" data-v-bf90c2f4><span
-                                        class="self-study-course-price" data-v-bf90c2f4>¥<i
-                                        data-v-bf90c2f4>399</i></span> <span class="self-study-course-number"
-                                                                             data-v-bf90c2f4>2109人学过</span></div>
-                            </div>
-                        <li data-v-bf90c2f4><a
-                                href="https://www.sanjieke.cn/course/detail/2/web/19196598?course_type=self_study"
-                                title="私域流量增长的10种常见打法" target="_blank" data-v-bf90c2f4>
-                            <div class="self-study-course-pic" data-v-bf90c2f4><img
-                                    src="https://cdn.sanjieke.cn/upload/image/1580722295112.png" alt="让你营收翻倍的流量玩法"
-                                    class="index-free-course_card_bg_img" data-v-bf90c2f4></div>
-                            <div class="self-study-course-info" data-v-bf90c2f4>
-                                <div class="self-study-course-title" data-v-bf90c2f4>私域流量增长的10种常见打法</div>
-                                <div class="self-study-course-subtitle" data-v-bf90c2f4>让你营收翻倍的流量玩法</div>
-                                <div class="self-study-course-introduce" data-v-bf90c2f4><span
-                                        class="self-study-course-price" data-v-bf90c2f4>¥<i
-                                        data-v-bf90c2f4>299</i></span> <span class="self-study-course-number"
-                                                                             data-v-bf90c2f4>26534人学过</span></div>
-                            </div>
-                        <li data-v-bf90c2f4><a
-                                href="https://www.sanjieke.cn/course/detail/2/web/18970569?course_type=self_study"
-                                title="高转化率文案实战" target="_blank" data-v-bf90c2f4>
-                            <div class="self-study-course-pic" data-v-bf90c2f4><img
-                                    src="https://cdn.sanjieke.cn/upload/image/1579344750179.png" alt="好文案都逃不出这些套路"
-                                    class="index-free-course_card_bg_img" data-v-bf90c2f4></div>
-                            <div class="self-study-course-info" data-v-bf90c2f4>
-                                <div class="self-study-course-title" data-v-bf90c2f4>高转化率文案实战</div>
-                                <div class="self-study-course-subtitle" data-v-bf90c2f4>好文案都逃不出这些套路</div>
-                                <div class="self-study-course-introduce" data-v-bf90c2f4><span
-                                        class="self-study-course-price" data-v-bf90c2f4>¥<i
-                                        data-v-bf90c2f4>199</i></span> <span class="self-study-course-number"
-                                                                             data-v-bf90c2f4>21479人学过</span></div>
-                            </div>
-                        <li data-v-bf90c2f4><a
-                                href="https://www.sanjieke.cn/course/detail/2/web/11087990?course_type=self_study"
-                                title="用户体系运营高阶" target="_blank" data-v-bf90c2f4>
-                            <div class="self-study-course-pic" data-v-bf90c2f4><img
-                                    src="https://cdn.sanjieke.cn/upload/image/1579344854136.png" alt="含金量极高的用户运营专家课"
-                                    class="index-free-course_card_bg_img" data-v-bf90c2f4></div>
-                            <div class="self-study-course-info" data-v-bf90c2f4>
-                                <div class="self-study-course-title" data-v-bf90c2f4>用户体系运营高阶</div>
-                                <div class="self-study-course-subtitle" data-v-bf90c2f4>含金量极高的用户运营专家课</div>
-                                <div class="self-study-course-introduce" data-v-bf90c2f4><span
-                                        class="self-study-course-price" data-v-bf90c2f4>¥<i
-                                        data-v-bf90c2f4>699</i></span> <span class="self-study-course-number"
-                                                                             data-v-bf90c2f4>3561人学过</span></div>
-                            </div>
-                        <li data-v-bf90c2f4><a
-                                href="https://www.sanjieke.cn/course/detail/2/web/3118509?course_type=self_study"
-                                title="高阶运营策略制定与复杂问题拆解" target="_blank" data-v-bf90c2f4>
-                            <div class="self-study-course-pic" data-v-bf90c2f4><img
-                                    src="https://cdn.sanjieke.cn/upload/image/157934489882.png" alt="掌握更有效的思考方法和逻辑"
-                                    class="index-free-course_card_bg_img" data-v-bf90c2f4></div>
-                            <div class="self-study-course-info" data-v-bf90c2f4>
-                                <div class="self-study-course-title" data-v-bf90c2f4>高阶运营策略制定与复杂问题拆解</div>
-                                <div class="self-study-course-subtitle" data-v-bf90c2f4>掌握更有效的思考方法和逻辑</div>
-                                <div class="self-study-course-introduce" data-v-bf90c2f4><span
-                                        class="self-study-course-price" data-v-bf90c2f4>¥<i
-                                        data-v-bf90c2f4>599</i></span> <span class="self-study-course-number"
-                                                                             data-v-bf90c2f4>3298人学过</span></div>
-                            </div>
+                        </li>
                     </ul> <!---->
-                    <ul data-v-bf90c2f4>
-                        <li class="self-study-introduce pm-introduce" data-v-bf90c2f4><h3 data-v-bf90c2f4>产品经理自学课</h3>
-                            <p class="self-study-introduce-info" data-v-bf90c2f4>了解有哪些值钱的产品岗位适合你</p> <a
-                                    href="/self_study_course/1/0" class="self-study-introduce-more" data-v-bf90c2f4>查看更多<i
-                                    class="more-icon" data-v-bf90c2f4></i></a></li>
-                        <li data-v-bf90c2f4><a
-                                href="https://www.sanjieke.cn/course/detail/2/web/3609693?course_type=self_study"
-                                title="商业产品经理的赚钱思维" target="_blank" data-v-bf90c2f4>
-                            <div class="self-study-course-pic" data-v-bf90c2f4><img
-                                    src="https://cdn.sanjieke.cn/upload/image/1582093376144.png" alt="让他们去改变世界吧，我们来赚钱！"
-                                    class="index-free-course_card_bg_img" data-v-bf90c2f4></div>
-                            <div class="self-study-course-info" data-v-bf90c2f4>
-                                <div class="self-study-course-title" data-v-bf90c2f4>商业产品经理的赚钱思维</div>
-                                <div class="self-study-course-subtitle" data-v-bf90c2f4>让他们去改变世界吧，我们来赚钱！</div>
-                                <div class="self-study-course-introduce" data-v-bf90c2f4><span
-                                        class="self-study-course-price" data-v-bf90c2f4>¥<i
-                                        data-v-bf90c2f4>299</i></span> <span class="self-study-course-number"
-                                                                             data-v-bf90c2f4>17902人学过</span></div>
-                            </div>
-                        <li data-v-bf90c2f4><a
-                                href="https://www.sanjieke.cn/course/detail/2/web/3610846?course_type=self_study"
-                                title="产品经理策略能力提升" target="_blank" data-v-bf90c2f4>
-                            <div class="self-study-course-pic" data-v-bf90c2f4><img
-                                    src="https://cdn.sanjieke.cn/upload/image/157820643360.png" alt="成为未来互联网时代最抢手的人才"
-                                    class="index-free-course_card_bg_img" data-v-bf90c2f4></div>
-                            <div class="self-study-course-info" data-v-bf90c2f4>
-                                <div class="self-study-course-title" data-v-bf90c2f4>产品经理策略能力提升</div>
-                                <div class="self-study-course-subtitle" data-v-bf90c2f4>成为未来互联网时代最抢手的人才</div>
-                                <div class="self-study-course-introduce" data-v-bf90c2f4><span
-                                        class="self-study-course-price" data-v-bf90c2f4>¥<i
-                                        data-v-bf90c2f4>599</i></span> <span class="self-study-course-number"
-                                                                             data-v-bf90c2f4>19740人学过</span></div>
-                            </div>
-                        <li data-v-bf90c2f4><a
-                                href="https://www.sanjieke.cn/course/detail/2/web/11992864?course_type=self_study"
-                                title="产品经理高阶课" target="_blank" data-v-bf90c2f4>
-                            <div class="self-study-course-pic" data-v-bf90c2f4><img
-                                    src="https://cdn.sanjieke.cn/upload/image/1579345071157.png" alt="建立行业大局观，提高团队效能"
-                                    class="index-free-course_card_bg_img" data-v-bf90c2f4></div>
-                            <div class="self-study-course-info" data-v-bf90c2f4>
-                                <div class="self-study-course-title" data-v-bf90c2f4>产品经理高阶课</div>
-                                <div class="self-study-course-subtitle" data-v-bf90c2f4>建立行业大局观，提高团队效能</div>
-                                <div class="self-study-course-introduce" data-v-bf90c2f4><span
-                                        class="self-study-course-price" data-v-bf90c2f4>¥<i
-                                        data-v-bf90c2f4>799</i></span> <span class="self-study-course-number"
-                                                                             data-v-bf90c2f4>1138人学过</span></div>
-                            </div>
-                    </ul> <!----></div>
+                    <!----></div>
                 <div class="index-title" data-v-efa69a38><span class="index-title_icon" data-v-efa69a38></span>
-                    <p class="index-title_p1" data-v-efa69a38>限免课程</p>
+                    <p class="index-title_p1" data-v-efa69a38>PBL课程</p>
                     <p class="index-title_p2" data-v-efa69a38>每一堂课解决一个职场小难点</p> <a
                             href="https://www.sanjieke.cn/free.html" name="index_pc2.0_xinyonghuxianmian_chakangengduo"
                             target="_blank" class="index-title_a" data-v-efa69a38>
-                        更多限免课程
+                        更多PBL课程
                         <i class="index-title_a_i" data-v-efa69a38></i></a></div>
                 <div class="index-free-course" data-v-efa69a38>
-                    <div><a target="_blank" name="index_pc2.0_xinyonghuxianmian_21606094"
-                            href="https://www.sanjieke.cn/class/21606094" class="index-free-course_card">
-                        <div class="index-free-course_card_bg"><img
-                                src="//cdn.sanjieke.cn/upload/image/200407/5e8c30b54ad78.png/web" alt="年轻人的理财课"
+                    <div>
+                        <a target="_blank" name="index_pc2.0_xinyonghuxianmian_21606094"
+                            href="https://www.sanjieke.cn/class/21606094" class="index-free-course_card"
+                           th:each="obj,iterStat:${homeCourseVo.pblCourses}">
+                        <div class="index-free-course_card_bg">
+                            <img th:src="${obj.img}=='' ? 'img/favicon.png' : 'course/loadCourseImg?uuid='+${obj.img}" th:alt="${obj.title}"
                                 class="index-free-course_card_bg_img"></div>
-                        <div class="index-free-course_card_con"><p class="index-free-course_card_con_p">年轻人的理财课</p>
-                            <p class="index-free-course_card_con_p1"><span class="index-free-course_card_con_p1_span1">免费</span>
-                                <span class="index-free-course_card_con_p1_span2">原价￥29</span></p>
+                        <div class="index-free-course_card_con"><p class="index-free-course_card_con_p" th:text="${obj.title}"></p>
+                            <p class="index-free-course_card_con_p1">
+                                <span class="index-free-course_card_con_p1_span2" th:text="${obj.price}"></span></p>
                             <p class="index-free-course_card_con_p2">4394人学过</p></div>
-                    </a><a target="_blank" name="index_pc2.0_xinyonghuxianmian_20868589"
-                           href="https://www.sanjieke.cn/class/20868589" class="index-free-course_card">
-                        <div class="index-free-course_card_bg"><img
-                                src="//cdn.sanjieke.cn/upload/image/200314/5e6ca61f41385.png/web"
-                                alt="如何做到抖音信息流订单转化率19%" class="index-free-course_card_bg_img"></div>
-                        <div class="index-free-course_card_con"><p class="index-free-course_card_con_p">
-                            如何做到抖音信息流订单转化率19%</p>
-                            <p class="index-free-course_card_con_p1"><span class="index-free-course_card_con_p1_span1">免费</span>
-                                <span class="index-free-course_card_con_p1_span2">原价￥29</span></p>
-                            <p class="index-free-course_card_con_p2">5381人学过</p></div>
-                    </a><a target="_blank" name="index_pc2.0_xinyonghuxianmian_20868691"
-                           href="https://www.sanjieke.cn/class/20868691" class="index-free-course_card">
-                        <div class="index-free-course_card_bg"><img
-                                src="//cdn.sanjieke.cn/upload/image/200314/5e6ca8cd7bb33.png/web" alt="教育行业如何通过短视频渠道获客"
-                                class="index-free-course_card_bg_img"></div>
-                        <div class="index-free-course_card_con"><p class="index-free-course_card_con_p">
-                            教育行业如何通过短视频渠道获客</p>
-                            <p class="index-free-course_card_con_p1"><span class="index-free-course_card_con_p1_span1">免费</span>
-                                <span class="index-free-course_card_con_p1_span2">原价￥29</span></p>
-                            <p class="index-free-course_card_con_p2">5308人学过</p></div>
-                    </a><a target="_blank" name="index_pc2.0_xinyonghuxianmian_20543414"
-                           href="https://www.sanjieke.cn/class/20543414" class="index-free-course_card">
-                        <div class="index-free-course_card_bg"><img
-                                src="//cdn.sanjieke.cn/upload/image/200331/5e82ed393f887.png/web" alt="线上线下整合营销"
-                                class="index-free-course_card_bg_img"></div>
-                        <div class="index-free-course_card_con"><p class="index-free-course_card_con_p">线上线下整合营销</p>
-                            <p class="index-free-course_card_con_p1"><span class="index-free-course_card_con_p1_span1">免费</span>
-                                <span class="index-free-course_card_con_p1_span2">原价￥29</span></p>
-                            <p class="index-free-course_card_con_p2">4348人学过</p></div>
-                    </a></div> <!----></div>
+                        </a>
+                    </div> <!---->
+                </div>
 
                 <div class="inquiries" data-v-efa69a38><p data-v-efa69a38>创造力星球·培养互联网时代核心人才的新职业大学</p> <span
                         class="inquiries-number" data-v-efa69a38>免费咨询热线：400-810-6863</span></div> <!----> <!----></div>
@@ -434,904 +235,26 @@
         </div>
     </div>
 </div>
-<script>window.__NUXT__ = (function (a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z, A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z, _, $, aa, ab, ac, ad, ae, af, ag, ah, ai, aj, ak, al, am, an, ao, ap, aq, ar, as, at, au, av, aw, ax, ay, az, aA, aB, aC, aD, aE, aF, aG, aH, aI, aJ, aK, aL, aM) {
-    return {
-        layout: "default", data: [{
-            bannerData: [{
-                name: "运营小课",
-                web_link: aw,
-                wap_link: aw,
-                web_pic: "\u002F\u002Fcdn.sanjieke.cn\u002Fupload\u002Fimage\u002F200630\u002F5efb3c1d49149.png",
-                wap_pic: "\u002F\u002Fcdn.sanjieke.cn\u002Fupload\u002Fimage\u002F200630\u002F5efb3c1f8600d.png",
-                login: [n],
-                show: w
-            }, {
-                name: "操盘手 Offer 班",
-                web_link: al,
-                wap_link: al,
-                web_pic: "\u002F\u002Fcdn.sanjieke.cn\u002Fupload\u002Fimage\u002F200720\u002F5f1558f4030ac.png",
-                wap_pic: "\u002F\u002Fcdn.sanjieke.cn\u002Fupload\u002Fimage\u002F200720\u002F5f1558fc811b0.png",
-                login: [n, d],
-                show: h
-            }],
-            freeCourseData: [{
-                class_id: "21606094",
-                title: "年轻人的理财课",
-                origin_price: z,
-                student_count: 4394,
-                teacher_name: "简七",
-                teacher_title: "简七理财创始人",
-                teacher_avatar: "\u002F\u002Fcdn.sanjieke.cn\u002Fupload\u002Fimage\u002F200326\u002F5e7c5452928a6.png\u002Fweb",
-                course_cover: "\u002F\u002Fcdn.sanjieke.cn\u002Fupload\u002Fimage\u002F200407\u002F5e8c30b54ad78.png\u002Fweb",
-                href: "https:\u002F\u002Fwww.sanjieke.cn\u002Fclass\u002F21606094"
-            }, {
-                class_id: "20868589",
-                title: "如何做到抖音信息流订单转化率19%",
-                origin_price: z,
-                student_count: 5381,
-                teacher_name: "李少主",
-                teacher_title: "湖南云拓联合创始人",
-                teacher_avatar: "\u002F\u002Fcdn.sanjieke.cn\u002Fupload\u002Fimage\u002F200305\u002F5e60b7736cf34.png\u002Fweb",
-                course_cover: "\u002F\u002Fcdn.sanjieke.cn\u002Fupload\u002Fimage\u002F200314\u002F5e6ca61f41385.png\u002Fweb",
-                href: "https:\u002F\u002Fwww.sanjieke.cn\u002Fclass\u002F20868589"
-            }, {
-                class_id: "20868691",
-                title: "教育行业如何通过短视频渠道获客",
-                origin_price: z,
-                student_count: 5308,
-                teacher_name: "Yogi 陈婵",
-                teacher_title: "青兆教育科技CEO",
-                teacher_avatar: "\u002F\u002Fcdn.sanjieke.cn\u002Fupload\u002Fimage\u002F200408\u002F5e8dddb6a1ae1.png\u002Fweb",
-                course_cover: "\u002F\u002Fcdn.sanjieke.cn\u002Fupload\u002Fimage\u002F200314\u002F5e6ca8cd7bb33.png\u002Fweb",
-                href: "https:\u002F\u002Fwww.sanjieke.cn\u002Fclass\u002F20868691"
-            }, {
-                class_id: "20543414",
-                title: "线上线下整合营销",
-                origin_price: z,
-                student_count: 4348,
-                teacher_name: "格子",
-                teacher_title: "贝索教育（科技有限公司）策划总监",
-                teacher_avatar: "\u002F\u002Fcdn.sanjieke.cn\u002Fupload\u002Fimage\u002F200417\u002F5e9917bcd778f.png\u002Fweb",
-                course_cover: "\u002F\u002Fcdn.sanjieke.cn\u002Fupload\u002Fimage\u002F200331\u002F5e82ed393f887.png\u002Fweb",
-                href: "https:\u002F\u002Fwww.sanjieke.cn\u002Fclass\u002F20543414"
-            }],
-            seriseData: {
-                course: [{
-                    course_paid_num: 19515,
-                    course_title: aH,
-                    course_position: "拒绝打杂！运营新人系统入门口碑好课",
-                    course_label: f,
-                    course_level: as,
-                    teacher_img: "https:\u002F\u002Fcdn.sanjieke.cn\u002Fupload\u002Fimage\u002F190715\u002F5d2c45e2d945a.jpg",
-                    course_id: N,
-                    price: y,
-                    origin_price: aL,
-                    remain: 39,
-                    term_schedule_start: af,
-                    student_limit_show_strategy: d,
-                    day_num: ag,
-                    student_count: aj,
-                    ladder: {
-                        is_ladder: b,
-                        ladder: [],
-                        ladder_data: [],
-                        title: aH,
-                        course_cover: am,
-                        student_count: aj,
-                        remain: [],
-                        student_limit: ar,
-                        now_time_unix: l,
-                        start_time_unix: au,
-                        study_url: H,
-                        price: y,
-                        student_limit_show_strategy: d,
-                        course_id: N,
-                        count_down: []
-                    },
-                    study_url: H,
-                    course_cover: am,
-                    course_type: c,
-                    seckill: b
-                }, {
-                    course_paid_num: 10594,
-                    course_title: aI,
-                    course_position: "已帮助上万人入门产品经理的口碑好课",
-                    course_label: f,
-                    course_level: as,
-                    teacher_img: "https:\u002F\u002Fcdn.sanjieke.cn\u002Fupload\u002Fimage\u002F190715\u002F5d2c47d49ab64.jpg",
-                    course_id: P,
-                    price: y,
-                    origin_price: aL,
-                    remain: 104,
-                    term_schedule_start: "2020-02-07 20:00:00",
-                    student_limit_show_strategy: d,
-                    day_num: 176,
-                    student_count: Y,
-                    ladder: {
-                        is_ladder: b,
-                        ladder: [],
-                        ladder_data: [],
-                        title: aI,
-                        course_cover: Z,
-                        student_count: Y,
-                        remain: [],
-                        student_limit: ac,
-                        now_time_unix: l,
-                        start_time_unix: "1581076800",
-                        study_url: V,
-                        price: y,
-                        student_limit_show_strategy: d,
-                        course_id: P,
-                        count_down: []
-                    },
-                    study_url: V,
-                    course_cover: Z,
-                    course_type: k,
-                    seckill: b
-                }, {
-                    course_paid_num: 3578,
-                    course_title: ah,
-                    course_position: "执行力到规划力，帮助1-3年产品人进阶",
-                    course_label: f,
-                    course_level: E,
-                    teacher_img: "https:\u002F\u002Fcdn.sanjieke.cn\u002Fupload\u002Fimage\u002F190715\u002F5d2c48ff2f433.jpg",
-                    course_id: G,
-                    price: x,
-                    origin_price: ao,
-                    remain: 16,
-                    term_schedule_start: "2019-12-26 20:00:00",
-                    student_limit_show_strategy: d,
-                    day_num: 219,
-                    student_count: ap,
-                    ladder: {
-                        is_ladder: b,
-                        ladder: [],
-                        ladder_data: [],
-                        title: ah,
-                        course_cover: aq,
-                        student_count: ap,
-                        remain: [],
-                        student_limit: "140",
-                        now_time_unix: l,
-                        start_time_unix: "1577361600",
-                        study_url: I,
-                        price: x,
-                        student_limit_show_strategy: d,
-                        course_id: G,
-                        count_down: []
-                    },
-                    study_url: I,
-                    course_cover: aq,
-                    course_type: k,
-                    seckill: b
-                }, {
-                    course_paid_num: J,
-                    course_title: at,
-                    course_position: "1-4岁运营人必备课，8周带你进阶高级运营",
-                    course_label: f,
-                    course_level: E,
-                    teacher_img: "https:\u002F\u002Fcdn.sanjieke.cn\u002Fupload\u002Fimage\u002F190715\u002F5d2c49aac022d.jpg",
-                    course_id: K,
-                    price: x,
-                    origin_price: ao,
-                    remain: 59,
-                    term_schedule_start: "2020-02-20 20:00:00",
-                    student_limit_show_strategy: d,
-                    day_num: 163,
-                    student_count: J,
-                    ladder: {
-                        is_ladder: b,
-                        ladder: [],
-                        ladder_data: [],
-                        title: at,
-                        course_cover: av,
-                        student_count: J,
-                        remain: [],
-                        student_limit: ac,
-                        now_time_unix: l,
-                        start_time_unix: "1582200000",
-                        study_url: L,
-                        price: x,
-                        student_limit_show_strategy: d,
-                        course_id: K,
-                        count_down: []
-                    },
-                    study_url: L,
-                    course_cover: av,
-                    course_type: c,
-                    seckill: b
-                }, {
-                    course_paid_num: 5631,
-                    course_title: az,
-                    course_position: "产品、运营、市场人职业进阶必备",
-                    course_label: f,
-                    course_level: aG,
-                    teacher_img: "https:\u002F\u002Fcdn.sanjieke.cn\u002Fupload\u002Fimage\u002F190715\u002F5d2c569b6b30b.jpg",
-                    course_id: M,
-                    price: aM,
-                    origin_price: "1299",
-                    remain: 134,
-                    term_schedule_start: af,
-                    student_limit_show_strategy: d,
-                    day_num: ag,
-                    student_count: aJ,
-                    ladder: {
-                        is_ladder: b,
-                        ladder: [],
-                        ladder_data: [],
-                        title: az,
-                        course_cover: aK,
-                        student_count: aJ,
-                        remain: [],
-                        student_limit: ar,
-                        now_time_unix: l,
-                        start_time_unix: au,
-                        study_url: O,
-                        price: aM,
-                        student_limit_show_strategy: d,
-                        course_id: M,
-                        count_down: []
-                    },
-                    study_url: O,
-                    course_cover: aK,
-                    course_type: "数据分析",
-                    seckill: b
-                }, {
-                    course_paid_num: 5288,
-                    course_title: X,
-                    course_position: "0-2岁市场、运营、产品人的增长入门课",
-                    course_label: f,
-                    course_level: aG,
-                    teacher_img: "https:\u002F\u002Fcdn.sanjieke.cn\u002Fupload\u002Fimage\u002F190716\u002F5d2d3ef3ddd4a.jpg",
-                    course_id: v,
-                    price: _,
-                    origin_price: n,
-                    remain: $,
-                    term_schedule_start: aa,
-                    student_limit_show_strategy: d,
-                    day_num: ab,
-                    student_count: W,
-                    ladder: {
-                        is_ladder: b,
-                        ladder: [],
-                        ladder_data: [],
-                        title: X,
-                        course_cover: ad,
-                        student_count: W,
-                        remain: [],
-                        student_limit: ae,
-                        now_time_unix: l,
-                        start_time_unix: n,
-                        study_url: B,
-                        price: _,
-                        student_limit_show_strategy: d,
-                        course_id: v,
-                        count_down: []
-                    },
-                    study_url: B,
-                    course_cover: ad,
-                    course_type: c,
-                    seckill: b
-                }, {
-                    course_paid_num: 3468,
-                    course_title: D,
-                    course_position: "系统学习互联网时代下的品效营销打法",
-                    course_label: f,
-                    course_level: E,
-                    teacher_img: "https:\u002F\u002Fcdn.sanjieke.cn\u002Fupload\u002Fimage\u002F190822\u002F5d5e48cfc7c4e.png",
-                    course_id: u,
-                    price: ai,
-                    origin_price: n,
-                    remain: $,
-                    term_schedule_start: aa,
-                    student_limit_show_strategy: d,
-                    day_num: ab,
-                    student_count: F,
-                    ladder: {
-                        is_ladder: b,
-                        ladder: [],
-                        ladder_data: [],
-                        title: D,
-                        course_cover: ak,
-                        student_count: F,
-                        remain: [],
-                        student_limit: ae,
-                        now_time_unix: l,
-                        start_time_unix: n,
-                        study_url: t,
-                        price: ai,
-                        student_limit_show_strategy: d,
-                        course_id: u,
-                        count_down: []
-                    },
-                    study_url: t,
-                    course_cover: ak,
-                    course_type: c,
-                    seckill: b
-                }]
-            },
-            selfStudyData: {
-                course_type: [{id: g, value: k}, {id: an, value: c}],
-                ability_level: [{id: g, value: i}, {id: an, value: e}, {id: 3, value: o}],
-                list: [{
-                    course_id: "21514283",
-                    course_type: c,
-                    course_type_id: a,
-                    course_recommend: "从0到1打造具备复制力的变现账号",
-                    course_url: "https:\u002F\u002Fwww.sanjieke.cn\u002Fcourse\u002Fdetail\u002F2\u002Fweb\u002F21514283",
-                    course_cover: "https:\u002F\u002Fcdn.sanjieke.cn\u002Fupload\u002Fimage\u002F158900871918.png",
-                    course_study_num: 1164,
-                    course_price: m,
-                    ability_level_id: a,
-                    ability_level: e,
-                    is_display: g,
-                    course_title: "短视频运营与直播变现体系课"
-                }, {
-                    course_id: "20242296",
-                    course_type: c,
-                    course_type_id: a,
-                    course_recommend: "0成本在家副业赚钱的秘籍",
-                    course_url: "https:\u002F\u002Fwww.sanjieke.cn\u002Fcourse\u002Fdetail\u002F2\u002Fweb\u002F20242296",
-                    course_cover: "https:\u002F\u002Fcdn.sanjieke.cn\u002Fupload\u002Fimage\u002F1584695436146.png",
-                    course_study_num: 132,
-                    course_price: s,
-                    ability_level_id: d,
-                    ability_level: i,
-                    is_display: b,
-                    course_title: "零基础入门淘宝客"
-                }, {
-                    course_id: "21236404",
-                    course_type: c,
-                    course_type_id: a,
-                    course_recommend: "人人都可复制的速读心法",
-                    course_url: "https:\u002F\u002Fwww.sanjieke.cn\u002Fcourse\u002Fdetail\u002F2\u002Fweb\u002F21236404",
-                    course_cover: "https:\u002F\u002Fcdn.sanjieke.cn\u002Fupload\u002Fimage\u002F158469537222.png",
-                    course_study_num: 42,
-                    course_price: j,
-                    ability_level_id: d,
-                    ability_level: i,
-                    is_display: b,
-                    course_title: "清华学霸教你，如何高效读懂一本书"
-                }, {
-                    course_id: "20973981",
-                    course_type: c,
-                    course_type_id: a,
-                    course_recommend: "帮你合理规划时间利用方式，提高单位时间价值",
-                    course_url: "https:\u002F\u002Fwww.sanjieke.cn\u002Fcourse\u002Fdetail\u002F2\u002Fweb\u002F20973981",
-                    course_cover: "https:\u002F\u002Fcdn.sanjieke.cn\u002Fupload\u002Fimage\u002F1584695303108.png",
-                    course_study_num: 246,
-                    course_price: j,
-                    ability_level_id: d,
-                    ability_level: i,
-                    is_display: b,
-                    course_title: "职场必修课：高效管理时间，兼顾主业与副业"
-                }, {
-                    course_id: "4902006",
-                    course_type: c,
-                    course_type_id: a,
-                    course_recommend: "建立数字营销全知理论体系",
-                    course_url: "https:\u002F\u002Fwww.sanjieke.cn\u002Fcourse\u002Fdetail\u002F2\u002Fweb\u002F4902006",
-                    course_cover: "https:\u002F\u002Fcdn.sanjieke.cn\u002Fupload\u002Fimage\u002F1582106215124.png",
-                    course_study_num: 3418,
-                    course_price: p,
-                    ability_level_id: d,
-                    ability_level: i,
-                    is_display: b,
-                    course_title: "科特勒营销管理：入门认知课"
-                }, {
-                    course_id: v,
-                    course_type: c,
-                    course_type_id: a,
-                    course_recommend: "系统了解用户增长方法",
-                    course_url: B,
-                    course_cover: "https:\u002F\u002Fcdn.sanjieke.cn\u002Fupload\u002Fimage\u002F1582106158194.png",
-                    course_study_num: W,
-                    course_price: s,
-                    ability_level_id: d,
-                    ability_level: i,
-                    is_display: b,
-                    course_title: X
-                }, {
-                    course_id: "19978018",
-                    course_type: c,
-                    course_type_id: a,
-                    course_recommend: "制定驱动增长的营销策略",
-                    course_url: "https:\u002F\u002Fwww.sanjieke.cn\u002Fcourse\u002Fdetail\u002F2\u002Fweb\u002F19978018",
-                    course_cover: "https:\u002F\u002Fcdn.sanjieke.cn\u002Fupload\u002Fimage\u002F1583149159198.png",
-                    course_study_num: 282,
-                    course_price: 499,
-                    ability_level_id: a,
-                    ability_level: e,
-                    is_display: g,
-                    course_title: "大企业营销管理体系搭建和运作"
-                }, {
-                    course_id: "14708447",
-                    course_type: c,
-                    course_type_id: a,
-                    course_recommend: "逻辑思维在写作中的应用",
-                    course_url: "https:\u002F\u002Fwww.sanjieke.cn\u002Fcourse\u002Fdetail\u002F2\u002Fweb\u002F14708447",
-                    course_cover: "https:\u002F\u002Fcdn.sanjieke.cn\u002Fupload\u002Fimage\u002F1581764214167.png",
-                    course_study_num: 1743,
-                    course_price: j,
-                    ability_level_id: d,
-                    ability_level: i,
-                    is_display: b,
-                    course_title: "逻辑写作训练"
-                }, {
-                    course_id: "3609830",
-                    course_type: c,
-                    course_type_id: a,
-                    course_recommend: "品牌传播的洞察、策略设计与策划",
-                    course_url: "https:\u002F\u002Fwww.sanjieke.cn\u002Fcourse\u002Fdetail\u002F2\u002Fweb\u002F3609830",
-                    course_cover: "https:\u002F\u002Fcdn.sanjieke.cn\u002Fupload\u002Fimage\u002F15817640015.png",
-                    course_study_num: 883,
-                    course_price: p,
-                    ability_level_id: d,
-                    ability_level: i,
-                    is_display: b,
-                    course_title: "品牌传播和营销"
-                }, {
-                    course_id: "19148190",
-                    course_type: c,
-                    course_type_id: a,
-                    course_recommend: "快速获得面试邀约你要这么做",
-                    course_url: "https:\u002F\u002Fwww.sanjieke.cn\u002Fcourse\u002Fdetail\u002F2\u002Fweb\u002F19148190",
-                    course_cover: "https:\u002F\u002Fcdn.sanjieke.cn\u002Fupload\u002Fimage\u002F1581423570151.png",
-                    course_study_num: 2021,
-                    course_price: j,
-                    ability_level_id: d,
-                    ability_level: i,
-                    is_display: b,
-                    course_title: "春季求职新套路"
-                }, {
-                    course_id: "269190",
-                    course_type: c,
-                    course_type_id: a,
-                    course_recommend: "教会你做内容必备的核心技能",
-                    course_url: "https:\u002F\u002Fwww.sanjieke.cn\u002Fcourse\u002Fdetail\u002F2\u002Fweb\u002F269190",
-                    course_cover: "https:\u002F\u002Fcdn.sanjieke.cn\u002Fupload\u002Fimage\u002F1581764521199.png",
-                    course_study_num: 1063,
-                    course_price: j,
-                    ability_level_id: d,
-                    ability_level: i,
-                    is_display: b,
-                    course_title: "内容运营的基本功"
-                }, {
-                    course_id: "18713698",
-                    course_type: c,
-                    course_type_id: a,
-                    course_recommend: "从定位到付费式增长",
-                    course_url: "https:\u002F\u002Fwww.sanjieke.cn\u002Fcourse\u002Fdetail\u002F2\u002Fweb\u002F18713698",
-                    course_cover: "https:\u002F\u002Fcdn.sanjieke.cn\u002Fupload\u002Fimage\u002F1581764560142.png",
-                    course_study_num: 929,
-                    course_price: s,
-                    ability_level_id: a,
-                    ability_level: e,
-                    is_display: b,
-                    course_title: "微信公号粉丝增长与运营体系搭建"
-                }, {
-                    course_id: "18780590",
-                    course_type: c,
-                    course_type_id: a,
-                    course_recommend: "1个底层逻辑与3种必备工作方法",
-                    course_url: "https:\u002F\u002Fwww.sanjieke.cn\u002Fcourse\u002Fdetail\u002F2\u002Fweb\u002F18780590",
-                    course_cover: "https:\u002F\u002Fcdn.sanjieke.cn\u002Fupload\u002Fimage\u002F158176443664.png",
-                    course_study_num: 323,
-                    course_price: j,
-                    ability_level_id: d,
-                    ability_level: i,
-                    is_display: b,
-                    course_title: "互联网运营必备的底层心法"
-                }, {
-                    course_id: "17381361",
-                    course_type: c,
-                    course_type_id: a,
-                    course_recommend: "实现零成本涨粉数万",
-                    course_url: "https:\u002F\u002Fwww.sanjieke.cn\u002Fcourse\u002Fdetail\u002F2\u002Fweb\u002F17381361",
-                    course_cover: "https:\u002F\u002Fcdn.sanjieke.cn\u002Fupload\u002Fimage\u002F15814233343.png",
-                    course_study_num: 1597,
-                    course_price: j,
-                    ability_level_id: d,
-                    ability_level: i,
-                    is_display: b,
-                    course_title: "常见新媒体环境下的活动玩法"
-                }, {
-                    course_id: "18598220",
-                    course_type: c,
-                    course_type_id: a,
-                    course_recommend: "「ONE·一个」总经理亲授方法",
-                    course_url: "https:\u002F\u002Fwww.sanjieke.cn\u002Fcourse\u002Fdetail\u002F2\u002Fweb\u002F18598220",
-                    course_cover: "https:\u002F\u002Fcdn.sanjieke.cn\u002Fupload\u002Fimage\u002F158263597532.png",
-                    course_study_num: 2109,
-                    course_price: m,
-                    ability_level_id: a,
-                    ability_level: e,
-                    is_display: g,
-                    course_title: "新媒体爆款写作指南"
-                }, {
-                    course_id: u,
-                    course_type: c,
-                    course_type_id: a,
-                    course_recommend: "高手都在玩的精准营销",
-                    course_url: t,
-                    course_cover: "https:\u002F\u002Fcdn.sanjieke.cn\u002Fupload\u002Fimage\u002F1581075805180.png",
-                    course_study_num: F,
-                    course_price: Q,
-                    ability_level_id: a,
-                    ability_level: e,
-                    is_display: b,
-                    course_title: D
-                }, {
-                    course_id: "18686438",
-                    course_type: c,
-                    course_type_id: a,
-                    course_recommend: "重塑商业模式的社群营销",
-                    course_url: "https:\u002F\u002Fwww.sanjieke.cn\u002Fcourse\u002Fdetail\u002F2\u002Fweb\u002F18686438",
-                    course_cover: "https:\u002F\u002Fcdn.sanjieke.cn\u002Fupload\u002Fimage\u002F1580979455162.png",
-                    course_study_num: 1610,
-                    course_price: j,
-                    ability_level_id: a,
-                    ability_level: e,
-                    is_display: b,
-                    course_title: "社群营销"
-                }, {
-                    course_id: "19196598",
-                    course_type: c,
-                    course_type_id: a,
-                    course_recommend: "让你营收翻倍的流量玩法",
-                    course_url: "https:\u002F\u002Fwww.sanjieke.cn\u002Fcourse\u002Fdetail\u002F2\u002Fweb\u002F19196598",
-                    course_cover: "https:\u002F\u002Fcdn.sanjieke.cn\u002Fupload\u002Fimage\u002F1580722295112.png",
-                    course_study_num: 26534,
-                    course_price: p,
-                    ability_level_id: a,
-                    ability_level: e,
-                    is_display: g,
-                    course_title: "私域流量增长的10种常见打法"
-                }, {
-                    course_id: "18691111",
-                    course_type: c,
-                    course_type_id: a,
-                    course_recommend: "运营主管都是怎么做数据分析的？",
-                    course_url: "https:\u002F\u002Fwww.sanjieke.cn\u002Fcourse\u002Fdetail\u002F2\u002Fweb\u002F18691111",
-                    course_cover: "https:\u002F\u002Fcdn.sanjieke.cn\u002Fupload\u002Fimage\u002F1578208028135.png",
-                    course_study_num: 22133,
-                    course_price: j,
-                    ability_level_id: a,
-                    ability_level: e,
-                    is_display: b,
-                    course_title: "数据指标拆解和精细化分析"
-                }, {
-                    course_id: "18688768",
-                    course_type: c,
-                    course_type_id: a,
-                    course_recommend: "如何高效“借鉴”别人家的爆款活动",
-                    course_url: "https:\u002F\u002Fwww.sanjieke.cn\u002Fcourse\u002Fdetail\u002F2\u002Fweb\u002F18688768",
-                    course_cover: "https:\u002F\u002Fcdn.sanjieke.cn\u002Fupload\u002Fimage\u002F157934451635.png",
-                    course_study_num: 1166,
-                    course_price: s,
-                    ability_level_id: a,
-                    ability_level: e,
-                    is_display: b,
-                    course_title: "高阶活动运营"
-                }, {
-                    course_id: "18779558",
-                    course_type: c,
-                    course_type_id: a,
-                    course_recommend: "没有经验，如何做好线上活动运营？",
-                    course_url: "https:\u002F\u002Fwww.sanjieke.cn\u002Fcourse\u002Fdetail\u002F2\u002Fweb\u002F18779558",
-                    course_cover: "https:\u002F\u002Fcdn.sanjieke.cn\u002Fupload\u002Fimage\u002F157934471485.png",
-                    course_study_num: 685,
-                    course_price: j,
-                    ability_level_id: d,
-                    ability_level: i,
-                    is_display: b,
-                    course_title: "零基础上手活动运营"
-                }, {
-                    course_id: "18970569",
-                    course_type: c,
-                    course_type_id: a,
-                    course_recommend: "好文案都逃不出这些套路",
-                    course_url: "https:\u002F\u002Fwww.sanjieke.cn\u002Fcourse\u002Fdetail\u002F2\u002Fweb\u002F18970569",
-                    course_cover: "https:\u002F\u002Fcdn.sanjieke.cn\u002Fupload\u002Fimage\u002F1579344750179.png",
-                    course_study_num: 21479,
-                    course_price: s,
-                    ability_level_id: a,
-                    ability_level: e,
-                    is_display: g,
-                    course_title: "高转化率文案实战"
-                }, {
-                    course_id: "3479172",
-                    course_type: c,
-                    course_type_id: a,
-                    course_recommend: "让用户主动帮你做推广",
-                    course_url: "https:\u002F\u002Fwww.sanjieke.cn\u002Fcourse\u002Fdetail\u002F2\u002Fweb\u002F3479172",
-                    course_cover: "https:\u002F\u002Fcdn.sanjieke.cn\u002Fupload\u002Fimage\u002F157934478384.png",
-                    course_study_num: 1133,
-                    course_price: p,
-                    ability_level_id: a,
-                    ability_level: e,
-                    is_display: b,
-                    course_title: "让你的产品实现疯狂自增长"
-                }, {
-                    course_id: "12602593",
-                    course_type: c,
-                    course_type_id: a,
-                    course_recommend: "提升B端运营的核心能力",
-                    course_url: "https:\u002F\u002Fwww.sanjieke.cn\u002Fcourse\u002Fdetail\u002F2\u002Fweb\u002F12602593",
-                    course_cover: "https:\u002F\u002Fcdn.sanjieke.cn\u002Fupload\u002Fimage\u002F1578207614121.png",
-                    course_study_num: 20050,
-                    course_price: m,
-                    ability_level_id: a,
-                    ability_level: e,
-                    is_display: b,
-                    course_title: "To B运营：低成本获客与续费"
-                }, {
-                    course_id: "3591950",
-                    course_type: c,
-                    course_type_id: a,
-                    course_recommend: "淘宝“黄马褂”独家揭秘",
-                    course_url: "https:\u002F\u002Fwww.sanjieke.cn\u002Fcourse\u002Fdetail\u002F2\u002Fweb\u002F3591950",
-                    course_cover: "https:\u002F\u002Fcdn.sanjieke.cn\u002Fupload\u002Fimage\u002F1579344814127.png",
-                    course_study_num: 1231,
-                    course_price: m,
-                    ability_level_id: a,
-                    ability_level: e,
-                    is_display: b,
-                    course_title: "千万营收级电商店铺打造体系课"
-                }, {
-                    course_id: "3292457",
-                    course_type: c,
-                    course_type_id: a,
-                    course_recommend: "做一个能赚钱的顶尖游戏运营",
-                    course_url: "https:\u002F\u002Fwww.sanjieke.cn\u002Fcourse\u002Fdetail\u002F2\u002Fweb\u002F3292457",
-                    course_cover: "https:\u002F\u002Fcdn.sanjieke.cn\u002Fupload\u002Fimage\u002F1579344832118.png",
-                    course_study_num: 1156,
-                    course_price: m,
-                    ability_level_id: a,
-                    ability_level: e,
-                    is_display: b,
-                    course_title: "游戏运营实战"
-                }, {
-                    course_id: ax,
-                    course_type: c,
-                    course_type_id: a,
-                    course_recommend: "含金量极高的用户运营专家课",
-                    course_url: ay,
-                    course_cover: "https:\u002F\u002Fcdn.sanjieke.cn\u002Fupload\u002Fimage\u002F1579344854136.png",
-                    course_study_num: 3561,
-                    course_price: 699,
-                    ability_level_id: R,
-                    ability_level: o,
-                    is_display: g,
-                    course_title: "用户体系运营高阶"
-                }, {
-                    course_id: aA,
-                    course_type: c,
-                    course_type_id: a,
-                    course_recommend: "掌握更有效的思考方法和逻辑",
-                    course_url: aB,
-                    course_cover: "https:\u002F\u002Fcdn.sanjieke.cn\u002Fupload\u002Fimage\u002F157934489882.png",
-                    course_study_num: 3298,
-                    course_price: Q,
-                    ability_level_id: R,
-                    ability_level: o,
-                    is_display: g,
-                    course_title: "高阶运营策略制定与复杂问题拆解"
-                }, {
-                    course_id: "3609693",
-                    course_type: k,
-                    course_type_id: d,
-                    course_recommend: "让他们去改变世界吧，我们来赚钱！",
-                    course_url: "https:\u002F\u002Fwww.sanjieke.cn\u002Fcourse\u002Fdetail\u002F2\u002Fweb\u002F3609693",
-                    course_cover: "https:\u002F\u002Fcdn.sanjieke.cn\u002Fupload\u002Fimage\u002F1582093376144.png",
-                    course_study_num: 17902,
-                    course_price: p,
-                    ability_level_id: a,
-                    ability_level: e,
-                    is_display: g,
-                    course_title: "商业产品经理的赚钱思维"
-                }, {
-                    course_id: "15249352",
-                    course_type: k,
-                    course_type_id: d,
-                    course_recommend: "中台产品经理实战训练",
-                    course_url: "https:\u002F\u002Fwww.sanjieke.cn\u002Fcourse\u002Fdetail\u002F2\u002Fweb\u002F15249352",
-                    course_cover: "https:\u002F\u002Fcdn.sanjieke.cn\u002Fupload\u002Fimage\u002F1579345049125.png",
-                    course_study_num: 15426,
-                    course_price: m,
-                    ability_level_id: a,
-                    ability_level: e,
-                    is_display: b,
-                    course_title: "中台产品经理进阶"
-                }, {
-                    course_id: "16794141",
-                    course_type: k,
-                    course_type_id: d,
-                    course_recommend: "助力你成为一名靠谱的SaaS产品经理",
-                    course_url: "https:\u002F\u002Fwww.sanjieke.cn\u002Fcourse\u002Fdetail\u002F2\u002Fweb\u002F16794141",
-                    course_cover: "https:\u002F\u002Fcdn.sanjieke.cn\u002Fupload\u002Fimage\u002F157820648417.png",
-                    course_study_num: 14373,
-                    course_price: p,
-                    ability_level_id: a,
-                    ability_level: e,
-                    is_display: b,
-                    course_title: "SaaS产品经理的从业之道"
-                }, {
-                    course_id: aC,
-                    course_type: k,
-                    course_type_id: d,
-                    course_recommend: "成为未来互联网时代最抢手的人才",
-                    course_url: aD,
-                    course_cover: "https:\u002F\u002Fcdn.sanjieke.cn\u002Fupload\u002Fimage\u002F157820643360.png",
-                    course_study_num: 19740,
-                    course_price: Q,
-                    ability_level_id: a,
-                    ability_level: e,
-                    is_display: g,
-                    course_title: "产品经理策略能力提升"
-                }, {
-                    course_id: aE,
-                    course_type: k,
-                    course_type_id: d,
-                    course_recommend: "建立行业大局观，提高团队效能",
-                    course_url: aF,
-                    course_cover: "https:\u002F\u002Fcdn.sanjieke.cn\u002Fupload\u002Fimage\u002F1579345071157.png",
-                    course_study_num: 1138,
-                    course_price: 799,
-                    ability_level_id: R,
-                    ability_level: o,
-                    is_display: g,
-                    course_title: "产品经理高阶课"
-                }]
-            },
-            courseDetailInfo: [{
-                id: "8000253",
-                level: S,
-                href: "https:\u002F\u002Fwww.sanjieke.cn\u002Fcourse\u002Fdetail\u002Fsjk\u002F8000253?spu_sn=17305124",
-                class_name: "新人启航计划·运营增长方向",
-                bright_spot: [T, U],
-                corner_mark: f
-            }, {
-                id: "8000264",
-                level: S,
-                href: "https:\u002F\u002Fwww.sanjieke.cn\u002Fcourse\u002Fdetail\u002Fsjk\u002F8000264?spu_sn=18892371",
-                class_name: "新人启航计划·产品方向",
-                bright_spot: [T, U],
-                corner_mark: f
-            }, {
-                id: "8000269",
-                level: S,
-                href: "https:\u002F\u002Fwww.sanjieke.cn\u002Fcourse\u002Fdetail\u002Fsjk\u002F8000269?spu_sn=19217312",
-                class_name: "新人启航计划·数据分析方向",
-                bright_spot: [T, U],
-                corner_mark: "12期免息"
-            }, {
-                id: "8000252",
-                level: o,
-                href: "https:\u002F\u002Fwww.sanjieke.cn\u002Fcourse\u002Fdetail\u002Fsjk\u002F8000252?spu_sn=17300465",
-                class_name: "商业操盘手培养计划",
-                bright_spot: ["·3年+经验必备！打破发展瓶颈，开启晋升", "·含金量极高的全新课程，带你进阶职场新高度"],
-                corner_mark: f
-            }, {
-                id: "8000262",
-                level: o,
-                href: "https:\u002F\u002Fwww.sanjieke.cn\u002Fcourse\u002Fdetail\u002Fsjk\u002F8000262?spu_sn=18744422",
-                class_name: "全栈用户增长专家培养计划",
-                bright_spot: ["·突破增长瓶颈、构建增长方法", "·未来3-5年少有值得投入的稀缺岗位！"],
-                corner_mark: f
-            }, {
-                id: "8000270",
-                level: "必备技能",
-                href: "https:\u002F\u002Fwww.sanjieke.cn\u002Fcourse\u002Fdetail\u002Fsjk\u002F8000270?spu_sn=19619796",
-                class_name: "业务数据专家培养计划",
-                bright_spot: ["·职场人必须掌握的升值“硬技能”", "·无需编程，6周强化实践训练"],
-                corner_mark: f
-            }]
-        }], error: null, state: {
-            isMobile: h,
-            env: f,
-            collectionEditData: {},
-            pageShowState: f,
-            cookie: {
-                PHPSESSID: "l0ij56grkdejlnqln5g6hro357",
-                _sjk_jwt: "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxMDAwMDAwMSIsImp0aSI6IjhmYzhiZGY2MWE1NzAzZjE5NjZiMzUwZjc1YzQ2ZDJlZjAzNjY4YzY2ZWRhYzNkODY1OGRmMGI4ZWFlMzM3ZThlYjZlMzRkZTI2MWNiNmJhIiwiaWF0IjoxNTk2MDMwOTUxLCJuYmYiOjE1OTYwMzA5NTEsImV4cCI6MTU5NzMyNjk1MSwic3ViIjoiMjI4NjI1NzUiLCJpc3MiOiJzYW5qaWVrZS1vbmxpbmUiLCJzaWQiOiI4ZmM4YmRmNjFhNTcwM2YxOTY2YjM1MGY3NWM0NmQyZWYwMzY2OGM2NmVkYWMzZDg2NThkZjBiOGVhZTMzN2U4ZWI2ZTM0ZGUyNjFjYjZiYSIsInNjb3BlcyI6W119.ML061V89jhvqZekXtXAQ3z3O2jAsPQ_tN-DFPyditVFfz7e-kecPpyxXcbgXvt2uBq3BotGOK8Ei3cOGdQhB4g"
-            },
-            jsUrl: "https:\u002F\u002Fstatic.sanjieke.cn\u002Fdist\u002Fcommon\u002Flogin\u002Fjs\u002FloginModule.js?type=popup&v=20191210",
-            nowTime: 1596274304486,
-            showMobileMask: h,
-            topicType: f,
-            activeStartTime: "2020\u002F5\u002F7 17:00:00",
-            activeEndTime: "2020\u002F6\u002F30 23:59:59",
-            platform: "pc",
-            browserInfo: {
-                txt: "mozilla\u002F5.0 (macintosh; intel mac os x 10_14_6) applewebkit\u002F537.36 (khtml, like gecko) chrome\u002F81.0.4044.138 safari\u002F537.36",
-                version: "537.36",
-                msie: h,
-                mozilla: h,
-                safari: h,
-                chrome: w,
-                opera: h,
-                presto: h,
-                webKit: w,
-                gecko: h,
-                ios: h,
-                android: h,
-                iPhone: h,
-                iPad: h,
-                webApp: h
-            },
-            id: {
-                user_id: "22862575",
-                name: "sjk_1399864449",
-                avatar: "\u002F\u002Fstatic.sanjieke.cn\u002Fsrc\u002Fcommon\u002Fimg\u002Fdog.png",
-                phone: "18664556413",
-                email: f,
-                coupons_status: g,
-                user_type: "unknown",
-                reward: "0.00",
-                is_show: g,
-                is_temp: b,
-                bind_phone_url: f
-            },
-            topNav: [{
-                nav_name: "精品自学课",
-                nav_url: "https:\u002F\u002Fwww.sanjieke.cn\u002Fself_study_course\u002F0\u002F0",
-                target: A,
-                is_child: b
-            }, {
-                nav_name: "限免课程",
-                nav_url: "https:\u002F\u002Fwww.sanjieke.cn\u002Ffree.html",
-                target: A,
-                is_child: b
-            }, {
-                nav_name: "企业服务",
-                nav_url: "https:\u002F\u002Fb.sanjieke.cn\u002F",
-                target: A,
-                is_child: b
-            }, {nav_name: "有招", nav_url: "https:\u002F\u002Fwww.sanjieke.cn\u002Fyouzhao", target: A, is_child: b}],
-            footNav: [{course_id: P, course_type: r, name: "产品经理入门课", url: V}, {
-                course_id: G,
-                course_type: r,
-                name: "产品经理进阶课",
-                url: I
-            }, {course_id: aE, course_type: r, name: "产品经理高级课", url: aF}, {
-                course_id: aC,
-                course_type: r,
-                name: "策略产品经理",
-                url: aD
-            }, {course_id: M, course_type: r, name: "数据能力课", url: O}, {
-                course_id: N,
-                course_type: q,
-                name: "运营入门课",
-                url: H
-            }, {course_id: K, course_type: q, name: "运营进阶课", url: L}, {
-                course_id: aA,
-                course_type: q,
-                name: "运营高级课",
-                url: aB
-            }, {course_id: v, course_type: q, name: "增长黑客", url: B}, {
-                course_id: ax,
-                course_type: q,
-                name: "高阶用户体系",
-                url: ay
-            }, {
-                course_id: "11964676",
-                course_type: C,
-                name: "新媒体运营系统入门",
-                url: "https:\u002F\u002Fwww.sanjieke.cn\u002Fcourse\u002Fdetail\u002F2\u002Fweb\u002F11964676"
-            }, {
-                course_id: "10859821",
-                course_type: C,
-                name: "新媒体运营管理进阶",
-                url: "https:\u002F\u002Fwww.sanjieke.cn\u002Fcourse\u002Fdetail\u002F2\u002Fweb\u002F10859821"
-            }, {course_id: u, course_type: C, name: "互联网营销 P2 系列课程", url: t}]
-        }, serverRendered: w
-    }
-}("2", 0, "运营增长", "1", "进阶", "", 1, false, "入门", 99, "产品经理", 1596273873, 399, "0", "高阶", 299, "operation", "product", 199, "https:\u002F\u002Fwww.sanjieke.cn\u002Fcourse\u002Fdetail\u002F2\u002Fweb\u002F15304941", "15304941", "14217034", true, "1699.00", "799.00", "29", "_blank", "https:\u002F\u002Fwww.sanjieke.cn\u002Fcourse\u002Fdetail\u002F2\u002Fweb\u002F14217034", "marketing", "打造品效合一的营销体系", "p2", 3368, "14612932", "https:\u002F\u002Fwww.sanjieke.cn\u002Fcourse\u002Fdetail\u002F2\u002Fweb\u002F3388195", "https:\u002F\u002Fwww.sanjieke.cn\u002Fcourse\u002Fdetail\u002F2\u002Fweb\u002F14612932", 2549, "13560976", "https:\u002F\u002Fwww.sanjieke.cn\u002Fcourse\u002Fdetail\u002F2\u002Fweb\u002F13560976", "11992593", "3388195", "https:\u002F\u002Fwww.sanjieke.cn\u002Fcourse\u002Fdetail\u002F2\u002Fweb\u002F11992593", "5066711", 599, "3", "初阶", "·0-2岁新人的更优选择，培养岗位胜任力", "·优秀学员直推知名互联网公司", "https:\u002F\u002Fwww.sanjieke.cn\u002Fcourse\u002Fdetail\u002F2\u002Fweb\u002F5066711", 5188, "增长黑客认知入门课", 7143, "https:\u002F\u002Fcdn.sanjieke.cn\u002Fupload\u002Fimage\u002F190919\u002F5d8321ad42854.png", "199.00", -1, "1970-01-01 08:00:00", 18476, "200", "https:\u002F\u002Fcdn.sanjieke.cn\u002Fupload\u002Fimage\u002F190919\u002F5d83233faf824.png", "-1", "2020-02-06 20:00:00", 177, "产品经理P2系列课程", "599.00", 16389, "https:\u002F\u002Fcdn.sanjieke.cn\u002Fupload\u002Fimage\u002F190919\u002F5d8322d30b6dc.png", "https:\u002F\u002Fwww.sanjieke.cn\u002Fcourse\u002Fdetail\u002Fsjk\u002F8000377?spu_sn=23842323", "https:\u002F\u002Fcdn.sanjieke.cn\u002Fupload\u002Fimage\u002F190919\u002F5d83218acb0fd.png", 2, "1699", 2578, "https:\u002F\u002Fcdn.sanjieke.cn\u002Fupload\u002Fimage\u002F190919\u002F5d832278ae32c.png", "250", "p1", "互联网运营P2系列课程", "1580990400", "https:\u002F\u002Fcdn.sanjieke.cn\u002Fupload\u002Fimage\u002F190919\u002F5d83228f1a1e2.png", "https:\u002F\u002Fwww.sanjieke.cn\u002Fcourse\u002Fdetail\u002Fsjk\u002F8000074?spu_sn=16528332&utm_source=sjk&utm_medium=weixin&utm_term=guanwang&utm_content=banneryunying_0617&utm_campaign=gzh", "11087990", "https:\u002F\u002Fwww.sanjieke.cn\u002Fcourse\u002Fdetail\u002F2\u002Fweb\u002F11087990", "互联网业务数据分析实战", "3118509", "https:\u002F\u002Fwww.sanjieke.cn\u002Fcourse\u002Fdetail\u002F2\u002Fweb\u002F3118509", "3610846", "https:\u002F\u002Fwww.sanjieke.cn\u002Fcourse\u002Fdetail\u002F2\u002Fweb\u002F3610846", "11992864", "https:\u002F\u002Fwww.sanjieke.cn\u002Fcourse\u002Fdetail\u002F2\u002Fweb\u002F11992864", "专项突破", "互联网运营P1系列课程", "产品经理P1系列课程", 5331, "https:\u002F\u002Fcdn.sanjieke.cn\u002Fupload\u002Fimage\u002F190919\u002F5d832324bc69d.png", "799", "1299.00"));</script>
 <script src="//asset.3jk.top/project/homepage/runtime.js?v=3b48279" defer></script>
 <script src="//asset.3jk.top/project/homepage/11.js?v=e9609b3" defer></script>
 <script src="//asset.3jk.top/project/homepage/commons.app.js?v=70a1064" defer></script>
 <script src="//asset.3jk.top/project/homepage/vendors.app.js?v=94b2c9d" defer></script>
 <script src="//asset.3jk.top/project/homepage/app.js?v=4cf3ef6" defer></script>
+    <script type="text/javascript" src="../static/layui/layui.js"></script>
+    <script>
+        layui.use('carousel', function(){
+            var carousel = layui.carousel;
+            //建造实例
+            carousel.render({
+                elem: '#test1'
+                ,width: '100%' //设置容器宽度
+                ,arrow: 'none' //始终显示箭头
+                ,height:'95%'
+                ,interval:'5000'
+                //,anim: 'updown' //切换动画方式
+            });
+        });
+    </script>
+
 </body>
 </html>

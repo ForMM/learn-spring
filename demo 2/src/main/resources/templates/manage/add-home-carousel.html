@@ -1,0 +1,98 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
+    <link rel="stylesheet" href="../../static/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="../../static/css/course.css">
+    <title>发布课程</title>
+    <script type="text/javascript" src="../../static/layui/layui.js"></script>
+    <script type="text/javascript" src="../../static/scripts/jquery-1.11.1.js"></script>
+</head>
+<body>
+
+<div class="article-div">
+
+    <form class="layui-form" action="">
+        <div class="layui-form-item">
+            <label class="layui-form-label">添加首页轮播图</label>
+        </div>
+
+
+<!--    <div class="layui-form-item">-->
+<!--        <label class="layui-form-label">轮播图片类型</label>-->
+<!--        <div class="layui-input-block">-->
+<!--            <select  name="type" lay-verify="required">-->
+<!--                <option value="">首页轮播图</option>-->
+<!--                <option value="1">核心课程</option>-->
+<!--                <option value="2">PBL课程</option>-->
+<!--                <option value="3">精品课程</option>-->
+<!--            </select>-->
+<!--        </div>-->
+<!--    </div>-->
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">轮播图片</label>
+            <div class="layui-input-block">
+
+                <input hidden id="imguuid" name="img">
+                <button type="button" class="layui-btn" id="courseImg">
+                    <i class="layui-icon">&#xe67c;</i>上传轮播图片
+                </button>
+
+                <img id="imgpath" width="200" >
+            </div>
+        </div>
+    </form>
+    <script>
+        //Demo
+
+        layui.use(['upload','form'], function(){
+            var upload = layui.upload;
+            // var form = layui.form;
+            //
+            // var value = $("select[name='type'] option:selected").val();
+            // console.log(value);
+            // var url = "uploadCarouseImg?type=";
+            // console.log(url);
+            // //监听提交
+            // var uploadUrl;
+            // form.on('select', function(data){
+            //     // layer.msg(JSON.stringify(data.field));
+            //     var temp = url;
+            //     temp = temp + data.value;
+            //     uploadUrl = temp;
+            //     console.log(uploadUrl);
+            // });
+
+
+            //执行实例
+            var uploadInst = upload.render({
+                elem: '#courseImg' //绑定元素
+                ,url: "uploadCarouseImg" //上传接口
+                ,done: function(res){
+                    //上传完毕回调
+                    console.log(res);
+                    console.log(res.code);
+                    console.log(res.data);
+                    $("#imgpath").attr("src","loadCarouseImg?uuid="+res.data);
+                    $("#imguuid").val(res.data);
+                }
+                ,error: function(){
+                    //请求异常回调
+                    layer.msg("上传课程图片失败！");
+                }
+            });
+        });
+
+
+
+    </script>
+
+</div>
+</body>
+</html>

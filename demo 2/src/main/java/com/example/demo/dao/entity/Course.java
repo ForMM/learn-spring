@@ -10,7 +10,7 @@ public class Course implements Serializable {
 
     private String subTitle;
 
-    private Boolean status;
+    private Integer status;
 
     private Double price;
 
@@ -46,11 +46,11 @@ public class Course implements Serializable {
         this.subTitle = subTitle == null ? null : subTitle.trim();
     }
 
-    public Boolean getStatus() {
+    public Integer getStatus() {
         return status;
     }
 
-    public void setStatus(Boolean status) {
+    public void setStatus(Integer status) {
         this.status = status;
     }
 
