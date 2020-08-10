@@ -117,6 +117,18 @@ public class WebController {
 		return "self-course";
 	}
 
+	@RequestMapping(value = "/self-course-detail",method = RequestMethod.GET)
+	public String selfCourseDetail(String id,Model model){
+		logger.info("selfCourseDetail:{}",id);
+
+		Result result = courseService.selectCourseById(id);
+		if (result.getCode()==1){
+			model.addAttribute("courseDetail",result.getData());
+		}
+
+		return "self-course-detail";
+	}
+
 	@RequestMapping(value = "/free-course",method = RequestMethod.GET)
 	public String freeCourse(){
 		logger.info("freeCourse");
@@ -129,9 +141,5 @@ public class WebController {
 		return "free-course-detail";
 	}
 
-	@RequestMapping(value = "/self-course-detail",method = RequestMethod.GET)
-	public String selfCourseDetail(){
-		logger.info("selfCourseDetail");
-		return "self-course-detail";
-	}
+
 }

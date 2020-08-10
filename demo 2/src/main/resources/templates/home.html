@@ -10,15 +10,8 @@
           content="创造力星球是互联网人的在线大学，为您提供专业成体系的产品经理培训课程、互联网运营培训课程及营销培训课程，创造力星球是专注于“能力提升”的互联网人在线大学，志愿者和学员遍布各大一线互联网公司,欢迎注重提升自己的你前来学习和交流!">
     <meta data-n-head="ssr" data-hid="keywords" name="keywords" content="产品培训课程,产品经理培训,运营培训课程,互联网运营培训,互联网营销培训,互联网在线大学">
     <link data-n-head="ssr" rel="icon" type="image/x-icon" href="//img.sanjieke.cn/common/favicon.ico">
-    <link rel="preload" href="//asset.3jk.top/project/homepage/runtime.js?v=3b48279" as="script">
-    <link rel="preload" href="//asset.3jk.top/project/homepage/commons.app.js?v=70a1064" as="script">
     <link rel="preload" href="../static/css/vendors.app.css?v=21b6433" as="style">
-    <link rel="preload" href="//asset.3jk.top/project/homepage/vendors.app.js?v=94b2c9d" as="script">
-    <link rel="preload" href="//asset.3jk.top/project/homepage/app.css?v=a5b1cf5" as="style">
-    <link rel="preload" href="//asset.3jk.top/project/homepage/app.js?v=4cf3ef6" as="script">
-    <link rel="preload" href="//asset.3jk.top/project/homepage/11.js?v=e9609b3" as="script">
     <link rel="stylesheet" href="../static/css/vendors.app.css">
-    <link rel="stylesheet" href="//asset.3jk.top/project/homepage/app.css?v=a5b1cf5">
     <link rel="stylesheet" href="../static/css/home.css">
     <link rel="stylesheet" href="../static/layui/css/layui.css" media="all">
 </head>
@@ -26,28 +19,23 @@
 <div data-server-rendered="true" id="__nuxt"><!---->
     <div id="__layout">
         <div id="page-main">
-            <div id="top_banner" data-v-7e6e90a2><!----></div>
-            <div id="header" class="header-module">
-                <div class="header-container header-container-normal">
-                    <div class="header-container-inner"><a href="home" title="创造力星球首页" alt="创造力星球官网"
-                                                           class="header-container_logo-index">
-                        创造力星球首页</a>
-                        <div class="header-container_nav-container"><a href="home"
-                                                                       class="header-container_nav-container_a header-container_nav-container_a__active">首页</a>
-                            <a href="self-course?type=1" target="_blank"
-                               class="header-container_nav-container_a">
-                                核心课程
-                            </a><a href="self-course?type=2" target="_blank"
-                                   class="header-container_nav-container_a">
-                                精品课程
-                            </a><a href="self-course?type=3" target="_blank"
-                                   class="header-container_nav-container_a">
-                                PBL课程
-                            </a></div>
-                </div>
-            </div>
-            <div id="index" data-v-efa69a38><img src="/static/img/logo.jpeg?v=201910920"
-                                                 style="position: absolute;top: 0;left: -1000px;" data-v-efa69a38>
+            <div th:insert="~{public :: public_top}"></div>
+
+<!--            <div id="top_banner" data-v-7e6e90a2>&lt;!&ndash;&ndash;&gt;</div>-->
+<!--            <div id="header" class="header-module">-->
+<!--                <div class="header-container header-container-normal">-->
+<!--                    <div class="header-container-inner">-->
+<!--                        <a href="home" title="创造力星球首页" alt="创造力星球官网" class="header-container_logo-index">创造力星球首页</a>-->
+<!--                        <div class="header-container_nav-container">-->
+<!--                            <a href="home" class="header-container_nav-container_a header-container_nav-container_a__active">首页</a>-->
+<!--                            <a href="self-course?type=1" target="_blank" class="header-container_nav-container_a">核心课程</a>-->
+<!--                            <a href="self-course?type=2" target="_blank" class="header-container_nav-container_a">精品课程</a>-->
+<!--                            <a href="self-course?type=3" target="_blank" class="header-container_nav-container_a">PBL课程</a>-->
+<!--                        </div>-->
+<!--                </div>-->
+<!--            </div>-->
+            <div id="index" data-v-efa69a38>
+                <img src="/static/img/logo.jpeg?v=201910920" style="position: absolute;top: 0;left: -1000px;" data-v-efa69a38>
                 <div class="category_nav" data-v-efa69a38>
                     <div class="slogan">
                         <div class="slogan-info">创造力星球·教会孩子学会思考，认知世界的教育机构</div>
@@ -108,9 +96,10 @@
                         </div>
                     </div>
                     <div class="courses-detail courses-detail-PC" >
-                        <a href="https://www.sanjieke.cn/course/detail/sjk/8000253?spu_sn=17305124" target="_blank"
+                        <a  target="_blank"
                             class="detail-info detail-info0"  th:each="obj,iterStat:${homeCourseVo.coreCourses}"
-                           th:style="'background:url(' + @{(${obj.img}=='' ? 'img/favicon.png' : 'course/loadCourseImg?uuid='+${obj.img})} + ') no-repeat 50%'"
+                            th:style="'background:url(' + @{(${obj.img}=='' ? 'img/favicon.png' : 'course/loadCourseImg?uuid='+${obj.img})} + ') no-repeat 50%'"
+                            th:href="'self-course-detail?id='+${obj.id}"
                         >
                         <div class="interaction-content">
                             <div class="class-title" th:text="${obj.title}"></div>
@@ -125,23 +114,23 @@
                 </div>
                 <div class="index-title" data-v-efa69a38><span class="index-title_icon" data-v-efa69a38></span>
                     <p class="index-title_p1" data-v-efa69a38>精品课程</p>
-                    <p class="index-title_p2" data-v-efa69a38>解决你最想搞定的业务问题</p> <a href="/self_study_course"
-                                                                                  name="index_pc2.0_xinyonghuxianmian_chakangengduo"
-                                                                                  target="_blank" class="index-title_a"
-                                                                                  data-v-efa69a38>
-                        更多精选课程
-                        <i class="index-title_a_i" data-v-efa69a38></i></a></div>
+                    <p class="index-title_p2" data-v-efa69a38>解决你最想搞定的业务问题</p>
+                    <a href="self-course?type=2" name="index_pc2.0_xinyonghuxianmian_chakangengduo"
+                       target="_blank" class="index-title_a" data-v-efa69a38>
+                        更多精品课程
+                        <i class="index-title_a_i" data-v-efa69a38></i>
+                    </a>
+                </div>
                 <div class="self-study-home-list" data-v-bf90c2f4 data-v-efa69a38><!---->
                     <ul data-v-bf90c2f4>
                         <li class="self-study-introduce yy-introduce" data-v-bf90c2f4>
                             <div data-v-bf90c2f4><h3 data-v-bf90c2f4>运营增长自学课</h3>
                                 <p class="self-study-introduce-info" data-v-bf90c2f4>立刻掌握运营、增长、营销的热门技能</p> <a
-                                        href="/self_study_course/2/0" class="self-study-introduce-more" data-v-bf90c2f4>查看更多<i
+                                        href="self-course?type=3" class="self-study-introduce-more" data-v-bf90c2f4>查看更多<i
                                         class="more-icon" data-v-bf90c2f4></i></a></div>
                         </li>
                         <li data-v-bf90c2f4 th:each="obj,iterStat:${homeCourseVo.excellentCourses}">
-                            <a
-                                href="https://www.sanjieke.cn/course/detail/2/web/21514283?course_type=self_study"
+                            <a th:href="'self-course-detail?id='+${obj.id}"
                                 title="短视频运营与直播变现体系课" target="_blank" data-v-bf90c2f4></a>
                             <div class="self-study-course-pic" data-v-bf90c2f4>
                                 <img th:src="${obj.img}=='' ? 'img/favicon.png' : 'course/loadCourseImg?uuid='+${obj.img}"
@@ -161,15 +150,17 @@
                 <div class="index-title" data-v-efa69a38><span class="index-title_icon" data-v-efa69a38></span>
                     <p class="index-title_p1" data-v-efa69a38>PBL课程</p>
                     <p class="index-title_p2" data-v-efa69a38>每一堂课解决一个职场小难点</p> <a
-                            href="https://www.sanjieke.cn/free.html" name="index_pc2.0_xinyonghuxianmian_chakangengduo"
+                            href="self-course?type=3" name="index_pc2.0_xinyonghuxianmian_chakangengduo"
                             target="_blank" class="index-title_a" data-v-efa69a38>
                         更多PBL课程
                         <i class="index-title_a_i" data-v-efa69a38></i></a></div>
                 <div class="index-free-course" data-v-efa69a38>
                     <div>
                         <a target="_blank" name="index_pc2.0_xinyonghuxianmian_21606094"
-                            href="https://www.sanjieke.cn/class/21606094" class="index-free-course_card"
-                           th:each="obj,iterStat:${homeCourseVo.pblCourses}">
+                           class="index-free-course_card"
+                           th:each="obj,iterStat:${homeCourseVo.pblCourses}"
+                           th:href="'self-course-detail?id='+${obj.id}"
+                        >
                         <div class="index-free-course_card_bg">
                             <img th:src="${obj.img}=='' ? 'img/favicon.png' : 'course/loadCourseImg?uuid='+${obj.img}" th:alt="${obj.title}"
                                 class="index-free-course_card_bg_img"></div>
@@ -235,11 +226,6 @@
         </div>
     </div>
 </div>
-<script src="//asset.3jk.top/project/homepage/runtime.js?v=3b48279" defer></script>
-<script src="//asset.3jk.top/project/homepage/11.js?v=e9609b3" defer></script>
-<script src="//asset.3jk.top/project/homepage/commons.app.js?v=70a1064" defer></script>
-<script src="//asset.3jk.top/project/homepage/vendors.app.js?v=94b2c9d" defer></script>
-<script src="//asset.3jk.top/project/homepage/app.js?v=4cf3ef6" defer></script>
     <script type="text/javascript" src="../static/layui/layui.js"></script>
     <script>
         layui.use('carousel', function(){

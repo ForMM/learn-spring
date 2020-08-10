@@ -49,7 +49,7 @@ public class CourseServiceImpl implements CourseService {
         StorageService storageService = new StorageServiceImpl(coursePath);
         FOSClient.setFosService(storageService);
 
-        try{
+        try {
 //            FileInputStream fis = new FileInputStream(file);
 //            ByteArrayOutputStream bos = new ByteArrayOutputStream(1024);
 //            byte[] b = new byte[1024];
@@ -57,10 +57,10 @@ public class CourseServiceImpl implements CourseService {
 //            while((len = fis.read(b)) != -1) {
 //                bos.write(b, 0, len);
 //            }
-            storageService.set(file.getBytes(),uuid);
+            storageService.set(file.getBytes(), uuid);
             result.setData(uuid);
-        }catch (Exception e){
-            logger.error("上传课程图片异常",e);
+        } catch (Exception e) {
+            logger.error("上传课程图片异常", e);
             result.setCode(0);
             result.setMsg("上传课程图片失败");
         }
@@ -90,8 +90,8 @@ public class CourseServiceImpl implements CourseService {
             course.setStatus(2);
             course.setCreateTime(new Date());
             courseMapper.insert(course);
-        }catch (Exception e){
-            logger.info("添加课程失败",e);
+        } catch (Exception e) {
+            logger.info("添加课程失败", e);
             result.setCode(0);
             result.setMsg("添加课程失败");
         }
@@ -105,10 +105,10 @@ public class CourseServiceImpl implements CourseService {
         Integer page = courseListDto.getPage();
         Integer pageSize = courseListDto.getPageSize();
         String type = courseListDto.getType();
-        page=(page==null? GlaobalVal.DEFAULT_PAGE:page);
-        pageSize=pageSize==null?GlaobalVal.DEFAULT_PAGESIZE:pageSize;
+        page = (page == null ? GlaobalVal.DEFAULT_PAGE : page);
+        pageSize = pageSize == null ? GlaobalVal.DEFAULT_PAGESIZE : pageSize;
 
-        Map<String, Object> param = new HashMap<String,Object>();
+        Map<String, Object> param = new HashMap<String, Object>();
         param.put("type", type);
 
         int countByParam = courseMapper.countByParam(param);
@@ -120,9 +120,10 @@ public class CourseServiceImpl implements CourseService {
         param.put("pageSize", paginator.getPageSize());
         List<Course> list = courseMapper.findByParam(param);
         List<CourseVo> courseVos = new ArrayList<CourseVo>();
-        if(list!=null&&list.size()>0){
-            for(Course course:list){
+        if (list != null && list.size() > 0) {
+            for (Course course : list) {
                 CourseVo courseVo = new CourseVo();
+                courseVo.setId(course.getId());
                 courseVo.setType(CourseType.getTypeValue(course.getType()));
                 courseVo.setTitle(course.getTitle());
                 courseVo.setSubTitle(course.getSubTitle());
@@ -134,7 +135,7 @@ public class CourseServiceImpl implements CourseService {
         }
 
 
-        Map<String,Object> data = new HashMap<String,Object>();
+        Map<String, Object> data = new HashMap<String, Object>();
         data.put("dataList", courseVos);
         data.put("page", page);
         data.put("pageSize", pageSize);
@@ -152,7 +153,26 @@ public class CourseServiceImpl implements CourseService {
 
     @Override
     public Result selectCourseById(String courseId) {
-        return null;
+        Result result = new Result();
+        Course course = courseMapper.selectByPrimaryKey(courseId);
+        if (course==null){
+            logger.info("course is null");
+            result.setCode(0);
+            result.setMsg("操作失败");
+        }
+
+        CourseVo courseVo = new CourseVo();
+        courseVo.setId(course.getId());
+        courseVo.setType(CourseType.getTypeValue(course.getType()));
+        courseVo.setTitle(course.getTitle());
+        courseVo.setSubTitle(course.getSubTitle());
+        courseVo.setImg(course.getImg());
+        courseVo.setPrice(course.getPrice());
+
+        result.setCode(1);
+        result.setMsg("操作成功");
+        result.setData(courseVo);
+        return result;
     }
 
     @Override

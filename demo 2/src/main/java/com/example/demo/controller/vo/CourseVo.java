@@ -4,6 +4,7 @@ import lombok.Data;
 
 @Data
 public class CourseVo {
+    private String id;
     private String title;
 
     private String subTitle;
